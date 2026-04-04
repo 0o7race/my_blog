@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://0o7race.github.io/my_blog/</loc>
+    <lastmod>2026-04-04T23:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/categories/</loc>
+    <lastmod>2026-04-04T23:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/tags/engineering/</loc>
+    <lastmod>2026-04-04T23:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/post/hello_my_blog/</loc>
+    <lastmod>2026-04-04T23:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/tags/introductions/</loc>
+    <lastmod>2026-04-04T23:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/post/</loc>
+    <lastmod>2026-04-04T23:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/categories/projects/</loc>
+    <lastmod>2026-04-04T23:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/tags/</loc>
+    <lastmod>2026-04-04T23:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/page/</loc>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/page/about/</loc>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/page/archives/</loc>
+  </url><url>
+    <loc>https://0o7race.github.io/my_blog/page/search/</loc>
+  </url>
+</urlset>

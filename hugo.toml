@@ -1,0 +1,173 @@
+baseURL = 'https://0o7race.github.io/my_blog/'
+languageCode = 'zh-cn'
+defaultContentLanguage = 'zh-cn'
+title = 'Blog For Life'
+theme = "hugo-theme-stack-master"
+
+[pagination]
+  pagerSize = 8
+
+# ============================================================
+# 侧边栏配置（左侧）
+# ============================================================
+
+[params.sidebar]
+  compact = false
+  emoji = "🏠"
+  subtitle = "记录学习与生活的个人博客"
+
+# ============================================================
+# 导航菜单（左侧栏的目录分级）
+# weight 越小越靠前
+# ============================================================
+
+[[menu.main]]
+  name = "首页"
+  url = "/"
+  weight = 1
+  [menu.main.params]
+    icon = "home"
+
+[[menu.main]]
+  name = "文章分类"
+  url = "/categories/"
+  weight = 2
+  [menu.main.params]
+    icon = "categories"
+
+[[menu.main]]
+  name = "标签"
+  url = "/tags/"
+  weight = 3
+  [menu.main.params]
+    icon = "tag"
+
+[[menu.main]]
+  name = "归档"
+  url = "/archives/"
+  weight = 4
+  [menu.main.params]
+    icon = "archives"
+
+[[menu.main]]
+  name = "搜索"
+  url = "/search/"
+  weight = 5
+  [menu.main.params]
+    icon = "search"
+
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 6
+  [menu.main.params]
+    icon = "user"
+
+# ============================================================
+# 右侧栏 Widgets（首页和文章页分别配置）
+# ============================================================
+
+[params.widgets]
+  homepage = [
+    { type = "search" },
+    { type = "categories", limit = 20 },
+    { type = "tag-cloud", limit = 30 },
+    { type = "archives", limit = 6 }
+  ]
+  page = [
+    { type = "toc" },
+    { type = "categories", limit = 20 },
+    { type = "tag-cloud", limit = 30 }
+  ]
+
+# ============================================================
+# 文章配置
+# ============================================================
+
+[params.article]
+  headingAnchor = true
+  math = false
+  toc = true
+  readingTime = true
+
+  [params.article.list]
+    showTags = true
+
+  [params.article.license]
+    enabled = false
+
+# ============================================================
+# 页脚
+# ============================================================
+
+[params.footer]
+  since = 2026
+  customText = ""
+
+# ============================================================
+# 日期格式
+# ============================================================
+
+[params.dateFormat]
+  published = "2006-01-02"
+  lastUpdated = "2006-01-02"
+
+# ============================================================
+# 颜色方案
+# ============================================================
+
+[params.colorScheme]
+  toggle = true
+  default = "auto"
+
+# ============================================================
+# 评论（暂时关闭）
+# ============================================================
+
+[params.comments]
+  enabled = false
+
+# ============================================================
+# 其他
+# ============================================================
+
+[params]
+  mainSections = ["post"]
+  rssFullContent = true
+
+[params.imageProcessing]
+  autoOrient = false
+
+  [params.imageProcessing.content]
+    widths = [800, 1600, 2400]
+    enabled = true
+
+  [params.imageProcessing.thumbnail]
+    enabled = true
+
+# ============================================================
+# 分类法配置
+# ============================================================
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+# ============================================================
+# Markup 配置
+# ============================================================
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 4
+  ordered = false
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# ============================================================
+# 输出格式（搜索页需要 JSON 输出）
+# ============================================================
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

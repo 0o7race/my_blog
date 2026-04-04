@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on Blog For Life</title>
+        <link>https://0o7race.github.io/my_blog/tags/</link>
+        <description>Recent content in Tags on Blog For Life</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 04 Apr 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://0o7race.github.io/my_blog/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>Engineering</title>
+            <link>https://0o7race.github.io/my_blog/tags/engineering/</link>
+            <pubDate>Sat, 04 Apr 2026 23:00:00 +0800</pubDate>
+            <guid>https://0o7race.github.io/my_blog/tags/engineering/</guid>
+            <description></description>
+        </item><item>
+            <title>Introductions</title>
+            <link>https://0o7race.github.io/my_blog/tags/introductions/</link>
+            <pubDate>Sat, 04 Apr 2026 23:00:00 +0800</pubDate>
+            <guid>https://0o7race.github.io/my_blog/tags/introductions/</guid>
+            <description></description>
+        </item></channel>
+</rss>

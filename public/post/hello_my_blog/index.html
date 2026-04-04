@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一篇涵盖 Hugo 主题更改语法、GitHub Pages 部署步骤、常用 Git 命令的完整上手文档">
+<title>Hugo 博客上手指南：主题配置 &amp; GitHub Pages 部署 &amp; Git 命令总结</title>
+
+
+<link rel="canonical" href="https://0o7race.github.io/my_blog/post/hello_my_blog/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/my_blog/scss/style.min.172877406e6721b738d388027534d12bfcfdc6164d9a98817a138bdedde4cf88.css"><meta property='og:title' content="Hugo 博客上手指南：主题配置 & GitHub Pages 部署 & Git 命令总结">
+<meta property='og:description' content="一篇涵盖 Hugo 主题更改语法、GitHub Pages 部署步骤、常用 Git 命令的完整上手文档">
+<meta property='og:url' content='https://0o7race.github.io/my_blog/post/hello_my_blog/'>
+<meta property='og:site_name' content='Blog For Life'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Engineering' /><meta property='article:tag' content='Introductions' /><meta property='article:published_time' content='2026-04-04T23:00:00&#43;08:00'/><meta property='article:modified_time' content='2026-04-04T23:00:00&#43;08:00'/>
+<meta name="twitter:title" content="Hugo 博客上手指南：主题配置 & GitHub Pages 部署 & Git 命令总结">
+<meta name="twitter:description" content="一篇涵盖 Hugo 主题更改语法、GitHub Pages 部署步骤、常用 Git 命令的完整上手文档">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/my_blog/">Blog For Life</a></h1>
+            <h2 class="site-description">记录学习与生活的个人博客</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/my_blog/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/categories/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>文章分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/archives/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span></span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title"></h2>
+        
+        <div class="widget--toc">
+            <nav class="toc-nav" id="TableOfContents">
+                
+  <ul>
+    <li><a href="#一认识-hugo-博客的目录结构">一、认识 Hugo 博客的目录结构</a></li>
+    <li><a href="#二主题更改的详细语法">二、主题更改的详细语法</a>
+      <ul>
+        <li><a href="#21-hugotoml-基础字段">2.1 hugo.toml 基础字段</a></li>
+        <li><a href="#22-toml-语法基础">2.2 TOML 语法基础</a></li>
+        <li><a href="#23-修改站点标题和描述">2.3 修改站点标题和描述</a></li>
+        <li><a href="#24-修改语言">2.4 修改语言</a></li>
+        <li><a href="#25-配置首页侧边栏stack-主题">2.5 配置首页侧边栏（Stack 主题）</a></li>
+        <li><a href="#26-配置社交链接stack-主题">2.6 配置社交链接（Stack 主题）</a></li>
+        <li><a href="#27-配置导航菜单">2.7 配置导航菜单</a></li>
+        <li><a href="#28-配置文章每页显示数量">2.8 配置文章每页显示数量</a></li>
+        <li><a href="#29-修改-favicon">2.9 修改 favicon</a></li>
+        <li><a href="#210-文章-front-matter-语法">2.10 文章 Front Matter 语法</a></li>
+        <li><a href="#211-在文章中插入图片">2.11 在文章中插入图片</a></li>
+        <li><a href="#212-改哪里影响哪里速查表">2.12 &ldquo;改哪里影响哪里&quot;速查表</a></li>
+      </ul>
+    </li>
+    <li><a href="#三部署到-github-pages-的详细步骤">三、部署到 GitHub Pages 的详细步骤</a>
+      <ul>
+        <li><a href="#31-前提条件">3.1 前提条件</a></li>
+        <li><a href="#32-两种-github-pages-方式">3.2 两种 GitHub Pages 方式</a></li>
+        <li><a href="#33-详细操作步骤">3.3 详细操作步骤</a>
+          <ul>
+            <li><a href="#第一步在-github-创建仓库">第一步：在 GitHub 创建仓库</a></li>
+            <li><a href="#第二步修改-hugotoml-中的-baseurl">第二步：修改 hugo.toml 中的 baseURL</a></li>
+            <li><a href="#第三步构建静态文件">第三步：构建静态文件</a></li>
+            <li><a href="#第四步初始化-git-仓库并推送">第四步：初始化 Git 仓库并推送</a></li>
+            <li><a href="#第五步配置-github-actions-自动部署推荐方法-b-时使用">第五步：配置 GitHub Actions 自动部署（推荐方法 B 时使用）</a></li>
+            <li><a href="#第六步访问你的博客">第六步：访问你的博客</a></li>
+          </ul>
+        </li>
+        <li><a href="#34-常见问题排查">3.4 常见问题排查</a></li>
+        <li><a href="#35-后续更新文章的流程">3.5 后续更新文章的流程</a></li>
+      </ul>
+    </li>
+    <li><a href="#四常用-git-命令总结">四、常用 Git 命令总结</a>
+      <ul>
+        <li><a href="#41-仓库初始化与配置">4.1 仓库初始化与配置</a></li>
+        <li><a href="#42-基本操作">4.2 基本操作</a></li>
+        <li><a href="#43-远程仓库操作">4.3 远程仓库操作</a></li>
+        <li><a href="#44-分支操作">4.4 分支操作</a></li>
+        <li><a href="#45-查看差异">4.5 查看差异</a></li>
+        <li><a href="#46-撤销操作">4.6 撤销操作</a></li>
+        <li><a href="#47-gitignore-文件">4.7 .gitignore 文件</a></li>
+        <li><a href="#48-日常工作流总结">4.8 日常工作流总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#五总结">五、总结</a></li>
+  </ul>
+
+            </nav>
+        </div>
+    </section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            <a href="/my_blog/categories/">
+                
+            </a>
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/my_blog/categories/projects/">
+                Projects
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            <a href="/my_blog/tags/">
+                
+            </a>
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/my_blog/tags/engineering/">
+                Engineering
+            </a>
+        
+            <a href="/my_blog/tags/introductions/">
+                Introductions
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/my_blog/categories/projects/" style="background-color: hsl(87, 60%, 84%); color: hsl(87, 60%, 15%);">
+                Projects
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/my_blog/post/hello_my_blog/">Hugo 博客上手指南：主题配置 &amp; GitHub Pages 部署 &amp; Git 命令总结</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            一篇涵盖 Hugo 主题更改语法、GitHub Pages 部署步骤、常用 Git 命令的完整上手文档
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <footer class="article-meta">
+        
+            <div class="inline-meta">
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published" datetime='2026-04-04T23:00:00&#43;08:00'>2026-04-04</time>
+                
+
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        
+                    </time>
+                
+            </div>
+        
+
+        
+
+        
+    </footer>
+    
+</div>
+
+</header>
+
+    
+    <aside class="article-toc">
+        <details>
+            <summary>
+                <div class="article-toc-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <span></span>
+                </div>
+            </summary>
+            <nav class="toc-nav">
+                
+  <ul>
+    <li><a href="#一认识-hugo-博客的目录结构">一、认识 Hugo 博客的目录结构</a></li>
+    <li><a href="#二主题更改的详细语法">二、主题更改的详细语法</a>
+      <ul>
+        <li><a href="#21-hugotoml-基础字段">2.1 hugo.toml 基础字段</a></li>
+        <li><a href="#22-toml-语法基础">2.2 TOML 语法基础</a></li>
+        <li><a href="#23-修改站点标题和描述">2.3 修改站点标题和描述</a></li>
+        <li><a href="#24-修改语言">2.4 修改语言</a></li>
+        <li><a href="#25-配置首页侧边栏stack-主题">2.5 配置首页侧边栏（Stack 主题）</a></li>
+        <li><a href="#26-配置社交链接stack-主题">2.6 配置社交链接（Stack 主题）</a></li>
+        <li><a href="#27-配置导航菜单">2.7 配置导航菜单</a></li>
+        <li><a href="#28-配置文章每页显示数量">2.8 配置文章每页显示数量</a></li>
+        <li><a href="#29-修改-favicon">2.9 修改 favicon</a></li>
+        <li><a href="#210-文章-front-matter-语法">2.10 文章 Front Matter 语法</a></li>
+        <li><a href="#211-在文章中插入图片">2.11 在文章中插入图片</a></li>
+        <li><a href="#212-改哪里影响哪里速查表">2.12 &ldquo;改哪里影响哪里&quot;速查表</a></li>
+      </ul>
+    </li>
+    <li><a href="#三部署到-github-pages-的详细步骤">三、部署到 GitHub Pages 的详细步骤</a>
+      <ul>
+        <li><a href="#31-前提条件">3.1 前提条件</a></li>
+        <li><a href="#32-两种-github-pages-方式">3.2 两种 GitHub Pages 方式</a></li>
+        <li><a href="#33-详细操作步骤">3.3 详细操作步骤</a>
+          <ul>
+            <li><a href="#第一步在-github-创建仓库">第一步：在 GitHub 创建仓库</a></li>
+            <li><a href="#第二步修改-hugotoml-中的-baseurl">第二步：修改 hugo.toml 中的 baseURL</a></li>
+            <li><a href="#第三步构建静态文件">第三步：构建静态文件</a></li>
+            <li><a href="#第四步初始化-git-仓库并推送">第四步：初始化 Git 仓库并推送</a></li>
+            <li><a href="#第五步配置-github-actions-自动部署推荐方法-b-时使用">第五步：配置 GitHub Actions 自动部署（推荐方法 B 时使用）</a></li>
+            <li><a href="#第六步访问你的博客">第六步：访问你的博客</a></li>
+          </ul>
+        </li>
+        <li><a href="#34-常见问题排查">3.4 常见问题排查</a></li>
+        <li><a href="#35-后续更新文章的流程">3.5 后续更新文章的流程</a></li>
+      </ul>
+    </li>
+    <li><a href="#四常用-git-命令总结">四、常用 Git 命令总结</a>
+      <ul>
+        <li><a href="#41-仓库初始化与配置">4.1 仓库初始化与配置</a></li>
+        <li><a href="#42-基本操作">4.2 基本操作</a></li>
+        <li><a href="#43-远程仓库操作">4.3 远程仓库操作</a></li>
+        <li><a href="#44-分支操作">4.4 分支操作</a></li>
+        <li><a href="#45-查看差异">4.5 查看差异</a></li>
+        <li><a href="#46-撤销操作">4.6 撤销操作</a></li>
+        <li><a href="#47-gitignore-文件">4.7 .gitignore 文件</a></li>
+        <li><a href="#48-日常工作流总结">4.8 日常工作流总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#五总结">五、总结</a></li>
+  </ul>
+
+            </nav>
+        </details>
+    </aside>
+    
+
+    <section class="article-content">
+    
+    
+    <h2 id="一认识-hugo-博客的目录结构"><a href="#%e4%b8%80%e8%ae%a4%e8%af%86-hugo-%e5%8d%9a%e5%ae%a2%e7%9a%84%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" class="header-anchor"></a>一、认识 Hugo 博客的目录结构
+</h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>my_blog/
+</span></span><span style="display:flex;"><span>├── hugo.toml              # 站点主配置文件
+</span></span><span style="display:flex;"><span>├── content/               # 所有文章内容
+</span></span><span style="display:flex;"><span>│   └── post/              # 文章目录
+</span></span><span style="display:flex;"><span>│       └── hello_my_blog.md
+</span></span><span style="display:flex;"><span>├── static/                # 静态资源（图片、favicon 等）
+</span></span><span style="display:flex;"><span>├── assets/                # 样式、脚本等资源
+</span></span><span style="display:flex;"><span>├── layouts/               # 自定义模板（覆盖主题模板）
+</span></span><span style="display:flex;"><span>├── themes/                # 主题目录
+</span></span><span style="display:flex;"><span>│   └── hugo-theme-stack-master/
+</span></span><span style="display:flex;"><span>├── public/                # hugo 构建后生成的静态网页
+</span></span><span style="display:flex;"><span>├── archetypes/            # 新文章模板
+</span></span><span style="display:flex;"><span>├── data/                  # 数据文件
+</span></span><span style="display:flex;"><span>└── i18n/                  # 多语言翻译文件
+</span></span></code></pre></div><p><strong>核心规律：</strong></p>
+<ul>
+<li>改配置 → <code>hugo.toml</code></li>
+<li>写文章 → <code>content/post/</code></li>
+<li>放图片 → <code>static/</code></li>
+<li>改外观 → <code>hugo.toml</code> + <code>layouts/</code> + <code>assets/</code></li>
+</ul>
+<hr>
+<h2 id="二主题更改的详细语法"><a href="#%e4%ba%8c%e4%b8%bb%e9%a2%98%e6%9b%b4%e6%94%b9%e7%9a%84%e8%af%a6%e7%bb%86%e8%af%ad%e6%b3%95" class="header-anchor"></a>二、主题更改的详细语法
+</h2><h3 id="21-hugotoml-基础字段"><a href="#21-hugotoml-%e5%9f%ba%e7%a1%80%e5%ad%97%e6%ae%b5" class="header-anchor"></a>2.1 hugo.toml 基础字段
+</h3><p>当前配置文件内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#39;https://example.org/&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">locale</span> = <span style="color:#e6db74">&#39;en-us&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#39;Blog For Life&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;hugo-theme-stack-master&#34;</span>
+</span></span></code></pre></div><p>各字段含义：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>作用</th>
+          <th>修改建议</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>baseURL</code></td>
+          <td>网站最终发布的网址</td>
+          <td>部署到 GitHub Pages 后改成实际地址</td>
+      </tr>
+      <tr>
+          <td><code>locale</code></td>
+          <td>语言地区</td>
+          <td>中文博客改成 <code>'zh-cn'</code></td>
+      </tr>
+      <tr>
+          <td><code>title</code></td>
+          <td>网站标题，显示在首页和浏览器标签</td>
+          <td>改成你的博客名</td>
+      </tr>
+      <tr>
+          <td><code>theme</code></td>
+          <td>使用的主题目录名</td>
+          <td>必须和 <code>themes/</code> 下的文件夹名一致</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="22-toml-语法基础"><a href="#22-toml-%e8%af%ad%e6%b3%95%e5%9f%ba%e7%a1%80" class="header-anchor"></a>2.2 TOML 语法基础
+</h3><p>Hugo 配置文件使用 TOML 格式，常用语法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e"># 字符串</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;我的博客&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 布尔值</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">draft</span> = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 数字</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">paginate</span> = <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 数组</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tags</span> = [<span style="color:#e6db74">&#34;Hugo&#34;</span>, <span style="color:#e6db74">&#34;博客&#34;</span>, <span style="color:#e6db74">&#34;教程&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 表（类似对象/字典）</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;一个个人博客&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mainSections</span> = [<span style="color:#e6db74">&#34;post&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 嵌套表</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">sidebar</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">emoji</span> = <span style="color:#e6db74">&#34;🎯&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">subtitle</span> = <span style="color:#e6db74">&#34;记录生活与技术&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 双括号表示数组中的表</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;首页&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;归档&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/archives&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><h3 id="23-修改站点标题和描述"><a href="#23-%e4%bf%ae%e6%94%b9%e7%ab%99%e7%82%b9%e6%a0%87%e9%a2%98%e5%92%8c%e6%8f%8f%e8%bf%b0" class="header-anchor"></a>2.3 修改站点标题和描述
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#39;Blog For Life&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;记录我的学习与生活&#34;</span>
+</span></span></code></pre></div><p>效果：<code>title</code> 显示在浏览器标签页和网站顶部，<code>description</code> 显示在首页副标题或 SEO 描述中。</p>
+<h3 id="24-修改语言"><a href="#24-%e4%bf%ae%e6%94%b9%e8%af%ad%e8%a8%80" class="header-anchor"></a>2.4 修改语言
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#39;zh-cn&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">defaultContentLanguage</span> = <span style="color:#e6db74">&#39;zh-cn&#39;</span>
+</span></span></code></pre></div><h3 id="25-配置首页侧边栏stack-主题"><a href="#25-%e9%85%8d%e7%bd%ae%e9%a6%96%e9%a1%b5%e4%be%a7%e8%be%b9%e6%a0%8fstack-%e4%b8%bb%e9%a2%98" class="header-anchor"></a>2.5 配置首页侧边栏（Stack 主题）
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">sidebar</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">emoji</span> = <span style="color:#e6db74">&#34;🏠&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">subtitle</span> = <span style="color:#e6db74">&#34;欢迎来到我的博客&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">sidebar</span>.<span style="color:#a6e22e">avatar</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">enabled</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">local</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">src</span> = <span style="color:#e6db74">&#34;img/avatar.png&#34;</span>   <span style="color:#75715e"># 图片放在 static/img/avatar.png</span>
+</span></span></code></pre></div><p>把头像图片放在：<code>static/img/avatar.png</code></p>
+<h3 id="26-配置社交链接stack-主题"><a href="#26-%e9%85%8d%e7%bd%ae%e7%a4%be%e4%ba%a4%e9%93%be%e6%8e%a5stack-%e4%b8%bb%e9%a2%98" class="header-anchor"></a>2.6 配置社交链接（Stack 主题）
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">widgets</span>.<span style="color:#a6e22e">social</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;GitHub&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">icon</span> = <span style="color:#e6db74">&#34;brand-github&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;https://github.com/你的用户名&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">widgets</span>.<span style="color:#a6e22e">social</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Email&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">icon</span> = <span style="color:#e6db74">&#34;mail&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;mailto:你的邮箱@example.com&#34;</span>
+</span></span></code></pre></div><h3 id="27-配置导航菜单"><a href="#27-%e9%85%8d%e7%bd%ae%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95" class="header-anchor"></a>2.7 配置导航菜单
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;首页&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;归档&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/archives&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;搜索&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/search&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p><code>weight</code> 数字越小排越前面。</p>
+<h3 id="28-配置文章每页显示数量"><a href="#28-%e9%85%8d%e7%bd%ae%e6%96%87%e7%ab%a0%e6%af%8f%e9%a1%b5%e6%98%be%e7%a4%ba%e6%95%b0%e9%87%8f" class="header-anchor"></a>2.8 配置文章每页显示数量
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">paginate</span> = <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><h3 id="29-修改-favicon"><a href="#29-%e4%bf%ae%e6%94%b9-favicon" class="header-anchor"></a>2.9 修改 favicon
+</h3><p>把你的 favicon 文件放到：</p>
+<pre tabindex="0"><code>static/favicon.ico
+</code></pre><p>或者：</p>
+<pre tabindex="0"><code>static/favicon.png
+</code></pre><p>Hugo 会自动识别。</p>
+<h3 id="210-文章-front-matter-语法"><a href="#210-%e6%96%87%e7%ab%a0-front-matter-%e8%af%ad%e6%b3%95" class="header-anchor"></a>2.10 文章 Front Matter 语法
+</h3><p>每篇文章开头的 <code>---</code> 之间的内容叫 Front Matter，控制这篇文章的元信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;文章标题&#34;
+</span></span><span style="display:flex;"><span>date: 2026-04-04T23:00:00+08:00
+</span></span><span style="display:flex;"><span>draft: false
+</span></span><span style="display:flex;"><span>description: &#34;文章描述，用于 SEO 和列表页预览&#34;
+</span></span><span style="display:flex;"><span>tags: [&#34;标签1&#34;, &#34;标签2&#34;]
+</span></span><span style="display:flex;"><span>categories: [&#34;分类名&#34;]
+</span></span><span style="display:flex;"><span>image: &#34;cover.jpg&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>正文从这里开始...
+</span></span></code></pre></div><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>title</code></td>
+          <td>文章标题</td>
+      </tr>
+      <tr>
+          <td><code>date</code></td>
+          <td>发布日期，影响排序</td>
+      </tr>
+      <tr>
+          <td><code>draft</code></td>
+          <td><code>true</code> 表示草稿，不会发布；<code>false</code> 才会显示</td>
+      </tr>
+      <tr>
+          <td><code>description</code></td>
+          <td>文章描述</td>
+      </tr>
+      <tr>
+          <td><code>tags</code></td>
+          <td>标签，数组格式</td>
+      </tr>
+      <tr>
+          <td><code>categories</code></td>
+          <td>分类</td>
+      </tr>
+      <tr>
+          <td><code>image</code></td>
+          <td>文章封面图（Stack 主题支持）</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="211-在文章中插入图片"><a href="#211-%e5%9c%a8%e6%96%87%e7%ab%a0%e4%b8%ad%e6%8f%92%e5%85%a5%e5%9b%be%e7%89%87" class="header-anchor"></a>2.11 在文章中插入图片
+</h3><p>把图片放到 <code>static/images/</code> 目录：</p>
+<pre tabindex="0"><code>static/images/my-photo.png
+</code></pre><p>文章中引用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#f92672">图片说明</span>](<span style="color:#a6e22e">/images/my-photo.png</span>)
+</span></span></code></pre></div><h3 id="212-改哪里影响哪里速查表"><a href="#212-%e6%94%b9%e5%93%aa%e9%87%8c%e5%bd%b1%e5%93%8d%e5%93%aa%e9%87%8c%e9%80%9f%e6%9f%a5%e8%a1%a8" class="header-anchor"></a>2.12 &ldquo;改哪里影响哪里&quot;速查表
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>想改什么</th>
+          <th>改哪个文件</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>博客标题</td>
+          <td><code>hugo.toml</code> → <code>title</code></td>
+      </tr>
+      <tr>
+          <td>网站地址</td>
+          <td><code>hugo.toml</code> → <code>baseURL</code></td>
+      </tr>
+      <tr>
+          <td>语言</td>
+          <td><code>hugo.toml</code> → <code>languageCode</code></td>
+      </tr>
+      <tr>
+          <td>头像</td>
+          <td><code>static/img/avatar.png</code> + <code>hugo.toml</code> 配置</td>
+      </tr>
+      <tr>
+          <td>导航菜单</td>
+          <td><code>hugo.toml</code> → <code>[[menu.main]]</code></td>
+      </tr>
+      <tr>
+          <td>社交链接</td>
+          <td><code>hugo.toml</code> → <code>[[params.widgets.social]]</code></td>
+      </tr>
+      <tr>
+          <td>新文章</td>
+          <td><code>content/post/新文章.md</code></td>
+      </tr>
+      <tr>
+          <td>文章封面图</td>
+          <td>Front Matter 的 <code>image</code> 字段</td>
+      </tr>
+      <tr>
+          <td>网站图标</td>
+          <td><code>static/favicon.ico</code></td>
+      </tr>
+      <tr>
+          <td>页面模板</td>
+          <td><code>layouts/</code> 覆盖主题模板</td>
+      </tr>
+      <tr>
+          <td>自定义 CSS</td>
+          <td><code>assets/scss/custom.scss</code>（Stack 主题支持）</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="三部署到-github-pages-的详细步骤"><a href="#%e4%b8%89%e9%83%a8%e7%bd%b2%e5%88%b0-github-pages-%e7%9a%84%e8%af%a6%e7%bb%86%e6%ad%a5%e9%aa%a4" class="header-anchor"></a>三、部署到 GitHub Pages 的详细步骤
+</h2><h3 id="31-前提条件"><a href="#31-%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6" class="header-anchor"></a>3.1 前提条件
+</h3><ul>
+<li>已安装 Git（命令行输入 <code>git --version</code> 确认）</li>
+<li>已有 GitHub 账号</li>
+<li>已安装 Hugo Extended（命令行输入 <code>hugo version</code> 确认）</li>
+</ul>
+<h3 id="32-两种-github-pages-方式"><a href="#32-%e4%b8%a4%e7%a7%8d-github-pages-%e6%96%b9%e5%bc%8f" class="header-anchor"></a>3.2 两种 GitHub Pages 方式
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>方式</th>
+          <th>仓库名</th>
+          <th>最终网址</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>用户站点</td>
+          <td><code>用户名.github.io</code></td>
+          <td><code>https://用户名.github.io/</code></td>
+      </tr>
+      <tr>
+          <td>项目站点</td>
+          <td>任意名字，如 <code>my_blog</code></td>
+          <td><code>https://用户名.github.io/my_blog/</code></td>
+      </tr>
+  </tbody>
+</table></div>
+<p>推荐新手用 <strong>用户站点</strong>，网址更简洁。</p>
+<h3 id="33-详细操作步骤"><a href="#33-%e8%af%a6%e7%bb%86%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4" class="header-anchor"></a>3.3 详细操作步骤
+</h3><h4 id="第一步在-github-创建仓库"><a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5%e5%9c%a8-github-%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93" class="header-anchor"></a>第一步：在 GitHub 创建仓库
+</h4><ol>
+<li>登录 <a class="link" href="https://github.com"  target="_blank" rel="noopener"
+    >GitHub</a></li>
+<li>点右上角 <strong>+</strong> → <strong>New repository</strong></li>
+<li>仓库名填写：
+<ul>
+<li>用户站点：<code>你的用户名.github.io</code></li>
+<li>项目站点：<code>my_blog</code>（或任意名字）</li>
+</ul>
+</li>
+<li>选择 <strong>Public</strong></li>
+<li><strong>不要</strong>勾选 &ldquo;Add a README file&rdquo;</li>
+<li>点 <strong>Create repository</strong></li>
+</ol>
+<h4 id="第二步修改-hugotoml-中的-baseurl"><a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e4%bf%ae%e6%94%b9-hugotoml-%e4%b8%ad%e7%9a%84-baseurl" class="header-anchor"></a>第二步：修改 hugo.toml 中的 baseURL
+</h4><p><strong>用户站点：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#39;https://你的用户名.github.io/&#39;</span>
+</span></span></code></pre></div><p><strong>项目站点：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#39;https://你的用户名.github.io/my_blog/&#39;</span>
+</span></span></code></pre></div>
+    <blockquote>
+        <p>⚠️ 这一步非常重要！<code>baseURL</code> 写错会导致部署后样式丢失或页面 404。</p>
+
+    </blockquote>
+<h4 id="第三步构建静态文件"><a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5%e6%9e%84%e5%bb%ba%e9%9d%99%e6%80%81%e6%96%87%e4%bb%b6" class="header-anchor"></a>第三步：构建静态文件
+</h4><p>在博客根目录执行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo
+</span></span></code></pre></div><p>这会在 <code>public/</code> 目录生成完整的静态网站文件。</p>
+<h4 id="第四步初始化-git-仓库并推送"><a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5%e5%88%9d%e5%a7%8b%e5%8c%96-git-%e4%bb%93%e5%ba%93%e5%b9%b6%e6%8e%a8%e9%80%81" class="header-anchor"></a>第四步：初始化 Git 仓库并推送
+</h4><p><strong>方法 A：只推送 public 目录（简单方式）</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;first deploy&#34;</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/你的用户名/你的仓库名.git
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></div><p>然后在 GitHub 仓库 → Settings → Pages → Source 选择 <code>main</code> 分支，目录选 <code>/ (root)</code>。</p>
+<p><strong>方法 B：推送整个项目 + GitHub Actions 自动构建（推荐）</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd c:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>infu<span style="color:#ae81ff">\m</span>y_blog
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;initial commit&#34;</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/你的用户名/你的仓库名.git
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></div><p>然后在仓库中创建 GitHub Actions 工作流文件，让 GitHub 自动帮你构建和部署。</p>
+<h4 id="第五步配置-github-actions-自动部署推荐方法-b-时使用"><a href="#%e7%ac%ac%e4%ba%94%e6%ad%a5%e9%85%8d%e7%bd%ae-github-actions-%e8%87%aa%e5%8a%a8%e9%83%a8%e7%bd%b2%e6%8e%a8%e8%8d%90%e6%96%b9%e6%b3%95-b-%e6%97%b6%e4%bd%bf%e7%94%a8" class="header-anchor"></a>第五步：配置 GitHub Actions 自动部署（推荐方法 B 时使用）
+</h4><p>在项目根目录创建文件：<code>.github/workflows/hugo.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Hugo site to Pages</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [<span style="color:#e6db74">&#34;main&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">workflow_dispatch</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">permissions</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">contents</span>: <span style="color:#ae81ff">read</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pages</span>: <span style="color:#ae81ff">write</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">id-token</span>: <span style="color:#ae81ff">write</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">concurrency</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">group</span>: <span style="color:#e6db74">&#34;pages&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cancel-in-progress</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">defaults</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">run</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">shell</span>: <span style="color:#ae81ff">bash</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">HUGO_VERSION</span>: <span style="color:#ae81ff">0.147.6</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install Hugo CLI</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &amp;&amp; sudo dpkg -i ${{ runner.temp }}/hugo.deb</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v4</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">submodules</span>: <span style="color:#ae81ff">recursive</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Pages</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">id</span>: <span style="color:#ae81ff">pages</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/configure-pages@v5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build with Hugo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">HUGO_CACHEDIR</span>: <span style="color:#ae81ff">${{ runner.temp }}/hugo_cache</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">HUGO_ENVIRONMENT</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          hugo --minify --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Upload artifact</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/upload-pages-artifact@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">path</span>: <span style="color:#ae81ff">./public</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">github-pages</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">${{ steps.deployment.outputs.page_url }}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">needs</span>: <span style="color:#ae81ff">build</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy to GitHub Pages</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">id</span>: <span style="color:#ae81ff">deployment</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/deploy-pages@v4</span>
+</span></span></code></pre></div><p>推送后，在 GitHub 仓库 → <strong>Settings</strong> → <strong>Pages</strong> → <strong>Source</strong> 选择 <strong>GitHub Actions</strong>。</p>
+<h4 id="第六步访问你的博客"><a href="#%e7%ac%ac%e5%85%ad%e6%ad%a5%e8%ae%bf%e9%97%ae%e4%bd%a0%e7%9a%84%e5%8d%9a%e5%ae%a2" class="header-anchor"></a>第六步：访问你的博客
+</h4><p>等 GitHub Actions 构建完成（通常 1-2 分钟），访问：</p>
+<ul>
+<li>用户站点：<code>https://你的用户名.github.io/</code></li>
+<li>项目站点：<code>https://你的用户名.github.io/仓库名/</code></li>
+</ul>
+<h3 id="34-常见问题排查"><a href="#34-%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e6%8e%92%e6%9f%a5" class="header-anchor"></a>3.4 常见问题排查
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>问题</th>
+          <th>原因</th>
+          <th>解决方法</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>页面 404</td>
+          <td><code>baseURL</code> 写错或 Pages 源未配置</td>
+          <td>检查 <code>baseURL</code>，确认 Pages 设置</td>
+      </tr>
+      <tr>
+          <td>样式全部丢失</td>
+          <td><code>baseURL</code> 路径不对</td>
+          <td>项目站点必须包含仓库名路径</td>
+      </tr>
+      <tr>
+          <td>文章不显示</td>
+          <td><code>draft: true</code></td>
+          <td>改成 <code>draft: false</code></td>
+      </tr>
+      <tr>
+          <td>本地正常但线上不对</td>
+          <td>本地用 <code>hugo server</code> 会忽略 <code>baseURL</code></td>
+          <td>用 <code>hugo</code> 构建后检查 <code>public/</code></td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="35-后续更新文章的流程"><a href="#35-%e5%90%8e%e7%bb%ad%e6%9b%b4%e6%96%b0%e6%96%87%e7%ab%a0%e7%9a%84%e6%b5%81%e7%a8%8b" class="header-anchor"></a>3.5 后续更新文章的流程
+</h3><p>每次写完新文章后：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. 添加所有改动</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 提交</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;新增文章：文章标题&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 推送到 GitHub（如果用了 Actions，会自动重新部署）</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span></code></pre></div><hr>
+<h2 id="四常用-git-命令总结"><a href="#%e5%9b%9b%e5%b8%b8%e7%94%a8-git-%e5%91%bd%e4%bb%a4%e6%80%bb%e7%bb%93" class="header-anchor"></a>四、常用 Git 命令总结
+</h2><h3 id="41-仓库初始化与配置"><a href="#41-%e4%bb%93%e5%ba%93%e5%88%9d%e5%a7%8b%e5%8c%96%e4%b8%8e%e9%85%8d%e7%bd%ae" class="header-anchor"></a>4.1 仓库初始化与配置
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 初始化一个新的 Git 仓库</span>
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置用户名（首次使用 Git 时需要）</span>
+</span></span><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;你的名字&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置邮箱</span>
+</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#e6db74">&#34;你的邮箱@example.com&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看当前配置</span>
+</span></span><span style="display:flex;"><span>git config --list
+</span></span></code></pre></div><h3 id="42-基本操作"><a href="#42-%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c" class="header-anchor"></a>4.2 基本操作
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看仓库状态（哪些文件被修改、哪些未跟踪）</span>
+</span></span><span style="display:flex;"><span>git status
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 添加单个文件到暂存区</span>
+</span></span><span style="display:flex;"><span>git add 文件名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 添加所有文件到暂存区</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 提交暂存区的文件（附带说明信息）</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;提交说明&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看提交历史（简洁模式）</span>
+</span></span><span style="display:flex;"><span>git log --oneline
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看提交历史（详细模式）</span>
+</span></span><span style="display:flex;"><span>git log
+</span></span></code></pre></div><h3 id="43-远程仓库操作"><a href="#43-%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93%e6%93%8d%e4%bd%9c" class="header-anchor"></a>4.3 远程仓库操作
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 关联远程仓库</span>
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/用户名/仓库名.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看已关联的远程仓库</span>
+</span></span><span style="display:flex;"><span>git remote -v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第一次推送到远程（设置默认上游分支）</span>
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 后续推送</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 从远程拉取最新代码</span>
+</span></span><span style="display:flex;"><span>git pull
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 克隆一个已有的远程仓库到本地</span>
+</span></span><span style="display:flex;"><span>git clone https://github.com/用户名/仓库名.git
+</span></span></code></pre></div><h3 id="44-分支操作"><a href="#44-%e5%88%86%e6%94%af%e6%93%8d%e4%bd%9c" class="header-anchor"></a>4.4 分支操作
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看所有分支</span>
+</span></span><span style="display:flex;"><span>git branch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建新分支</span>
+</span></span><span style="display:flex;"><span>git branch 分支名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 切换到某个分支</span>
+</span></span><span style="display:flex;"><span>git checkout 分支名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建并切换到新分支</span>
+</span></span><span style="display:flex;"><span>git checkout -b 新分支名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将当前分支重命名为 main</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 合并某个分支到当前分支</span>
+</span></span><span style="display:flex;"><span>git merge 分支名
+</span></span></code></pre></div><h3 id="45-查看差异"><a href="#45-%e6%9f%a5%e7%9c%8b%e5%b7%ae%e5%bc%82" class="header-anchor"></a>4.5 查看差异
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看工作区和暂存区的差异</span>
+</span></span><span style="display:flex;"><span>git diff
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看暂存区和最近一次提交的差异</span>
+</span></span><span style="display:flex;"><span>git diff --cached
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看某个文件的修改</span>
+</span></span><span style="display:flex;"><span>git diff 文件名
+</span></span></code></pre></div><h3 id="46-撤销操作"><a href="#46-%e6%92%a4%e9%94%80%e6%93%8d%e4%bd%9c" class="header-anchor"></a>4.6 撤销操作
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 撤销工作区某个文件的修改（恢复到最近提交的状态）</span>
+</span></span><span style="display:flex;"><span>git checkout -- 文件名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将文件从暂存区移回工作区（不删除修改）</span>
+</span></span><span style="display:flex;"><span>git reset HEAD 文件名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 回退到上一次提交（保留文件修改）</span>
+</span></span><span style="display:flex;"><span>git reset --soft HEAD~1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 回退到上一次提交（丢弃所有修改，⚠️ 危险操作）</span>
+</span></span><span style="display:flex;"><span>git reset --hard HEAD~1
+</span></span></code></pre></div><h3 id="47-gitignore-文件"><a href="#47-gitignore-%e6%96%87%e4%bb%b6" class="header-anchor"></a>4.7 .gitignore 文件
+</h3><p>在项目根目录创建 <code>.gitignore</code>，写入不需要提交的文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># Hugo 构建输出（如果用 GitHub Actions 构建则不需要提交）
+</span></span><span style="display:flex;"><span>public/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Hugo 资源缓存
+</span></span><span style="display:flex;"><span>resources/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 系统文件
+</span></span><span style="display:flex;"><span>.DS_Store
+</span></span><span style="display:flex;"><span>Thumbs.db
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 编辑器文件
+</span></span><span style="display:flex;"><span>.vscode/
+</span></span><span style="display:flex;"><span>*.swp
+</span></span></code></pre></div><h3 id="48-日常工作流总结"><a href="#48-%e6%97%a5%e5%b8%b8%e5%b7%a5%e4%bd%9c%e6%b5%81%e6%80%bb%e7%bb%93" class="header-anchor"></a>4.8 日常工作流总结
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 典型的&#34;写文章 → 发布&#34;流程：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. 写文章</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    在 content/post/ 下新建 .md 文件</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 本地预览</span>
+</span></span><span style="display:flex;"><span>hugo server
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 确认没问题后，添加改动</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. 提交</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;新增文章：xxx&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 5. 推送到 GitHub（自动触发部署）</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span></code></pre></div><hr>
+<h2 id="五总结"><a href="#%e4%ba%94%e6%80%bb%e7%bb%93" class="header-anchor"></a>五、总结
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>要做的事</th>
+          <th>操作</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>改博客外观</td>
+          <td>编辑 <code>hugo.toml</code></td>
+      </tr>
+      <tr>
+          <td>写新文章</td>
+          <td>在 <code>content/post/</code> 下新建 <code>.md</code> 文件</td>
+      </tr>
+      <tr>
+          <td>本地预览</td>
+          <td>运行 <code>hugo server</code></td>
+      </tr>
+      <tr>
+          <td>部署上线</td>
+          <td><code>git add . → git commit → git push</code></td>
+      </tr>
+      <tr>
+          <td>查看网站</td>
+          <td>访问 <code>https://你的用户名.github.io/</code></td>
+      </tr>
+  </tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-meta article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/my_blog/tags/engineering/">Engineering</a>
+        
+            <a href="/my_blog/tags/introductions/">Introductions</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 Blog For Life
+    </section>
+    
+    <section class="powerby">
+         <br />
+        
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/my_blog\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/my_blog/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>
