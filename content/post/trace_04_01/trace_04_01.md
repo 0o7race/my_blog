@@ -7,7 +7,7 @@ tags: ["Engineering"]
 categories: ["Skill Acquisition"]
 ---
 
-# 特征工程（Embedding）
+# 特征工程（主要以Embedding为主）
 
 ## 简单介绍
 
@@ -41,7 +41,7 @@ Embedding(嵌入表示)从本质来说是为了让计算机更好的理解高维
 
 # 池化（polling）与 卷积核
 
-对于池化和卷积核我认为是符合流型假说，池化的本质是提取压缩信息，卷积核则是参数共享和感受野共同作用，在这个过程中其实都用一种默认的思想：认为相邻的信息之间是具备一定关系的。这里其实就是流型假设的一种思维，所以在此做一个总结：卷积核负责提取对象特征，池化负责压缩与保留统计显著性。
+对于池化和卷积核我认为是符合流型假说，池化的本质是提取压缩信息，卷积核则是参数共享和感受野共同作用，在这个过程中其实都用一种默认的思想：认为相邻的信息之间是具备一定关系的。这里其实就是流型假设的一种思维，所以在此做一个总结：卷积核负责提取对象特征，池化负责压缩与保留统计显著性。在此只做卷积核的一些基础介绍，后续会对**CNN**架构发展做一个详细的总结陈述。
 
 ## 卷积核
 
@@ -111,4 +111,132 @@ $$ Y(i,j)=\sum_m\sum_n X(i-m,j-n),W(m,n) $$
 $$ Y(i,j)=\sum_m\sum_n X(i+m,j+n),W(m,n) $$
 
 所以二维卷积相当于将核在两个空间轴上各翻转一次。
+
+# VAE与RAE（以二者在扩散模型中的作用为主）
+
+想要了解这些编码器我认为首先要了解的是latent space，因此我们先从潜空间说起。
+
+## latent space（潜空间）与 AE
+
+AutoEncoder（AE）作为经典的encoder-decoder模型中，Encoder将输入的 x 转换为 z，decoder将z还原回 $\hat x$即：
+
+$$ z = f_\phi(x), \qquad \hat x = g_\theta(z) $$
+
+这当中z就构成一个潜空间，潜空间以低维空间构建，同时保留原始高维对象的连续性和语义性，不丢失核心信息，便于生成任务进行采样，但是从上述的描述中可以看出，AE其实在decoder过程中是对Encoder的一个纯粹的逆过程，即对原对象重建而非生成，如此便来到了VAE这样概率生成的情况。
+
+## VAE（变分自编码器）
+
+考虑到生成的随机性，大家将视角转向将对象编码成为一种概率分布，在概率中采样然后使用decoder进行重建的方式。
+
+$$ q_\phi(z \mid x) = \mathcal{N}(z; \mu(x), \sigma^2(x)) $$
+
+我们从VAE生成的视角考虑生成呢规划你给的过程：
+
+1. 先从先验分布采样潜变量
+
+$$ z \sim p(z), \quad p(z)=\mathcal{N}(0, I) $$
+
+2. 再由潜变量生成数据
+
+$$ x \sim p_\theta(x \mid z) $$
+
+也就是说，VAE 想学的是：
+
+$$ p_\theta(x) = \int p_\theta(x \mid z)p(z),dz $$
+
+但这个积分通常没法直接算，所以引入一个近似后验：
+
+$$ q_\phi(z \mid x) $$
+
+这就是 variational inference 的来源。
+
+
+
+
+
+
+# ViT（vision transformer）
+
+## 从 CNN 到 transformer：对于图像理解的改变
+
+CNN 对于图像的理解重点是在于局部感受野，对于图像和固定的滑动窗口卷积核来学习局部特征之间的关联，在学习过程中更加强调相邻之间的像素之间的关系，然后模型最终通过重叠的卷积层来扩大感受野。而transformer在这里的应用就是希望能通过transformer这样的序列友好模型对于图片做一个全局感受野，来让模型更好的理解图形的全局特征，如同我们现实世界中的拼图，让模型能够学到每一块拼图之间的关联，这样的拼图在ViT中我们将之称为patch。当然现在有研究表明似乎ViT模型的本质是学习图片的背景关系来做图像识别，这个在此篇不做详细展开叙述。
+
+## ViT本质
+
+我们按照设定的patch来对图像之间做一个切分，然后将图片展开成为一维向量（此处还需要考虑通道数，通常的RGB图像有三维通道）这一部就是patchify。然后我们通过线性投影层投影到模型维度：
+
+$$ x_p^{(i)} \in \mathbb{R}^{P^2 C} $$
+
+$$ E \in \mathbb{R}^{(P^2 C)\times D} $$
+
+这一步就是patch embedding，从某种意义上说这一步骤也可以理解为CNN的一种特殊卷积。
+
+但是patchify之后还存在问题：transformer无法确定图像块之间的顺序（权重和加权和的计算是无序的）所以还需要对图像块之间做一个位置编码，让模型明白patch之间的空间结构。类似BERT，经典的ViT模型之前会加上一个CLS可学习向量，作为一个全局聚合器，汇总全局的信息。
+
+设 patch token 一共有 $N$ 个，维度为 $D$。输入序列写成
+
+$$ H^{(0)} = [c, x_1, x_2, \dots, x_N] + P $$
+
+其中：
+
+$c \in \mathbb{R}^D$ 是可学习的 [CLS] 向量；
+$x_i \in \mathbb{R}^D$ 是第 $i$ 个 patch embedding；
+$P \in \mathbb{R}^{(N+1)\times D}$ 是位置编码。
+
+
+self-attention的完整表述为：
+
+$$ \text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^\top}{\sqrt d}\right)V $$
+
+对一层 self-attention，有：
+
+$$ Q = H W_Q,\quad K = H W_K,\quad V = H W_V $$
+
+记 [CLS] 对应第 $0$ 个 token，那么它的 query 是：
+
+$$ q_0 = h_0 W_Q $$
+
+所有 token 的 key/value 分别是：
+
+$$ k_j = h_j W_K,\quad v_j = h_j W_V,\quad j=0,\dots,N $$
+
+那么 [CLS] 这一行的 attention 权重为：
+
+$$ \alpha_{0j} = \frac{\exp\left(\frac{q_0^\top k_j}{\sqrt d}\right)} {\sum_{t=0}^{N}\exp\left(\frac{q_0^\top k_t}{\sqrt d}\right)} $$
+
+于是 [CLS] 的输出就是：
+
+$$ o_0 = \sum_{j=0}^{N} \alpha_{0j} v_j $$
+
+同时要注意的是ViT通常采用encoder-only架构，由于此时ViT只对图像做识别分类，所以不需要decoder输出结果。
+
+## ViT的完整前向流程
+
+第一步：输入图像
+$$ I \in \mathbb{R}^{H\times W\times C} $$
+
+第二步：切成 patch
+得到 $N$ 个 patch。
+
+第三步：patch embedding
+每个 patch 映射到 $D$ 维：
+
+$$ z_i = x_p^{(i)}E $$
+
+第四步：加入 [CLS] 和位置编码
+$$ Z_0 = [z_{\text{cls}}; z_1E; z_2E; \dots; z_NE] + P $$
+
+第五步：经过 $L$ 层 Transformer Encoder
+$$ Z_\ell = \text{Encoder}\ell(Z{\ell-1}),\quad \ell=1,\dots,L $$
+
+第六步：取最终 [CLS] 输出做分类
+$$ \hat y = \text{Head}(Z_L^{(0)}) $$
+
+其中 $Z_L^{(0)}$ 表示最后一层中第 0 个 token，即 [CLS]。
+
+
+
+
+
+
 
