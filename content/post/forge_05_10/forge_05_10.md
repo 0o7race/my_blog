@@ -1,6 +1,6 @@
 ---
 title: "论文阅读"
-date: 2026-05-06T23:00:00+08:00
+date: 2026-05-12T23:00:00+08:00
 draft: false
 description: "小波变换"
 tags: ["Mathematics"]
