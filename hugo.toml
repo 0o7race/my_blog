@@ -70,7 +70,6 @@ theme = "hugo-theme-stack-master"
 [params.widgets]
   homepage = [
     { type = "search" },
-    { type = "categories", limit = 20 },
     { type = "tag-cloud", limit = 30 },
     { type = "archives", limit = 6 }
   ]
@@ -166,8 +165,8 @@ theme = "hugo-theme-stack-master"
   unsafe = true
 
 # ============================================================
-# 输出格式（搜索页需要 JSON 输出）
+# 输出格式（搜索页在其页面 front matter 中单独声明 JSON 输出）
 # ============================================================
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]

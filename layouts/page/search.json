@@ -1,0 +1,27 @@
+{{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+{{- $pages = partial "helper/pages-sort.html" (dict "Pages" $pages "Context" .Site.Home) -}}
+{{- $result := slice -}}
+
+{{- range $pages -}}
+    {{- $searchContent := .Plain -}}
+    {{- $taxonomyText := slice -}}
+    {{- with .Params.categories -}}
+        {{- $taxonomyText = $taxonomyText | append (printf "Categories: %s" (delimit . " ")) -}}
+    {{- end -}}
+    {{- with .Params.tags -}}
+        {{- $taxonomyText = $taxonomyText | append (printf "Tags: %s" (delimit . " ")) -}}
+    {{- end -}}
+    {{- if gt (len $taxonomyText) 0 -}}
+        {{- $searchContent = printf "%s\n%s" $searchContent (delimit $taxonomyText "\n") -}}
+    {{- end -}}
+    {{- $data := dict "title" .Title "date" .Date "permalink" .RelPermalink "content" $searchContent -}}
+
+    {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
+    {{- if $image -}}
+        {{- $data = merge $data (dict "image" $image.Permalink) -}}
+    {{- end -}}
+
+    {{- $result = $result | append $data -}}
+{{- end -}}
+
+{{ jsonify $result }}
