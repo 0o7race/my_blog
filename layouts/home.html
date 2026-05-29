@@ -1,0 +1,145 @@
+{{ define "main" }}
+    {{- $paginator := partial "helper/paginator.html" . -}}
+    {{- $heroPages := first 4 $paginator.Pages -}}
+    {{- $featured := index $heroPages 0 -}}
+
+    <section class="home-hero">
+        <div class="home-hero__content">
+            <span class="home-hero__eyebrow">Blog For Life</span>
+            <h1 class="home-hero__title">{{ .Site.Title }}</h1>
+            <p class="home-hero__subtitle">
+                {{ .Site.Params.sidebar.subtitle | default "记录学习、研究与生活的个人博客" }}
+            </p>
+
+            <div class="home-hero__actions">
+                <a class="home-hero__button home-hero__button--primary" href="{{ "page/search/" | relURL }}">
+                    搜索内容
+                </a>
+                <a class="home-hero__button home-hero__button--secondary" href="{{ "page/archives/" | relURL }}">
+                    查看归档
+                </a>
+            </div>
+
+            <div class="home-hero__stats">
+                <div class="home-hero__stat">
+                    <span class="home-hero__stat-value">{{ len $paginator.Pages }}</span>
+                    <span class="home-hero__stat-label">当前可见文章</span>
+                </div>
+                <div class="home-hero__stat">
+                    <span class="home-hero__stat-value">{{ len .Site.Taxonomies.tags }}</span>
+                    <span class="home-hero__stat-label">主题标签</span>
+                </div>
+                <div class="home-hero__stat">
+                    <span class="home-hero__stat-value">Life 已隐藏</span>
+                    <span class="home-hero__stat-label">可通过搜索访问</span>
+                </div>
+            </div>
+        </div>
+
+        {{ with $featured }}
+            {{- $featuredPage := . -}}
+            {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
+            <article class="home-hero__featured {{ if $image }}has-image{{ end }}">
+                <div class="home-hero__featured-content">
+                    {{ with (.GetTerms "categories") }}
+                        <div class="home-hero__featured-category">
+                            {{ range first 1 . }}
+                                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+
+                    <h2 class="home-hero__featured-title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h2>
+
+                    {{ with .Params.description }}
+                        <p class="home-hero__featured-description">{{ . }}</p>
+                    {{ else }}
+                        <p class="home-hero__featured-description">
+                            {{ .Summary | plainify | truncate 140 }}
+                        </p>
+                    {{ end }}
+
+                    <div class="home-hero__featured-meta">
+                        {{ if not .Date.IsZero }}
+                            <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                                {{ .Date | time.Format .Site.Params.dateFormat.published }}
+                            </time>
+                        {{ end }}
+                        <span>·</span>
+                        <span>{{ .ReadingTime }} 分钟阅读</span>
+                    </div>
+                </div>
+
+                {{ with $image }}
+                    <a class="home-hero__featured-image" href="{{ $featuredPage.RelPermalink }}">
+                        {{ partial "helper/responsive-image" (dict
+                            "Resource" .Resource
+                            "Widths" (cond $featuredPage.Site.Params.ImageProcessing.Content.Enabled $featuredPage.Site.Params.ImageProcessing.Content.Widths nil)
+                            "Attributes" (dict
+                                "src" .Permalink
+                                "width" .Width
+                                "height" .Height
+                                "alt" (printf "Featured image of post %s" $featuredPage.Title)
+                                "loading" "lazy"
+                                "sizes" "(max-width: 1023px) 100vw, 420px"
+                            )
+                        ) }}
+                    </a>
+                {{ end }}
+            </article>
+        {{ end }}
+    </section>
+
+    {{ if gt (len $heroPages) 1 }}
+        <section class="home-highlights">
+            {{ range after 1 $heroPages }}
+                <article class="home-highlight-card">
+                    {{ with (.GetTerms "categories") }}
+                        <div class="home-highlight-card__category">
+                            {{ range first 1 . }}
+                                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+
+                    <h3 class="home-highlight-card__title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h3>
+
+                    {{ with .Params.description }}
+                        <p class="home-highlight-card__description">{{ . }}</p>
+                    {{ else }}
+                        <p class="home-highlight-card__description">
+                            {{ .Summary | plainify | truncate 88 }}
+                        </p>
+                    {{ end }}
+                </article>
+            {{ end }}
+        </section>
+    {{ end }}
+
+    <section class="home-section-heading">
+        <div>
+            <span class="home-section-heading__eyebrow">Latest Notes</span>
+            <h2 class="home-section-heading__title">最新文章</h2>
+        </div>
+        <p class="home-section-heading__description">
+            首页不展示 Life 分类内容，研究与项目文章优先在这里呈现。
+        </p>
+    </section>
+
+    <section class="article-list">
+        {{ range $index, $element := $paginator.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

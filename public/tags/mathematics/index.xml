@@ -1,27 +1,995 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Mathematics on Blog For Life</title>
-        <link>https://0o7race.github.io/my_blog/tags/mathematics/</link>
-        <description>Recent content in Mathematics on Blog For Life</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
-        <lastBuildDate>Sun, 10 May 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://0o7race.github.io/my_blog/tags/mathematics/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>论文阅读</title>
-            <link>https://0o7race.github.io/my_blog/post/forge_05_10/forge_05_10/</link>
-            <pubDate>Sun, 10 May 2026 23:00:00 +0800</pubDate>
-            <guid>https://0o7race.github.io/my_blog/post/forge_05_10/forge_05_10/</guid>
-            <description>&lt;h3 id=&#34;文献综述&#34;&gt;&lt;a href=&#34;#%e6%96%87%e7%8c%ae%e7%bb%bc%e8%bf%b0&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;文献综述&#xA;&lt;/h3&gt;&lt;p&gt;近年来，深度学习方法在图像恢复、分割、融合等多个底层视觉任务中取得了显著进展，而结合传统信号处理工具与数据驱动模型已成为一种重要趋势，其中小波变换凭借其卓越的时频分析能力被广泛探索。例如，Yan等（2025）[1] 针对低光图像增强中暗部细节生成困难的问题，提出了一种频率先验引导的增强网络FPIE。该方法通过联合训练频率先验生成与图像恢复网络，并在频域施加约束以学习紧凑先验，从而显著加速扩散模型的推理过程。为更好地利用频率特征，模型引入了基于小波的Transformer模块以生成精细细节并抑制伪影，在公开基准上取得了最先进的性能。类似地，Jiang等（2023）[26] 同样关注低光增强任务，但其更侧重于解决扩散模型推理耗时和资源消耗大的问题。他们提出的DiffLL方法构建了基于小波的条件扩散模型（WCDM），在小波域进行扩散与去噪，并结合高频恢复模块（HFRM）利用水平和垂直细节补充对角线信息，实现了细节更精细的恢复，在效率上相比传统扩散方法有显著提升。Huang等（2024）[28] 则提出了一个更为通用的基于小波的扩散模型WaveDM，用于处理去雨、去雾、去模糊等多种图像恢复任务。WaveDM直接在小波域学习清晰图像的分布，并设计了针对低频和高频频谱的独特训练策略，其提出的高效条件采样策略将采样步数降至约5步，实现了速度超过100倍的提升。此外，Cui等（2024）[33] 提出了频率选择网络FSNet，它不局限于特定的小波变换工具，而是提出一种多分支、内容感知的模块，动态地将特征分解到不同频带，并通过通道注意力增强有用的频率分量，在20个数据集上的6种恢复任务中均表现优异。&#xA;小波变换与Transformer架构的结合也是当前的研究热点。Zhou等（2023）[6] 针对RGB-T显著目标检测任务提出了WaveNet架构，该架构采用基于任务导向的小波多层感知机（MLP）进行特征提取，并利用知识蒸馏从教师Transformer网络中学习丰富的语义信息，同时通过离散小波变换实现跨模态的频率-时域特征融合，取得了令人瞩目的性能。Zhang等（2023）[7] 则从频率视角揭示了视觉Transformer（ViT）在行人重识别中表现不如CNN的潜在原因，即自注意力机制会稀释关键的高频细节。为此他们提出了逐块高频增强方法PHA，利用离散Haar小波变换分割高频块作为辅助输入，并设计对比损失以隐式增强高频表征。在语义分割领域，Yan等（2025）[9] 提出的MCAFT网络采用离散小波变换将特征图分解为高低频子带，随后利用高效Transformer和反向注意力机制分别增强上下文与边界信息。Li等（2023）[24] 提出的层次化小波特征增强模块（WFE）同样针对高分辨率遥感图像分割中的细节丢失问题，通过对多尺度分解后的高频子带进行增强并反馈至网络对应层，有效提升了CNN和Transformer的基准性能。Xu等（2023）[11] 提出的Haar小波下采样模块（HWD）则作为一个即插即用组件，在降低特征图分辨率的同时最大程度保留空间信息，提升了语义分割模型的性能。&#xA;在多模态融合与生成任务中，小波变换同样扮演着关键角色。Wang等（2025）[15] 提出的WaveFusion是为多模态图像融合设计的小波视觉Transformer，它结合自适应小波变换模块与并行处理高低频的自注意力/卷积网络，并采用动态显著性引导的损失函数，在红外-可见光和医学图像融合任务中平衡了性能与成本效率。在3D形状生成领域，Hui等（2022）[27] 提出了一种在小波域进行连续隐式表示生成的新方法，利用扩散模型生成粗糙系数体，再由细节预测器生成兼容的细节系数体，从而生成具有复杂拓扑和精细细节的高质量三维形状。为了加速扩散模型的生成速度，Phung等（2023）[22] 提出了基于小波的高效扩散方案，通过在图像和特征层面自适应处理由小波分解得到的高低频分量，大幅加快了训练和推理速度。Yang等（2023）[8] 则通过对扩散模型频率特性的深入评估，发现其在高频生成上存在固有偏差，进而设计了包含小波门控机制和频谱感知蒸馏的轻量级光谱扩散模型（Spectral Diffusion），实现了8-18倍的计算复杂度降低。&#xA;综上所述，现有研究已充分证明，无论是作为特征工程工具（如分解、增强、融合）嵌入网络架构，还是作为加速扩散模型推理空间的媒介，小波变换均能有效引导模型关注图像的高频细节与全局结构，从而在效率与性能之间寻求更优的平衡。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;文献矩阵&#34;&gt;&lt;a href=&#34;#%e6%96%87%e7%8c%ae%e7%9f%a9%e9%98%b5&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;文献矩阵&#xA;&lt;/h3&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;序号&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;研究目标&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;方法/模型&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;应用领域&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;关键技术/组件&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;关键发现/贡献&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;局限性/待解决问题&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[1]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;高效低光图像增强&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;频率先验引导增强网络（FPIE）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;低光图像增强&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;频域先验生成网络、基于小波的Transformer模块&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;通过学习频域约束的紧凑先验加速扩散推理，小波Transformer有效生成细节、抑制伪影。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;方法仍基于扩散框架，虽加速但计算量仍高于单次前馈网络。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[6]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;RGB-T显著目标检测&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;小波网络WaveNet&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;RGB-T显著目标检测&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;任务导向的小波MLP、知识蒸馏、离散小波跨模态融合&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;提出纯小波MLP架构，通过知识蒸馏和跨模态频率融合实现高性能。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;对教师网络的依赖性较强。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[7]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;提升Transformer行人重识别高频特征提取能力&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;逐块高频增强（PHA）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;行人重识别&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Haar小波变换、逐块对比损失&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;首次揭示自注意力稀释高频的机理，提出的PHA可即插即用，推理时无额外开销。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;仅在行人重识别任务上验证，向其他视觉任务的泛化性待探索。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[8]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;轻量化扩散概率模型&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;光谱扩散模型（SD）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;图像生成&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;小波门控、频谱感知蒸馏&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;发现扩散模型对不同频带分步恢复的特性；SD实现8-18倍复杂度降低并保持图像保真度。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;轻量化可能依然对极高分辨率或内容复杂的图像存在质量损失。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[9]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;医学图像分割的细节与结构信息增强&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;多尺度卷积注意力频率增强Transformer（MCAFT）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;医学图像分割&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;离散小波分解、通道-空间注意力、反向注意力&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;利用DWT分离高低频信息分别处理，增强上下文和边界，在多个医学分割数据集上取得高分。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;多组件设计可能增加了网络的参数量和调参难度。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[11]/[13]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;语义分割中保存空间信息的下采样&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Haar小波下采样模块（HWD）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;语义分割&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Haar小波变换、特征熵指数（FEI）度量&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;提出一种简单有效的下采样模块，可减少信息损失，并设计FEI度量信息不确定性。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;作为基础组件，性能增益依赖于基础网络架构的选择。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[15]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;高效且高质量的多模态图像融合&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;WaveFusion&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;红外-可见光、医学图像融合&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;自适应小波Transformer、显著性引导损失&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;并行处理高低频分量，双聚合注意力增强跨模态互补，融合性能与效率俱佳。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;下游任务仅限于语义分割和目标检测，更多应用场景待发掘。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[22]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;加速扩散模型的训练和推理&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;基于小波的扩散方案（WaveDiff）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;图像生成&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;小波分解、高低频自适应处理、重构项&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;在图像和特征级别进行小波分解与自适应处理，显著缩小扩散模型与GAN的速度差距。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;在特定数据集上验证，生成质量和速度的统一仍有提升空间。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[24]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;增强遥感图像语义分割的细节特征&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;层次化小波特征增强（WFE）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;遥感图像语义分割&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;离散小波多尺度分解、高频增强&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;即插即用模块，通过增强和回注高频子带特征，提升CNN与Transformer基线性能。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;实验仅覆盖两个遥感数据集。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[26]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;高效且稳定的低光图像增强&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;DiffLL&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;低光图像增强&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;小波条件扩散模型（WCDM）、高频恢复模块（HFRM）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;在小波域进行扩散，结合HFRM补全细节，极大加速推理并实现高质量增强。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;仅针对低光任务设计，对其他退化类型的通用性未经验证。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[27]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;生成高质多样3D形状&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;神经小波域扩散&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;3D形状生成&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;多尺度双正交小波、粗糙/细节系数体、扩散生成&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;首次在连续小波隐式表示上进行扩散生成，能生成具有复杂拓扑和细节的形状。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;生成形状的多样性和复杂程度受限于训练数据。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[28]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;通用且高效的图像恢复&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;基于小波的扩散模型（WaveDM）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;图像恢复（去雨/雾/模糊等）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;小波域扩散、分频模块训练、高效条件采样&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;在小波域建模，采样步数降至5步，速度提升百倍，性能与传统单流程方法可比。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;对要求极高保真度的任务，恢复结果可能稍逊于空间域大模型。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;[33]&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;灵活处理多种图像恢复任务的频率信息&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;频率选择网络（FSNet）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;图像恢复（去模糊/雾/雪/雨/噪等）&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;动态频率选择模块、大感受野增强模块&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;不固定小波基，动态选择有用频率，在20个数据集的6种任务中表现最优。&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;多任务通用性使其在某些特定任务上的极致性能可能不如专用模型。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;共同特征&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;绝大部分研究均致力于通过引入小波变换或其思想来显式地建模和处理图像的高低频信息，旨在解决深度卷积网络或Transformer在细节恢复/生成、推理效率或局部性建模上的固有缺陷。&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;独特特征&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;文献[1]、[8]、[22]、[26]、[28]聚焦于利用小波域加速和改进扩散模型，而[6]、[7]、[9]、[15]、[24]则致力于将小波与Transformer架构融合以增强特征提取能力。此外，[11]专注于设计基础下采样算子，[33]则倡导一种脱离固定小波基的动态频率选择范式。&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;</description>
-        </item><item>
-            <title>论文阅读</title>
-            <link>https://0o7race.github.io/my_blog/post/forge_05_06/forge_05_06/</link>
-            <pubDate>Wed, 06 May 2026 23:00:00 +0800</pubDate>
-            <guid>https://0o7race.github.io/my_blog/post/forge_05_06/forge_05_06/</guid>
-            <description>&lt;h1 id=&#34;对于meanflow和consistency-model的论文综述&#34;&gt;&lt;a href=&#34;#%e5%af%b9%e4%ba%8emeanflow%e5%92%8cconsistency-model%e7%9a%84%e8%ae%ba%e6%96%87%e7%bb%bc%e8%bf%b0&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;对于meanflow和consistency Model的论文综述&#xA;&lt;/h1&gt;&lt;h2 id=&#34;两篇论文的纵深对比表格&#34;&gt;&lt;a href=&#34;#%e4%b8%a4%e7%af%87%e8%ae%ba%e6%96%87%e7%9a%84%e7%ba%b5%e6%b7%b1%e5%af%b9%e6%af%94%e8%a1%a8%e6%a0%bc&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;两篇论文的纵深对比表格&#xA;&lt;/h2&gt;&lt;h3 id=&#34;文献综述&#34;&gt;&lt;a href=&#34;#%e6%96%87%e7%8c%ae%e7%bb%bc%e8%bf%b0&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;文献综述&#xA;&lt;/h3&gt;&lt;p&gt;在扩散去噪模型提出后，如今在生成模型领域，克服扩散模型迭代采样缓慢的瓶颈、实现高质量一步生成是近年来的核心议题。Song 等人 (2023)[2] 率先提出一致性模型（Consistency Models），通过训练一个从噪声到数据的直接映射，在根本上支持快速的一步生成。该框架具有突出的灵活性：既可从预训练扩散模型蒸馏得来，亦可作为独立生成模型从头训练，同时支持零样本数据编辑，如图像修复、上色和超分辨率。实验表明，一致性模型在一步采样设置下于 CIFAR-10 上取得 FID 3.55，在 ImageNet 64×64 上取得 FID 6.20，均刷新了当时一步生成的最优结果；即便是独立训练，其性能也超越以往的一步非对抗生成模型。在此基础上，Geng 等人 (2025)[1] 从流生成的角度提出了平均流（MeanFlow）框架，将关注点从流匹配中的瞬时速度转移至表征流场的平均速度。该方法通过推导平均速度与瞬时速度之间的恒等式来指导网络学习，完全自包含，无需预训练、蒸馏或课程学习。在 ImageNet 256×256 这一更高分辨率的基准上，MeanFlow 仅靠单次函数评估即达到 FID 3.43，大幅超越此前所有一步扩散/流模型，显著弥合了一步与多步生成方法之间的性能鸿沟。两项工作均以提升生成效率为目标，通过精巧的映射设计与训练范式，成功将一步生成的质量推至新高度。区别在于，一致性模型开创性地提出了兼顾蒸馏与独立训练、且内建零样本编辑能力的统一框架，而 MeanFlow 则在流模型理论中引入平均速度概念，在更高分辨率上验证了自包含训练的巨大潜力。两者的演进共同为高效、高质量生成模型的发展奠定了坚实基础。&lt;/p&gt;&#xA;&lt;h3 id=&#34;文献矩阵&#34;&gt;&lt;a href=&#34;#%e6%96%87%e7%8c%ae%e7%9f%a9%e9%98%b5&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;文献矩阵&#xA;&lt;/h3&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;属性&lt;/th&gt;&#xA;          &lt;th&gt;Geng 等人 (2025)[1]&lt;/th&gt;&#xA;          &lt;th&gt;Song 等人 (2023)[2]&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;研究目标&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;提出基于平均速度的单步流生成框架，旨在缩小一步与多步生成之间的性能差距。&lt;/td&gt;&#xA;          &lt;td&gt;提出一致性模型，通过直接映射噪声到数据实现一步生成，并支持零样本数据编辑。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;方法&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;定义平均速度表征流场，推导与瞬时速度的恒等式以指导网络训练；自包含，无需蒸馏或课程学习。&lt;/td&gt;&#xA;          &lt;td&gt;学习一致性映射，支持从预训练扩散模型蒸馏或作为独立生成模型训练；具备零样本图像修复、上色等能力。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;数据集&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;ImageNet 256×256&lt;/td&gt;&#xA;          &lt;td&gt;CIFAR-10, ImageNet 64×64, LSUN 256×256&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;关键发现&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;单次函数评估下 FID 达 3.43，显著优于以往单步扩散/流模型，大幅缩小了与多步模型的差距。&lt;/td&gt;&#xA;          &lt;td&gt;CIFAR-10 一步 FID 3.55，ImageNet 64×64 一步 FID 6.20；独立训练超越单步非对抗模型；展示出零样本编辑功能。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;局限性&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;仅在图像生成上验证，向其他模态的泛化性未知；更高分辨率或复杂场景下的表现有待考量。&lt;/td&gt;&#xA;          &lt;td&gt;独立训练模型的性能可能仍低于蒸馏版本；零样本编辑能力在不同任务上的通用性需进一步探索。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;共同特征&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;两者均围绕一步生成建模的核心目标，通过设计非对抗的直接映射，有效克服扩散模型迭代慢的缺陷；均在标准数据集上取得当时领先的一步生成性能，为高效生成范式提供了重要推动。&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;独特特征&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;基于流模型理论独创“平均速度”概念，实现无蒸馏的自包含训练，并在更高分辨率（256×256）上取得突破性一步生成效果。&lt;/td&gt;&#xA;          &lt;td&gt;率先提出一致性映射框架，支持蒸馏与独立训练双模式，并原生提供零样本编辑能力，兼具灵活性与多功能性。&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;数学角度再分析两者的模型实现方式&#34;&gt;&lt;a href=&#34;#%e6%95%b0%e5%ad%a6%e8%a7%92%e5%ba%a6%e5%86%8d%e5%88%86%e6%9e%90%e4%b8%a4%e8%80%85%e7%9a%84%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e6%96%b9%e5%bc%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;数学角度再分析两者的模型实现方式&#xA;&lt;/h2&gt;&lt;p&gt;下面从数学理论角度，详细分析 &lt;strong&gt;MeanFlow（平均流）&lt;/strong&gt;[1] 与 &lt;strong&gt;一致性模型（Consistency Models）&lt;/strong&gt;[2] 的模型实现原理，并系统对比它们与经典生成模型的区别。经典模型主要涉及：&lt;strong&gt;去噪扩散概率模型（DDPM）&lt;/strong&gt; 及其得分配对框架、&lt;strong&gt;连续流匹配（Flow Matching）&lt;/strong&gt;。我们将基于统一的随机过程或常微分方程（ODE）视角展开。&lt;/p&gt;&#xA;&lt;h3 id=&#34;一经典模型的数学框架回顾&#34;&gt;&lt;a href=&#34;#%e4%b8%80%e7%bb%8f%e5%85%b8%e6%a8%a1%e5%9e%8b%e7%9a%84%e6%95%b0%e5%ad%a6%e6%a1%86%e6%9e%b6%e5%9b%9e%e9%a1%be&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;一、经典模型的数学框架回顾&#xA;&lt;/h3&gt;&lt;h4 id=&#34;11-去噪扩散模型ddpm--score-based-sde&#34;&gt;&lt;a href=&#34;#11-%e5%8e%bb%e5%99%aa%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8bddpm--score-based-sde&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;1.1 去噪扩散模型（DDPM / Score-based SDE）&#xA;&lt;/h4&gt;&lt;p&gt;给定数据分布 $p_{\text{data}}(x_0)$，扩散过程通过逐步加噪定义隐变量序列 $x_t$：&#xA;$$&#xA;x_t = \alpha_t x_0 + \sigma_t \epsilon,\quad \epsilon \sim \mathcal{N}(0,I), \quad \alpha_t^2 + \sigma_t^2 = 1 ;\text{(方差保持)}&#xA;$$&#xA;模型学习「得分函数」$\nabla_{x_t}\log p_t(x_t)$，或等价地预测噪声 $\epsilon_\theta(x_t,t)$，训练损失为&#xA;$$&#xA;\mathcal{L}&lt;em&gt;{\text{DDPM}} = \mathbb{E}&lt;/em&gt;{x_0,\epsilon,t}\left[ w(t) |\epsilon_\theta(x_t,t) - \epsilon|^2 \right],&#xA;$$&#xA;生成时需迭代求解反向 SDE/ODE，逐步从 $T$ 到 $0$ 去噪，通常少则数十步，多则上千步。&lt;strong&gt;经典扩散天然排斥一步生成&lt;/strong&gt;，一步采样会导致严重模糊。&lt;/p&gt;&#xA;&lt;h4 id=&#34;12-流匹配flow-matching&#34;&gt;&lt;a href=&#34;#12-%e6%b5%81%e5%8c%b9%e9%85%8dflow-matching&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;1.2 流匹配（Flow Matching）&#xA;&lt;/h4&gt;&lt;p&gt;流匹配构造一个时间依赖向量场 $v_t(x)$，使从先验 $p_0$ 沿 ODE $\frac{dx}{dt}=v_t(x)$ 积分到 $t=1$ 时得到数据分布 $p_1$。条件流匹配对条件路径 $x_t = \alpha_t x_1 + \sigma_t \epsilon$ 定义瞬时速度：&#xA;$$&#xA;u_t(x|x_1) = \dot{\alpha}&lt;em&gt;t x_1 + \dot{\sigma}&lt;em&gt;t \frac{x - \alpha_t x_1}{\sigma_t},&#xA;$$&#xA;网络 $v&lt;/em&gt;\theta(t,x)$ 通过回归 $u_t$ 训练：&#xA;$$&#xA;\mathcal{L}&lt;/em&gt;{\text{FM}} = \mathbb{E}&lt;em&gt;{t,x_1,x_t}\left[|v&lt;/em&gt;\theta(t,x_t) - u_t(x_t|x_1)|^2\right].&#xA;$$&#xA;同样，生成需要多步 ODE 求解，一步评估不可行，除非通过蒸馏。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;二一致性模型consistency-models的数学实现&#34;&gt;&lt;a href=&#34;#%e4%ba%8c%e4%b8%80%e8%87%b4%e6%80%a7%e6%a8%a1%e5%9e%8bconsistency-models%e7%9a%84%e6%95%b0%e5%ad%a6%e5%ae%9e%e7%8e%b0&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;二、一致性模型（Consistency Models）的数学实现&#xA;&lt;/h3&gt;&lt;p&gt;一致性模型[2]的目标是&lt;strong&gt;直接学习一个从噪声到数据的确定性映射&lt;/strong&gt;，使得&lt;strong&gt;一步生成&lt;/strong&gt;成为可能，同时兼容多步精化。其核心数学概念是一致性函数。&lt;/p&gt;&#xA;&lt;h4 id=&#34;21-一致性函数与自洽条件&#34;&gt;&lt;a href=&#34;#21-%e4%b8%80%e8%87%b4%e6%80%a7%e5%87%bd%e6%95%b0%e4%b8%8e%e8%87%aa%e6%b4%bd%e6%9d%a1%e4%bb%b6&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.1 一致性函数与自洽条件&#xA;&lt;/h4&gt;&lt;p&gt;考虑一条连接先验与数据的概率流 ODE 轨迹 ${x_t}&lt;em&gt;{t\in[0,T]}$。一致性函数定义为&#xA;$$&#xA;f: (x_t, t) \mapsto x&lt;/em&gt;\epsilon, \qquad (\epsilon \approx 0)&#xA;$$&#xA;即&lt;strong&gt;把轨迹上任意时刻的点直接映射回轨迹的起点&lt;/strong&gt;（干净数据）。为满足物理一致性，必须对所有 $t, t&amp;rsquo; \in [\epsilon, T]$ 有&#xA;$$&#xA;f(x_t, t) = f(x_{t&amp;rsquo;}, t&amp;rsquo;), \tag{1}&#xA;$$&#xA;即&lt;strong&gt;同一条轨迹上的点映射结果相同&lt;/strong&gt;。边界条件为 $f(x_\epsilon, \epsilon) = x_\epsilon$。&lt;/p&gt;&#xA;&lt;h4 id=&#34;22-训练一致性蒸馏与一致性训练&#34;&gt;&lt;a href=&#34;#22-%e8%ae%ad%e7%bb%83%e4%b8%80%e8%87%b4%e6%80%a7%e8%92%b8%e9%a6%8f%e4%b8%8e%e4%b8%80%e8%87%b4%e6%80%a7%e8%ae%ad%e7%bb%83&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.2 训练：一致性蒸馏与一致性训练&#xA;&lt;/h4&gt;&lt;p&gt;一致性模型有两种训练方式：&#xA;&lt;strong&gt;（1）一致性蒸馏（Consistency Distillation, CD）&lt;/strong&gt;&#xA;需要预训练好的扩散模型得分网络 $s_\phi(x,t)$，用于计算数值ODE单步递进 $x_{t} \to x_{t-\Delta t}$。给定数据点 $x_0$，沿扩散轨迹采样 $x_{t_n}$ 和 $x_{t_{n-1}}$，用预训练模型估计 $\hat{x}&lt;em&gt;{t&lt;/em&gt;{n-1}} \approx x_{t_{n-1}}$。损失使相邻两点的输出一致：&#xA;$$&#xA;\mathcal{L}&lt;em&gt;{\text{CD}} = \mathbb{E} \left[ d\big( f&lt;/em&gt;\theta(x_{t_n}, t_n),; f_{\theta^-}(\hat{x}&lt;em&gt;{t&lt;/em&gt;{n-1}}, t_{n-1}) \big) \right].&#xA;$$&#xA;$f_{\theta^-}$ 为目标网络的指数移动平均（EMA），$d$ 为距离函数（如 Huber 或 LPIPS）。一步采样时取 $f_\theta(x_T, T)$。&#xA;&lt;strong&gt;（2）一致性训练（Consistency Training, CT）&lt;/strong&gt;&#xA;完全脱离教师模型，直接从数据训练。利用任意噪声注入 $x_{t_n} = \alpha_{t_n}x_0 + \sigma_{t_n}\epsilon$，并计算 $x_{t_{n-1}}$ 作为同一条轨迹上的另一对点（保持相同噪声种子 $\epsilon$）。则一致性映射应满足 $f_\theta(x_{t_n}, t_n) = f_{\theta^-}(x_{t_{n-1}}, t_{n-1})$。损失为&#xA;$$&#xA;\mathcal{L}&lt;em&gt;{\text{CT}} = \mathbb{E} \left[ d\big( f&lt;/em&gt;\theta(\alpha_{t_n}x_0 + \sigma_{t_n}\epsilon, t_n),; f_{\theta^-}(\alpha_{t_{n-1}}x_0 + \sigma_{t_{n-1}}\epsilon, t_{n-1}) \big) \right]. \tag{2}&#xA;$$&#xA;边界条件通过参数化 $f_\theta(x,t) = c_{\text{skip}}(t)x + c_{\text{out}}(t)F_\theta(x,t)$ 并令 $c_{\text{skip}}(\epsilon)=1, c_{\text{out}}(\epsilon)=0$ 自动强制实现。&#xA;&lt;strong&gt;关键数学性质：&lt;/strong&gt; CT损失 (2) 本质上是强迫 $f_\theta$ 在 ODE 轨迹的离散点上满足自洽性 (1)；训练稳定后 $f_\theta$ 逼近真正的轨迹映射，一步生成即取 $t=T$ 时的输出。&lt;strong&gt;无需任何预训练、蒸馏或课程学习&lt;/strong&gt;，只需噪声-数据对。&lt;/p&gt;&#xA;&lt;h4 id=&#34;23-与经典扩散的本质区别&#34;&gt;&lt;a href=&#34;#23-%e4%b8%8e%e7%bb%8f%e5%85%b8%e6%89%a9%e6%95%a3%e7%9a%84%e6%9c%ac%e8%b4%a8%e5%8c%ba%e5%88%ab&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.3 与经典扩散的本质区别&#xA;&lt;/h4&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;&lt;/th&gt;&#xA;          &lt;th&gt;&lt;strong&gt;经典扩散 (DDPM/Score)&lt;/strong&gt;&lt;/th&gt;&#xA;          &lt;th&gt;&lt;strong&gt;一致性模型&lt;/strong&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;核心学习目标&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;得分函数 $\nabla \log p_t(x)$ 或噪声&lt;/td&gt;&#xA;          &lt;td&gt;轨迹一致性映射 $f(x_t,t)\to x_0$&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;生成方式&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;迭代求解反向 SDE/ODE&lt;/td&gt;&#xA;          &lt;td&gt;一步直接映射（也可多步精化）&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;训练依赖&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;仅需数据；明确无需求教师&lt;/td&gt;&#xA;          &lt;td&gt;CD需预训练扩散教师；CT可从零训练，无需教师&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;数学约束&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;无显式轨迹自洽要求&lt;/td&gt;&#xA;          &lt;td&gt;强制点对点一致性，损失驱动轨迹坍缩&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;典型损失形式&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;$|\epsilon_\theta - \epsilon|^2$&lt;/td&gt;&#xA;          &lt;td&gt;$d(f_\theta(x_t,t), f_{\theta^-}(x_{t-\Delta}, t-\Delta))$&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;三meanflow平均流的数学实现&#34;&gt;&lt;a href=&#34;#%e4%b8%89meanflow%e5%b9%b3%e5%9d%87%e6%b5%81%e7%9a%84%e6%95%b0%e5%ad%a6%e5%ae%9e%e7%8e%b0&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;三、MeanFlow（平均流）的数学实现&#xA;&lt;/h3&gt;&lt;p&gt;MeanFlow[1] 从&lt;strong&gt;流匹配&lt;/strong&gt;出发，通过重新参数化向量场，实现&lt;strong&gt;无需蒸馏的单步生成&lt;/strong&gt;。其核心创新是提出“平均速度”概念，并导出一组恒等式来设计自包含训练。&lt;/p&gt;&#xA;&lt;h3 id=&#34;31-平均速度定义&#34;&gt;&lt;a href=&#34;#31-%e5%b9%b3%e5%9d%87%e9%80%9f%e5%ba%a6%e5%ae%9a%e4%b9%89&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.1 平均速度定义&#xA;&lt;/h3&gt;&lt;p&gt;对于连接 $x_0\sim p_0$ 到 $x_1\sim p_{\text{data}}$ 的任意可微路径 ${x_t}$，定义&lt;strong&gt;从时刻 $t$ 到终点的平均速度&lt;/strong&gt;：&#xA;$$&#xA;w_t(x_t) \triangleq \frac{x_1 - x_t}{1-t}, \quad 0\le t &amp;lt; 1. \tag{3}&#xA;$$&#xA;若网络 $\bar{v}&lt;em&gt;\theta(t,x_t)$ 直接预测此平均速度，则一步生成为：&#xA;$$&#xA;x_1 = x_0 + \bar{v}&lt;/em&gt;\theta(0,x_0) \qquad （从t=0直接到t=1）. \tag{4}&#xA;$$&lt;/p&gt;&#xA;&lt;h4 id=&#34;32-瞬时速度与平均速度的恒等式&#34;&gt;&lt;a href=&#34;#32-%e7%9e%ac%e6%97%b6%e9%80%9f%e5%ba%a6%e4%b8%8e%e5%b9%b3%e5%9d%87%e9%80%9f%e5%ba%a6%e7%9a%84%e6%81%92%e7%ad%89%e5%bc%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.2 瞬时速度与平均速度的恒等式&#xA;&lt;/h4&gt;&lt;p&gt;流匹配通常学习&lt;strong&gt;瞬时速度&lt;/strong&gt; $v_t = dx_t/dt$。为将平均速度的学习与真实流动力学联系起来，MeanFlow 推导两者间的微分关系。由 $x_t = x_1 - (1-t) w_t$，对 $t$ 求导：&#xA;$$&#xA;v_t = \frac{d x_t}{d t} = w_t - (1-t)\frac{d w_t}{d t}. \tag{5}&#xA;$$&#xA;而全导数可展开为 $\frac{d w_t}{d t} = \partial_t w_t + (\nabla_x w_t)^\top v_t$，代入 (5) 解得：&#xA;$$&#xA;v_t = \frac{w_t - (1-t),\partial_t w_t}{1 + (1-t),\nabla_x w_t \cdot v_t}. \tag{6}&#xA;$$&#xA;这个恒等式将瞬时速度与平均速度的时空偏导数联系起来。&lt;strong&gt;若网络预测的平均速度 $\bar{v}_\theta$ 自身满足此恒等式对应的微分关系，则它定义的ODE轨迹将指向正确的终点&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;h4 id=&#34;33-自包含训练损失&#34;&gt;&lt;a href=&#34;#33-%e8%87%aa%e5%8c%85%e5%90%ab%e8%ae%ad%e7%bb%83%e6%8d%9f%e5%a4%b1&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.3 自包含训练损失&#xA;&lt;/h4&gt;&lt;p&gt;MeanFlow 的训练不需要任何教师模型，而是通过两项构建损失：&#xA;&lt;strong&gt;主损失&lt;/strong&gt;：直接监督平均速度&#xA;$$&#xA;\mathcal{L}&lt;em&gt;{\text{avg}} = \mathbb{E}&lt;/em&gt;{t,x_1,x_0}\left[ \big| \bar{v}&lt;em&gt;\theta(t, x_t) - \frac{x_1 - x_t}{1-t} \big|^2 \right]. \tag{7}&#xA;$$&#xA;&lt;strong&gt;正则化/一致性损失&lt;/strong&gt;：基于恒等式 (5) 或变形，要求网络自身在采样路径上满足 $v_t \approx \bar{v}&lt;/em&gt;\theta$ 对应的兼容条件。例如强制&#xA;$$&#xA;\frac{d}{dt} \big( x_t + (1-t)\bar{v}&lt;em&gt;\theta(t,x_t) \big) \approx 0,&#xA;$$&#xA;或直接最小化某个来自 (5) 的残差。一种典型的实现是，沿 $t$ 采样两个相邻点，要求满足：&#xA;$$&#xA;x&lt;/em&gt;{t_2} + (1-t_2)\bar{v}&lt;em&gt;\theta(t_2, x&lt;/em&gt;{t_2}) \approx x_{t_1} + (1-t_1)\bar{v}&lt;em&gt;\theta(t_1, x&lt;/em&gt;{t_1}). \tag{8}&#xA;$$&#xA;这正是“平均流”名称的由来——它迫使 $x_t + (1-t)\bar{v}_\theta$ 保持恒定为 $x_1$，即网络预测的平均速度在整条轨迹上内在一致。整个训练&lt;strong&gt;无需预训练扩散模型，无需蒸馏，无需课程学习&lt;/strong&gt;，完全自包含。&lt;/p&gt;&#xA;&lt;h4 id=&#34;34-生成与性能&#34;&gt;&lt;a href=&#34;#34-%e7%94%9f%e6%88%90%e4%b8%8e%e6%80%a7%e8%83%bd&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.4 生成与性能&#xA;&lt;/h4&gt;&lt;p&gt;训练完成后，仅需一次前向传播：&#xA;$$&#xA;\hat{x}&lt;em&gt;1 = x_0 + \bar{v}&lt;/em&gt;\theta(0, x_0), \quad x_0 \sim p_0.&#xA;$$&#xA;在 ImageNet 256×256 上单步 FID 达 3.43，前所未有地缩小了单步与多步生成之间的差距。&lt;/p&gt;&#xA;&lt;h4 id=&#34;35-与经典流匹配的本质区别&#34;&gt;&lt;a href=&#34;#35-%e4%b8%8e%e7%bb%8f%e5%85%b8%e6%b5%81%e5%8c%b9%e9%85%8d%e7%9a%84%e6%9c%ac%e8%b4%a8%e5%8c%ba%e5%88%ab&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.5 与经典流匹配的本质区别&#xA;&lt;/h4&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;&lt;/th&gt;&#xA;          &lt;th&gt;&lt;strong&gt;经典流匹配 (Flow Matching)&lt;/strong&gt;&lt;/th&gt;&#xA;          &lt;th&gt;&lt;strong&gt;MeanFlow&lt;/strong&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;预测目标&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;瞬时速度 $v_t$&lt;/td&gt;&#xA;          &lt;td&gt;平均速度 $w_t = \frac{x_1 - x_t}{1-t}$&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;生成方式&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;多步 ODE 求解 $\int_0^1 v_t dt$&lt;/td&gt;&#xA;          &lt;td&gt;一步加法 $x_0 + \bar{v}_\theta(0,x_0)$&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;训练数据要求&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;只需数据对 $(x_0,x_1)$；学习 $v_t$&lt;/td&gt;&#xA;          &lt;td&gt;同样只需数据对；学习 $w_t$ 并强制内部一致性&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;是否需要蒸馏&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;单步生成必须依赖蒸馏（如一致性蒸馏或渐进蒸馏）&lt;/td&gt;&#xA;          &lt;td&gt;&lt;strong&gt;完全不需要&lt;/strong&gt;，自包含训练&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;数学核心&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;条件概率路径回归&lt;/td&gt;&#xA;          &lt;td&gt;平均速度-瞬时速度恒等式 + 轨迹一致性正则&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;四meanflow-与-consistency-models-的共同点与区分&#34;&gt;&lt;a href=&#34;#%e5%9b%9bmeanflow-%e4%b8%8e-consistency-models-%e7%9a%84%e5%85%b1%e5%90%8c%e7%82%b9%e4%b8%8e%e5%8c%ba%e5%88%86&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;四、MeanFlow 与 Consistency Models 的共同点与区分&#xA;&lt;/h3&gt;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;共同目标&lt;/strong&gt;：实现高质量单步生成，摆脱迭代采样。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;共同理念&lt;/strong&gt;：通过学习一种“全局”映射（一致性函数 $f$ 或平均速度 $w_t$）取代逐步递推，且两者都提供了&lt;strong&gt;自包含训练&lt;/strong&gt;的途径（CT 与 MeanFlow 均无需教师）。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;数学路径差异&lt;/strong&gt;：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;一致性模型&lt;/strong&gt;建立在扩散 ODE 轨迹的自洽性上，学习的是&lt;strong&gt;任意中间点到起点的直接映射&lt;/strong&gt;，损失是点对点的一致性约束。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;MeanFlow&lt;/strong&gt; 建立在流匹配的路径上，学习&lt;strong&gt;从中间点到终点的平均速度&lt;/strong&gt;，并通过微分恒等式约束网络内在路径，使一步积分等价于精确流。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;理论渊源&lt;/strong&gt;：一致性源于扩散/得分 SDE，MeanFlow 源于连续流/CNF。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;性能定位&lt;/strong&gt;：在 ImageNet 256×256 分辨率下，MeanFlow 单步取得了当时最优，而一致性模型在低分辨率（CIFAR-10, ImageNet 64）展现了零样本编辑等独特功能。&#xA;两篇工作均以极简的数学重构实现了显著的性能飞跃，为生成模型中“一步生成”的发展提供了坚实且互补的理论基础。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;</description>
-        </item><item>
-            <title>Hugo 博客上手指南：主题配置 &amp; GitHub Pages 部署 &amp; Git 命令总结</title>
-            <link>https://0o7race.github.io/my_blog/post/hello_my_blog/</link>
-            <pubDate>Sat, 04 Apr 2026 23:00:00 +0800</pubDate>
-            <guid>https://0o7race.github.io/my_blog/post/hello_my_blog/</guid>
-            <description>&lt;h2 id=&#34;一认识-hugo-博客的目录结构&#34;&gt;&lt;a href=&#34;#%e4%b8%80%e8%ae%a4%e8%af%86-hugo-%e5%8d%9a%e5%ae%a2%e7%9a%84%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;一、认识 Hugo 博客的目录结构&#xA;&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;my_blog/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── hugo.toml              # 站点主配置文件&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── content/               # 所有文章内容&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── post/              # 文章目录&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│       └── hello_my_blog.md&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── static/                # 静态资源（图片、favicon 等）&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── assets/                # 样式、脚本等资源&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── layouts/               # 自定义模板（覆盖主题模板）&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── themes/                # 主题目录&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── hugo-theme-stack-master/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── public/                # hugo 构建后生成的静态网页&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── archetypes/            # 新文章模板&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── data/                  # 数据文件&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── i18n/                  # 多语言翻译文件&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;核心规律：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;改配置 → &lt;code&gt;hugo.toml&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;写文章 → &lt;code&gt;content/post/&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;放图片 → &lt;code&gt;static/&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;改外观 → &lt;code&gt;hugo.toml&lt;/code&gt; + &lt;code&gt;layouts/&lt;/code&gt; + &lt;code&gt;assets/&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;二主题更改的详细语法&#34;&gt;&lt;a href=&#34;#%e4%ba%8c%e4%b8%bb%e9%a2%98%e6%9b%b4%e6%94%b9%e7%9a%84%e8%af%a6%e7%bb%86%e8%af%ad%e6%b3%95&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;二、主题更改的详细语法&#xA;&lt;/h2&gt;&lt;h3 id=&#34;21-hugotoml-基础字段&#34;&gt;&lt;a href=&#34;#21-hugotoml-%e5%9f%ba%e7%a1%80%e5%ad%97%e6%ae%b5&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.1 hugo.toml 基础字段&#xA;&lt;/h3&gt;&lt;p&gt;当前配置文件内容：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;baseURL&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://example.org/&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;locale&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;en-us&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Blog For Life&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hugo-theme-stack-master&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;各字段含义：&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;字段&lt;/th&gt;&#xA;          &lt;th&gt;作用&lt;/th&gt;&#xA;          &lt;th&gt;修改建议&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;baseURL&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;网站最终发布的网址&lt;/td&gt;&#xA;          &lt;td&gt;部署到 GitHub Pages 后改成实际地址&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;locale&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;语言地区&lt;/td&gt;&#xA;          &lt;td&gt;中文博客改成 &lt;code&gt;&#39;zh-cn&#39;&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;网站标题，显示在首页和浏览器标签&lt;/td&gt;&#xA;          &lt;td&gt;改成你的博客名&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;theme&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;使用的主题目录名&lt;/td&gt;&#xA;          &lt;td&gt;必须和 &lt;code&gt;themes/&lt;/code&gt; 下的文件夹名一致&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;22-toml-语法基础&#34;&gt;&lt;a href=&#34;#22-toml-%e8%af%ad%e6%b3%95%e5%9f%ba%e7%a1%80&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.2 TOML 语法基础&#xA;&lt;/h3&gt;&lt;p&gt;Hugo 配置文件使用 TOML 格式，常用语法：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 字符串&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;我的博客&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 布尔值&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;draft&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 数字&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;paginate&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 数组&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;tags&lt;/span&gt; = [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hugo&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;博客&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;教程&amp;#34;&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 表（类似对象/字典）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;一个个人博客&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;mainSections&lt;/span&gt; = [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 嵌套表&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sidebar&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;emoji&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;🎯&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;subtitle&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;记录生活与技术&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 双括号表示数组中的表&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;首页&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;归档&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/archives&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;23-修改站点标题和描述&#34;&gt;&lt;a href=&#34;#23-%e4%bf%ae%e6%94%b9%e7%ab%99%e7%82%b9%e6%a0%87%e9%a2%98%e5%92%8c%e6%8f%8f%e8%bf%b0&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.3 修改站点标题和描述&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Blog For Life&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;记录我的学习与生活&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;效果：&lt;code&gt;title&lt;/code&gt; 显示在浏览器标签页和网站顶部，&lt;code&gt;description&lt;/code&gt; 显示在首页副标题或 SEO 描述中。&lt;/p&gt;&#xA;&lt;h3 id=&#34;24-修改语言&#34;&gt;&lt;a href=&#34;#24-%e4%bf%ae%e6%94%b9%e8%af%ad%e8%a8%80&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.4 修改语言&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;languageCode&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;zh-cn&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;defaultContentLanguage&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;zh-cn&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;25-配置首页侧边栏stack-主题&#34;&gt;&lt;a href=&#34;#25-%e9%85%8d%e7%bd%ae%e9%a6%96%e9%a1%b5%e4%be%a7%e8%be%b9%e6%a0%8fstack-%e4%b8%bb%e9%a2%98&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.5 配置首页侧边栏（Stack 主题）&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sidebar&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;emoji&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;🏠&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;subtitle&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;欢迎来到我的博客&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sidebar&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;avatar&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;enabled&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;local&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;img/avatar.png&amp;#34;&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;# 图片放在 static/img/avatar.png&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;把头像图片放在：&lt;code&gt;static/img/avatar.png&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;26-配置社交链接stack-主题&#34;&gt;&lt;a href=&#34;#26-%e9%85%8d%e7%bd%ae%e7%a4%be%e4%ba%a4%e9%93%be%e6%8e%a5stack-%e4%b8%bb%e9%a2%98&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.6 配置社交链接（Stack 主题）&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;widgets&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;social&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GitHub&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;icon&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;brand-github&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://github.com/你的用户名&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;widgets&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;social&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Email&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;icon&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mail&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mailto:你的邮箱@example.com&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;27-配置导航菜单&#34;&gt;&lt;a href=&#34;#27-%e9%85%8d%e7%bd%ae%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.7 配置导航菜单&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;首页&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;归档&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/archives&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;搜索&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/search&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;weight&lt;/code&gt; 数字越小排越前面。&lt;/p&gt;&#xA;&lt;h3 id=&#34;28-配置文章每页显示数量&#34;&gt;&lt;a href=&#34;#28-%e9%85%8d%e7%bd%ae%e6%96%87%e7%ab%a0%e6%af%8f%e9%a1%b5%e6%98%be%e7%a4%ba%e6%95%b0%e9%87%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.8 配置文章每页显示数量&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;paginate&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;29-修改-favicon&#34;&gt;&lt;a href=&#34;#29-%e4%bf%ae%e6%94%b9-favicon&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.9 修改 favicon&#xA;&lt;/h3&gt;&lt;p&gt;把你的 favicon 文件放到：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;static/favicon.ico&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;static/favicon.png&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Hugo 会自动识别。&lt;/p&gt;&#xA;&lt;h3 id=&#34;210-文章-front-matter-语法&#34;&gt;&lt;a href=&#34;#210-%e6%96%87%e7%ab%a0-front-matter-%e8%af%ad%e6%b3%95&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.10 文章 Front Matter 语法&#xA;&lt;/h3&gt;&lt;p&gt;每篇文章开头的 &lt;code&gt;---&lt;/code&gt; 之间的内容叫 Front Matter，控制这篇文章的元信息：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;title: &amp;#34;文章标题&amp;#34;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;date: 2026-04-04T23:00:00+08:00&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;draft: false&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;description: &amp;#34;文章描述，用于 SEO 和列表页预览&amp;#34;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tags: [&amp;#34;标签1&amp;#34;, &amp;#34;标签2&amp;#34;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;categories: [&amp;#34;分类名&amp;#34;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;image: &amp;#34;cover.jpg&amp;#34;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;正文从这里开始...&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;字段&lt;/th&gt;&#xA;          &lt;th&gt;说明&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;文章标题&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;date&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;发布日期，影响排序&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;draft&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;true&lt;/code&gt; 表示草稿，不会发布；&lt;code&gt;false&lt;/code&gt; 才会显示&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;文章描述&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;标签，数组格式&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;categories&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;分类&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;文章封面图（Stack 主题支持）&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;211-在文章中插入图片&#34;&gt;&lt;a href=&#34;#211-%e5%9c%a8%e6%96%87%e7%ab%a0%e4%b8%ad%e6%8f%92%e5%85%a5%e5%9b%be%e7%89%87&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.11 在文章中插入图片&#xA;&lt;/h3&gt;&lt;p&gt;把图片放到 &lt;code&gt;static/images/&lt;/code&gt; 目录：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;static/images/my-photo.png&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;文章中引用：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;图片说明&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;/images/my-photo.png&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;212-改哪里影响哪里速查表&#34;&gt;&lt;a href=&#34;#212-%e6%94%b9%e5%93%aa%e9%87%8c%e5%bd%b1%e5%93%8d%e5%93%aa%e9%87%8c%e9%80%9f%e6%9f%a5%e8%a1%a8&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.12 &amp;ldquo;改哪里影响哪里&amp;quot;速查表&#xA;&lt;/h3&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;想改什么&lt;/th&gt;&#xA;          &lt;th&gt;改哪个文件&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;博客标题&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;title&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;网站地址&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;baseURL&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;语言&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;languageCode&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;头像&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;static/img/avatar.png&lt;/code&gt; + &lt;code&gt;hugo.toml&lt;/code&gt; 配置&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;导航菜单&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;[[menu.main]]&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;社交链接&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;[[params.widgets.social]]&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;新文章&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;content/post/新文章.md&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;文章封面图&lt;/td&gt;&#xA;          &lt;td&gt;Front Matter 的 &lt;code&gt;image&lt;/code&gt; 字段&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;网站图标&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;static/favicon.ico&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;页面模板&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;layouts/&lt;/code&gt; 覆盖主题模板&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;自定义 CSS&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;assets/scss/custom.scss&lt;/code&gt;（Stack 主题支持）&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;三部署到-github-pages-的详细步骤&#34;&gt;&lt;a href=&#34;#%e4%b8%89%e9%83%a8%e7%bd%b2%e5%88%b0-github-pages-%e7%9a%84%e8%af%a6%e7%bb%86%e6%ad%a5%e9%aa%a4&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;三、部署到 GitHub Pages 的详细步骤&#xA;&lt;/h2&gt;&lt;h3 id=&#34;31-前提条件&#34;&gt;&lt;a href=&#34;#31-%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.1 前提条件&#xA;&lt;/h3&gt;&lt;ul&gt;&#xA;&lt;li&gt;已安装 Git（命令行输入 &lt;code&gt;git --version&lt;/code&gt; 确认）&lt;/li&gt;&#xA;&lt;li&gt;已有 GitHub 账号&lt;/li&gt;&#xA;&lt;li&gt;已安装 Hugo Extended（命令行输入 &lt;code&gt;hugo version&lt;/code&gt; 确认）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;32-两种-github-pages-方式&#34;&gt;&lt;a href=&#34;#32-%e4%b8%a4%e7%a7%8d-github-pages-%e6%96%b9%e5%bc%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.2 两种 GitHub Pages 方式&#xA;&lt;/h3&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;方式&lt;/th&gt;&#xA;          &lt;th&gt;仓库名&lt;/th&gt;&#xA;          &lt;th&gt;最终网址&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;用户站点&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;用户名.github.io&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;https://用户名.github.io/&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;项目站点&lt;/td&gt;&#xA;          &lt;td&gt;任意名字，如 &lt;code&gt;my_blog&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;https://用户名.github.io/my_blog/&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;推荐新手用 &lt;strong&gt;用户站点&lt;/strong&gt;，网址更简洁。&lt;/p&gt;&#xA;&lt;h3 id=&#34;33-详细操作步骤&#34;&gt;&lt;a href=&#34;#33-%e8%af%a6%e7%bb%86%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.3 详细操作步骤&#xA;&lt;/h3&gt;&lt;h4 id=&#34;第一步在-github-创建仓库&#34;&gt;&lt;a href=&#34;#%e7%ac%ac%e4%b8%80%e6%ad%a5%e5%9c%a8-github-%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;第一步：在 GitHub 创建仓库&#xA;&lt;/h4&gt;&lt;ol&gt;&#xA;&lt;li&gt;登录 &lt;a class=&#34;link&#34; href=&#34;https://github.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;&#xA;    &gt;GitHub&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;点右上角 &lt;strong&gt;+&lt;/strong&gt; → &lt;strong&gt;New repository&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;仓库名填写：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;用户站点：&lt;code&gt;你的用户名.github.io&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;项目站点：&lt;code&gt;my_blog&lt;/code&gt;（或任意名字）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;选择 &lt;strong&gt;Public&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;不要&lt;/strong&gt;勾选 &amp;ldquo;Add a README file&amp;rdquo;&lt;/li&gt;&#xA;&lt;li&gt;点 &lt;strong&gt;Create repository&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h4 id=&#34;第二步修改-hugotoml-中的-baseurl&#34;&gt;&lt;a href=&#34;#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e4%bf%ae%e6%94%b9-hugotoml-%e4%b8%ad%e7%9a%84-baseurl&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;第二步：修改 hugo.toml 中的 baseURL&#xA;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;用户站点：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;baseURL&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://你的用户名.github.io/&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;项目站点：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;baseURL&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://你的用户名.github.io/my_blog/&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;    &lt;blockquote&gt;&#xA;        &lt;p&gt;⚠️ 这一步非常重要！&lt;code&gt;baseURL&lt;/code&gt; 写错会导致部署后样式丢失或页面 404。&lt;/p&gt;&#xA;&#xA;    &lt;/blockquote&gt;&#xA;&lt;h4 id=&#34;第三步构建静态文件&#34;&gt;&lt;a href=&#34;#%e7%ac%ac%e4%b8%89%e6%ad%a5%e6%9e%84%e5%bb%ba%e9%9d%99%e6%80%81%e6%96%87%e4%bb%b6&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;第三步：构建静态文件&#xA;&lt;/h4&gt;&lt;p&gt;在博客根目录执行：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这会在 &lt;code&gt;public/&lt;/code&gt; 目录生成完整的静态网站文件。&lt;/p&gt;&#xA;&lt;h4 id=&#34;第四步初始化-git-仓库并推送&#34;&gt;&lt;a href=&#34;#%e7%ac%ac%e5%9b%9b%e6%ad%a5%e5%88%9d%e5%a7%8b%e5%8c%96-git-%e4%bb%93%e5%ba%93%e5%b9%b6%e6%8e%a8%e9%80%81&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;第四步：初始化 Git 仓库并推送&#xA;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;方法 A：只推送 public 目录（简单方式）&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd public&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git init&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;first deploy&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git branch -M main&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git remote add origin https://github.com/你的用户名/你的仓库名.git&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push -u origin main&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后在 GitHub 仓库 → Settings → Pages → Source 选择 &lt;code&gt;main&lt;/code&gt; 分支，目录选 &lt;code&gt;/ (root)&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;方法 B：推送整个项目 + GitHub Actions 自动构建（推荐）&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd c:&lt;span style=&#34;color:#ae81ff&#34;&gt;\U&lt;/span&gt;sers&lt;span style=&#34;color:#ae81ff&#34;&gt;\m&lt;/span&gt;infu&lt;span style=&#34;color:#ae81ff&#34;&gt;\m&lt;/span&gt;y_blog&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git init&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;initial commit&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git branch -M main&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git remote add origin https://github.com/你的用户名/你的仓库名.git&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push -u origin main&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后在仓库中创建 GitHub Actions 工作流文件，让 GitHub 自动帮你构建和部署。&lt;/p&gt;&#xA;&lt;h4 id=&#34;第五步配置-github-actions-自动部署推荐方法-b-时使用&#34;&gt;&lt;a href=&#34;#%e7%ac%ac%e4%ba%94%e6%ad%a5%e9%85%8d%e7%bd%ae-github-actions-%e8%87%aa%e5%8a%a8%e9%83%a8%e7%bd%b2%e6%8e%a8%e8%8d%90%e6%96%b9%e6%b3%95-b-%e6%97%b6%e4%bd%bf%e7%94%a8&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;第五步：配置 GitHub Actions 自动部署（推荐方法 B 时使用）&#xA;&lt;/h4&gt;&lt;p&gt;在项目根目录创建文件：&lt;code&gt;.github/workflows/hugo.yml&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Deploy Hugo site to Pages&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;on&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;push&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;branches&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;main&amp;#34;&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;workflow_dispatch&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;permissions&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;contents&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;read&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;pages&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;write&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;id-token&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;write&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;concurrency&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;group&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;pages&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;cancel-in-progress&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;defaults&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;shell&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;bash&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;jobs&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;build&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;runs-on&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;ubuntu-latest&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;HUGO_VERSION&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;0.147.6&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;steps&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Install Hugo CLI&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          &amp;amp;&amp;amp; sudo dpkg -i ${{ runner.temp }}/hugo.deb&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Checkout&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/checkout@v4&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;recursive&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Setup Pages&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;id&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;pages&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/configure-pages@v5&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Build with Hugo&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;HUGO_CACHEDIR&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ runner.temp }}/hugo_cache&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;HUGO_ENVIRONMENT&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;production&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          hugo --minify --baseURL &amp;#34;${{ steps.pages.outputs.base_url }}/&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Upload artifact&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/upload-pages-artifact@v3&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;path&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;./public&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;deploy&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;environment&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;github-pages&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;url&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ steps.deployment.outputs.page_url }}&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;runs-on&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;ubuntu-latest&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;needs&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;build&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;steps&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Deploy to GitHub Pages&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;id&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;deployment&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/deploy-pages@v4&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;推送后，在 GitHub 仓库 → &lt;strong&gt;Settings&lt;/strong&gt; → &lt;strong&gt;Pages&lt;/strong&gt; → &lt;strong&gt;Source&lt;/strong&gt; 选择 &lt;strong&gt;GitHub Actions&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;h4 id=&#34;第六步访问你的博客&#34;&gt;&lt;a href=&#34;#%e7%ac%ac%e5%85%ad%e6%ad%a5%e8%ae%bf%e9%97%ae%e4%bd%a0%e7%9a%84%e5%8d%9a%e5%ae%a2&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;第六步：访问你的博客&#xA;&lt;/h4&gt;&lt;p&gt;等 GitHub Actions 构建完成（通常 1-2 分钟），访问：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;用户站点：&lt;code&gt;https://你的用户名.github.io/&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;项目站点：&lt;code&gt;https://你的用户名.github.io/仓库名/&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;34-常见问题排查&#34;&gt;&lt;a href=&#34;#34-%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e6%8e%92%e6%9f%a5&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.4 常见问题排查&#xA;&lt;/h3&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;问题&lt;/th&gt;&#xA;          &lt;th&gt;原因&lt;/th&gt;&#xA;          &lt;th&gt;解决方法&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;页面 404&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;baseURL&lt;/code&gt; 写错或 Pages 源未配置&lt;/td&gt;&#xA;          &lt;td&gt;检查 &lt;code&gt;baseURL&lt;/code&gt;，确认 Pages 设置&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;样式全部丢失&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;baseURL&lt;/code&gt; 路径不对&lt;/td&gt;&#xA;          &lt;td&gt;项目站点必须包含仓库名路径&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;文章不显示&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;draft: true&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;改成 &lt;code&gt;draft: false&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;本地正常但线上不对&lt;/td&gt;&#xA;          &lt;td&gt;本地用 &lt;code&gt;hugo server&lt;/code&gt; 会忽略 &lt;code&gt;baseURL&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;用 &lt;code&gt;hugo&lt;/code&gt; 构建后检查 &lt;code&gt;public/&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;35-后续更新文章的流程&#34;&gt;&lt;a href=&#34;#35-%e5%90%8e%e7%bb%ad%e6%9b%b4%e6%96%b0%e6%96%87%e7%ab%a0%e7%9a%84%e6%b5%81%e7%a8%8b&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.5 后续更新文章的流程&#xA;&lt;/h3&gt;&lt;p&gt;每次写完新文章后：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1. 添加所有改动&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 2. 提交&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;新增文章：文章标题&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 3. 推送到 GitHub（如果用了 Actions，会自动重新部署）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;四常用-git-命令总结&#34;&gt;&lt;a href=&#34;#%e5%9b%9b%e5%b8%b8%e7%94%a8-git-%e5%91%bd%e4%bb%a4%e6%80%bb%e7%bb%93&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;四、常用 Git 命令总结&#xA;&lt;/h2&gt;&lt;h3 id=&#34;41-仓库初始化与配置&#34;&gt;&lt;a href=&#34;#41-%e4%bb%93%e5%ba%93%e5%88%9d%e5%a7%8b%e5%8c%96%e4%b8%8e%e9%85%8d%e7%bd%ae&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.1 仓库初始化与配置&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 初始化一个新的 Git 仓库&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git init&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 设置用户名（首次使用 Git 时需要）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.name &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;你的名字&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 设置邮箱&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.email &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;你的邮箱@example.com&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看当前配置&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --list&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;42-基本操作&#34;&gt;&lt;a href=&#34;#42-%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.2 基本操作&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看仓库状态（哪些文件被修改、哪些未跟踪）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git status&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 添加单个文件到暂存区&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add 文件名&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 添加所有文件到暂存区&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 提交暂存区的文件（附带说明信息）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;提交说明&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看提交历史（简洁模式）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git log --oneline&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看提交历史（详细模式）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git log&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;43-远程仓库操作&#34;&gt;&lt;a href=&#34;#43-%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93%e6%93%8d%e4%bd%9c&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.3 远程仓库操作&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 关联远程仓库&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git remote add origin https://github.com/用户名/仓库名.git&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看已关联的远程仓库&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git remote -v&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 第一次推送到远程（设置默认上游分支）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push -u origin main&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 后续推送&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 从远程拉取最新代码&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git pull&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 克隆一个已有的远程仓库到本地&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/用户名/仓库名.git&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;44-分支操作&#34;&gt;&lt;a href=&#34;#44-%e5%88%86%e6%94%af%e6%93%8d%e4%bd%9c&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.4 分支操作&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看所有分支&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git branch&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建新分支&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git branch 分支名&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 切换到某个分支&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git checkout 分支名&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建并切换到新分支&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git checkout -b 新分支名&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 将当前分支重命名为 main&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git branch -M main&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 合并某个分支到当前分支&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git merge 分支名&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;45-查看差异&#34;&gt;&lt;a href=&#34;#45-%e6%9f%a5%e7%9c%8b%e5%b7%ae%e5%bc%82&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.5 查看差异&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看工作区和暂存区的差异&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git diff&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看暂存区和最近一次提交的差异&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git diff --cached&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看某个文件的修改&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git diff 文件名&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;46-撤销操作&#34;&gt;&lt;a href=&#34;#46-%e6%92%a4%e9%94%80%e6%93%8d%e4%bd%9c&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.6 撤销操作&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 撤销工作区某个文件的修改（恢复到最近提交的状态）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git checkout -- 文件名&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 将文件从暂存区移回工作区（不删除修改）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git reset HEAD 文件名&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 回退到上一次提交（保留文件修改）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git reset --soft HEAD~1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 回退到上一次提交（丢弃所有修改，⚠️ 危险操作）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git reset --hard HEAD~1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;47-gitignore-文件&#34;&gt;&lt;a href=&#34;#47-gitignore-%e6%96%87%e4%bb%b6&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.7 .gitignore 文件&#xA;&lt;/h3&gt;&lt;p&gt;在项目根目录创建 &lt;code&gt;.gitignore&lt;/code&gt;，写入不需要提交的文件：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# Hugo 构建输出（如果用 GitHub Actions 构建则不需要提交）&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;public/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# Hugo 资源缓存&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;resources/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# 系统文件&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.DS_Store&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Thumbs.db&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# 编辑器文件&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.vscode/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*.swp&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;48-日常工作流总结&#34;&gt;&lt;a href=&#34;#48-%e6%97%a5%e5%b8%b8%e5%b7%a5%e4%bd%9c%e6%b5%81%e6%80%bb%e7%bb%93&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.8 日常工作流总结&#xA;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 典型的&amp;#34;写文章 → 发布&amp;#34;流程：&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1. 写文章&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#    在 content/post/ 下新建 .md 文件&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 2. 本地预览&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo server&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 3. 确认没问题后，添加改动&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 4. 提交&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;新增文章：xxx&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 5. 推送到 GitHub（自动触发部署）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;五总结&#34;&gt;&lt;a href=&#34;#%e4%ba%94%e6%80%bb%e7%bb%93&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;五、总结&#xA;&lt;/h2&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;要做的事&lt;/th&gt;&#xA;          &lt;th&gt;操作&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;改博客外观&lt;/td&gt;&#xA;          &lt;td&gt;编辑 &lt;code&gt;hugo.toml&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;写新文章&lt;/td&gt;&#xA;          &lt;td&gt;在 &lt;code&gt;content/post/&lt;/code&gt; 下新建 &lt;code&gt;.md&lt;/code&gt; 文件&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;本地预览&lt;/td&gt;&#xA;          &lt;td&gt;运行 &lt;code&gt;hugo server&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;部署上线&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;git add . → git commit → git push&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;查看网站&lt;/td&gt;&#xA;          &lt;td&gt;访问 &lt;code&gt;https://你的用户名.github.io/&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;</description>
-        </item></channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mathematics on Blog For Life</title><link>https://0o7race.github.io/my_blog/tags/mathematics/</link><description>Recent content in Mathematics on Blog For Life</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 10 May 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://0o7race.github.io/my_blog/tags/mathematics/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读</title><link>https://0o7race.github.io/my_blog/post/forge_05_10/forge_05_10/</link><pubDate>Sun, 10 May 2026 23:00:00 +0800</pubDate><guid>https://0o7race.github.io/my_blog/post/forge_05_10/forge_05_10/</guid><description>&lt;h3 id="文献综述"&gt;&lt;a href="#%e6%96%87%e7%8c%ae%e7%bb%bc%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;文献综述
+&lt;/h3&gt;&lt;p&gt;近年来，深度学习方法在图像恢复、分割、融合等多个底层视觉任务中取得了显著进展，而结合传统信号处理工具与数据驱动模型已成为一种重要趋势，其中小波变换凭借其卓越的时频分析能力被广泛探索。例如，Yan等（2025）[1] 针对低光图像增强中暗部细节生成困难的问题，提出了一种频率先验引导的增强网络FPIE。该方法通过联合训练频率先验生成与图像恢复网络，并在频域施加约束以学习紧凑先验，从而显著加速扩散模型的推理过程。为更好地利用频率特征，模型引入了基于小波的Transformer模块以生成精细细节并抑制伪影，在公开基准上取得了最先进的性能。类似地，Jiang等（2023）[26] 同样关注低光增强任务，但其更侧重于解决扩散模型推理耗时和资源消耗大的问题。他们提出的DiffLL方法构建了基于小波的条件扩散模型（WCDM），在小波域进行扩散与去噪，并结合高频恢复模块（HFRM）利用水平和垂直细节补充对角线信息，实现了细节更精细的恢复，在效率上相比传统扩散方法有显著提升。Huang等（2024）[28] 则提出了一个更为通用的基于小波的扩散模型WaveDM，用于处理去雨、去雾、去模糊等多种图像恢复任务。WaveDM直接在小波域学习清晰图像的分布，并设计了针对低频和高频频谱的独特训练策略，其提出的高效条件采样策略将采样步数降至约5步，实现了速度超过100倍的提升。此外，Cui等（2024）[33] 提出了频率选择网络FSNet，它不局限于特定的小波变换工具，而是提出一种多分支、内容感知的模块，动态地将特征分解到不同频带，并通过通道注意力增强有用的频率分量，在20个数据集上的6种恢复任务中均表现优异。
+小波变换与Transformer架构的结合也是当前的研究热点。Zhou等（2023）[6] 针对RGB-T显著目标检测任务提出了WaveNet架构，该架构采用基于任务导向的小波多层感知机（MLP）进行特征提取，并利用知识蒸馏从教师Transformer网络中学习丰富的语义信息，同时通过离散小波变换实现跨模态的频率-时域特征融合，取得了令人瞩目的性能。Zhang等（2023）[7] 则从频率视角揭示了视觉Transformer（ViT）在行人重识别中表现不如CNN的潜在原因，即自注意力机制会稀释关键的高频细节。为此他们提出了逐块高频增强方法PHA，利用离散Haar小波变换分割高频块作为辅助输入，并设计对比损失以隐式增强高频表征。在语义分割领域，Yan等（2025）[9] 提出的MCAFT网络采用离散小波变换将特征图分解为高低频子带，随后利用高效Transformer和反向注意力机制分别增强上下文与边界信息。Li等（2023）[24] 提出的层次化小波特征增强模块（WFE）同样针对高分辨率遥感图像分割中的细节丢失问题，通过对多尺度分解后的高频子带进行增强并反馈至网络对应层，有效提升了CNN和Transformer的基准性能。Xu等（2023）[11] 提出的Haar小波下采样模块（HWD）则作为一个即插即用组件，在降低特征图分辨率的同时最大程度保留空间信息，提升了语义分割模型的性能。
+在多模态融合与生成任务中，小波变换同样扮演着关键角色。Wang等（2025）[15] 提出的WaveFusion是为多模态图像融合设计的小波视觉Transformer，它结合自适应小波变换模块与并行处理高低频的自注意力/卷积网络，并采用动态显著性引导的损失函数，在红外-可见光和医学图像融合任务中平衡了性能与成本效率。在3D形状生成领域，Hui等（2022）[27] 提出了一种在小波域进行连续隐式表示生成的新方法，利用扩散模型生成粗糙系数体，再由细节预测器生成兼容的细节系数体，从而生成具有复杂拓扑和精细细节的高质量三维形状。为了加速扩散模型的生成速度，Phung等（2023）[22] 提出了基于小波的高效扩散方案，通过在图像和特征层面自适应处理由小波分解得到的高低频分量，大幅加快了训练和推理速度。Yang等（2023）[8] 则通过对扩散模型频率特性的深入评估，发现其在高频生成上存在固有偏差，进而设计了包含小波门控机制和频谱感知蒸馏的轻量级光谱扩散模型（Spectral Diffusion），实现了8-18倍的计算复杂度降低。
+综上所述，现有研究已充分证明，无论是作为特征工程工具（如分解、增强、融合）嵌入网络架构，还是作为加速扩散模型推理空间的媒介，小波变换均能有效引导模型关注图像的高频细节与全局结构，从而在效率与性能之间寻求更优的平衡。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="文献矩阵"&gt;&lt;a href="#%e6%96%87%e7%8c%ae%e7%9f%a9%e9%98%b5" class="header-anchor"&gt;&lt;/a&gt;文献矩阵
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: left"&gt;序号&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;研究目标&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;方法/模型&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;应用领域&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;关键技术/组件&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;关键发现/贡献&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;局限性/待解决问题&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[1]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;高效低光图像增强&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;频率先验引导增强网络（FPIE）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;低光图像增强&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;频域先验生成网络、基于小波的Transformer模块&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;通过学习频域约束的紧凑先验加速扩散推理，小波Transformer有效生成细节、抑制伪影。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;方法仍基于扩散框架，虽加速但计算量仍高于单次前馈网络。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[6]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;RGB-T显著目标检测&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;小波网络WaveNet&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;RGB-T显著目标检测&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;任务导向的小波MLP、知识蒸馏、离散小波跨模态融合&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;提出纯小波MLP架构，通过知识蒸馏和跨模态频率融合实现高性能。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;对教师网络的依赖性较强。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[7]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;提升Transformer行人重识别高频特征提取能力&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;逐块高频增强（PHA）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;行人重识别&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Haar小波变换、逐块对比损失&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;首次揭示自注意力稀释高频的机理，提出的PHA可即插即用，推理时无额外开销。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;仅在行人重识别任务上验证，向其他视觉任务的泛化性待探索。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[8]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;轻量化扩散概率模型&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;光谱扩散模型（SD）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;图像生成&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;小波门控、频谱感知蒸馏&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;发现扩散模型对不同频带分步恢复的特性；SD实现8-18倍复杂度降低并保持图像保真度。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;轻量化可能依然对极高分辨率或内容复杂的图像存在质量损失。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[9]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;医学图像分割的细节与结构信息增强&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;多尺度卷积注意力频率增强Transformer（MCAFT）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;医学图像分割&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;离散小波分解、通道-空间注意力、反向注意力&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;利用DWT分离高低频信息分别处理，增强上下文和边界，在多个医学分割数据集上取得高分。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;多组件设计可能增加了网络的参数量和调参难度。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[11]/[13]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;语义分割中保存空间信息的下采样&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Haar小波下采样模块（HWD）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;语义分割&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Haar小波变换、特征熵指数（FEI）度量&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;提出一种简单有效的下采样模块，可减少信息损失，并设计FEI度量信息不确定性。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;作为基础组件，性能增益依赖于基础网络架构的选择。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[15]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;高效且高质量的多模态图像融合&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;WaveFusion&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;红外-可见光、医学图像融合&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;自适应小波Transformer、显著性引导损失&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;并行处理高低频分量，双聚合注意力增强跨模态互补，融合性能与效率俱佳。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;下游任务仅限于语义分割和目标检测，更多应用场景待发掘。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[22]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;加速扩散模型的训练和推理&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;基于小波的扩散方案（WaveDiff）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;图像生成&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;小波分解、高低频自适应处理、重构项&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;在图像和特征级别进行小波分解与自适应处理，显著缩小扩散模型与GAN的速度差距。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;在特定数据集上验证，生成质量和速度的统一仍有提升空间。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[24]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;增强遥感图像语义分割的细节特征&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;层次化小波特征增强（WFE）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;遥感图像语义分割&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;离散小波多尺度分解、高频增强&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;即插即用模块，通过增强和回注高频子带特征，提升CNN与Transformer基线性能。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;实验仅覆盖两个遥感数据集。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[26]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;高效且稳定的低光图像增强&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;DiffLL&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;低光图像增强&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;小波条件扩散模型（WCDM）、高频恢复模块（HFRM）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;在小波域进行扩散，结合HFRM补全细节，极大加速推理并实现高质量增强。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;仅针对低光任务设计，对其他退化类型的通用性未经验证。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[27]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;生成高质多样3D形状&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;神经小波域扩散&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;3D形状生成&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;多尺度双正交小波、粗糙/细节系数体、扩散生成&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;首次在连续小波隐式表示上进行扩散生成，能生成具有复杂拓扑和细节的形状。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;生成形状的多样性和复杂程度受限于训练数据。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[28]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;通用且高效的图像恢复&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;基于小波的扩散模型（WaveDM）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;图像恢复（去雨/雾/模糊等）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;小波域扩散、分频模块训练、高效条件采样&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;在小波域建模，采样步数降至5步，速度提升百倍，性能与传统单流程方法可比。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;对要求极高保真度的任务，恢复结果可能稍逊于空间域大模型。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;[33]&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;灵活处理多种图像恢复任务的频率信息&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;频率选择网络（FSNet）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;图像恢复（去模糊/雾/雪/雨/噪等）&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;动态频率选择模块、大感受野增强模块&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;不固定小波基，动态选择有用频率，在20个数据集的6种任务中表现最优。&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;多任务通用性使其在某些特定任务上的极致性能可能不如专用模型。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;共同特征&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;绝大部分研究均致力于通过引入小波变换或其思想来显式地建模和处理图像的高低频信息，旨在解决深度卷积网络或Transformer在细节恢复/生成、推理效率或局部性建模上的固有缺陷。&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;独特特征&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;文献[1]、[8]、[22]、[26]、[28]聚焦于利用小波域加速和改进扩散模型，而[6]、[7]、[9]、[15]、[24]则致力于将小波与Transformer架构融合以增强特征提取能力。此外，[11]专注于设计基础下采样算子，[33]则倡导一种脱离固定小波基的动态频率选择范式。&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;</description></item><item><title>论文阅读</title><link>https://0o7race.github.io/my_blog/post/forge_05_06/forge_05_06/</link><pubDate>Wed, 06 May 2026 23:00:00 +0800</pubDate><guid>https://0o7race.github.io/my_blog/post/forge_05_06/forge_05_06/</guid><description>&lt;h1 id="对于meanflow和consistency-model的论文综述"&gt;&lt;a href="#%e5%af%b9%e4%ba%8emeanflow%e5%92%8cconsistency-model%e7%9a%84%e8%ae%ba%e6%96%87%e7%bb%bc%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;对于meanflow和consistency Model的论文综述
+&lt;/h1&gt;&lt;h2 id="两篇论文的纵深对比表格"&gt;&lt;a href="#%e4%b8%a4%e7%af%87%e8%ae%ba%e6%96%87%e7%9a%84%e7%ba%b5%e6%b7%b1%e5%af%b9%e6%af%94%e8%a1%a8%e6%a0%bc" class="header-anchor"&gt;&lt;/a&gt;两篇论文的纵深对比表格
+&lt;/h2&gt;&lt;h3 id="文献综述"&gt;&lt;a href="#%e6%96%87%e7%8c%ae%e7%bb%bc%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;文献综述
+&lt;/h3&gt;&lt;p&gt;在扩散去噪模型提出后，如今在生成模型领域，克服扩散模型迭代采样缓慢的瓶颈、实现高质量一步生成是近年来的核心议题。Song 等人 (2023)[2] 率先提出一致性模型（Consistency Models），通过训练一个从噪声到数据的直接映射，在根本上支持快速的一步生成。该框架具有突出的灵活性：既可从预训练扩散模型蒸馏得来，亦可作为独立生成模型从头训练，同时支持零样本数据编辑，如图像修复、上色和超分辨率。实验表明，一致性模型在一步采样设置下于 CIFAR-10 上取得 FID 3.55，在 ImageNet 64×64 上取得 FID 6.20，均刷新了当时一步生成的最优结果；即便是独立训练，其性能也超越以往的一步非对抗生成模型。在此基础上，Geng 等人 (2025)[1] 从流生成的角度提出了平均流（MeanFlow）框架，将关注点从流匹配中的瞬时速度转移至表征流场的平均速度。该方法通过推导平均速度与瞬时速度之间的恒等式来指导网络学习，完全自包含，无需预训练、蒸馏或课程学习。在 ImageNet 256×256 这一更高分辨率的基准上，MeanFlow 仅靠单次函数评估即达到 FID 3.43，大幅超越此前所有一步扩散/流模型，显著弥合了一步与多步生成方法之间的性能鸿沟。两项工作均以提升生成效率为目标，通过精巧的映射设计与训练范式，成功将一步生成的质量推至新高度。区别在于，一致性模型开创性地提出了兼顾蒸馏与独立训练、且内建零样本编辑能力的统一框架，而 MeanFlow 则在流模型理论中引入平均速度概念，在更高分辨率上验证了自包含训练的巨大潜力。两者的演进共同为高效、高质量生成模型的发展奠定了坚实基础。&lt;/p&gt;
+&lt;h3 id="文献矩阵"&gt;&lt;a href="#%e6%96%87%e7%8c%ae%e7%9f%a9%e9%98%b5" class="header-anchor"&gt;&lt;/a&gt;文献矩阵
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;属性&lt;/th&gt;
+ &lt;th&gt;Geng 等人 (2025)[1]&lt;/th&gt;
+ &lt;th&gt;Song 等人 (2023)[2]&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;研究目标&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;提出基于平均速度的单步流生成框架，旨在缩小一步与多步生成之间的性能差距。&lt;/td&gt;
+ &lt;td&gt;提出一致性模型，通过直接映射噪声到数据实现一步生成，并支持零样本数据编辑。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;方法&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;定义平均速度表征流场，推导与瞬时速度的恒等式以指导网络训练；自包含，无需蒸馏或课程学习。&lt;/td&gt;
+ &lt;td&gt;学习一致性映射，支持从预训练扩散模型蒸馏或作为独立生成模型训练；具备零样本图像修复、上色等能力。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;数据集&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;ImageNet 256×256&lt;/td&gt;
+ &lt;td&gt;CIFAR-10, ImageNet 64×64, LSUN 256×256&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;关键发现&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;单次函数评估下 FID 达 3.43，显著优于以往单步扩散/流模型，大幅缩小了与多步模型的差距。&lt;/td&gt;
+ &lt;td&gt;CIFAR-10 一步 FID 3.55，ImageNet 64×64 一步 FID 6.20；独立训练超越单步非对抗模型；展示出零样本编辑功能。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;局限性&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;仅在图像生成上验证，向其他模态的泛化性未知；更高分辨率或复杂场景下的表现有待考量。&lt;/td&gt;
+ &lt;td&gt;独立训练模型的性能可能仍低于蒸馏版本；零样本编辑能力在不同任务上的通用性需进一步探索。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;共同特征&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;两者均围绕一步生成建模的核心目标，通过设计非对抗的直接映射，有效克服扩散模型迭代慢的缺陷；均在标准数据集上取得当时领先的一步生成性能，为高效生成范式提供了重要推动。&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;独特特征&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;基于流模型理论独创“平均速度”概念，实现无蒸馏的自包含训练，并在更高分辨率（256×256）上取得突破性一步生成效果。&lt;/td&gt;
+ &lt;td&gt;率先提出一致性映射框架，支持蒸馏与独立训练双模式，并原生提供零样本编辑能力，兼具灵活性与多功能性。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="数学角度再分析两者的模型实现方式"&gt;&lt;a href="#%e6%95%b0%e5%ad%a6%e8%a7%92%e5%ba%a6%e5%86%8d%e5%88%86%e6%9e%90%e4%b8%a4%e8%80%85%e7%9a%84%e6%a8%a1%e5%9e%8b%e5%ae%9e%e7%8e%b0%e6%96%b9%e5%bc%8f" class="header-anchor"&gt;&lt;/a&gt;数学角度再分析两者的模型实现方式
+&lt;/h2&gt;&lt;p&gt;下面从数学理论角度，详细分析 &lt;strong&gt;MeanFlow（平均流）&lt;/strong&gt;[1] 与 &lt;strong&gt;一致性模型（Consistency Models）&lt;/strong&gt;[2] 的模型实现原理，并系统对比它们与经典生成模型的区别。经典模型主要涉及：&lt;strong&gt;去噪扩散概率模型（DDPM）&lt;/strong&gt; 及其得分配对框架、&lt;strong&gt;连续流匹配（Flow Matching）&lt;/strong&gt;。我们将基于统一的随机过程或常微分方程（ODE）视角展开。&lt;/p&gt;
+&lt;h3 id="一经典模型的数学框架回顾"&gt;&lt;a href="#%e4%b8%80%e7%bb%8f%e5%85%b8%e6%a8%a1%e5%9e%8b%e7%9a%84%e6%95%b0%e5%ad%a6%e6%a1%86%e6%9e%b6%e5%9b%9e%e9%a1%be" class="header-anchor"&gt;&lt;/a&gt;一、经典模型的数学框架回顾
+&lt;/h3&gt;&lt;h4 id="11-去噪扩散模型ddpm--score-based-sde"&gt;&lt;a href="#11-%e5%8e%bb%e5%99%aa%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8bddpm--score-based-sde" class="header-anchor"&gt;&lt;/a&gt;1.1 去噪扩散模型（DDPM / Score-based SDE）
+&lt;/h4&gt;&lt;p&gt;给定数据分布 $p_{\text{data}}(x_0)$，扩散过程通过逐步加噪定义隐变量序列 $x_t$：
+$$
+x_t = \alpha_t x_0 + \sigma_t \epsilon,\quad \epsilon \sim \mathcal{N}(0,I), \quad \alpha_t^2 + \sigma_t^2 = 1 ;\text{(方差保持)}
+$$
+模型学习「得分函数」$\nabla_{x_t}\log p_t(x_t)$，或等价地预测噪声 $\epsilon_\theta(x_t,t)$，训练损失为
+$$
+\mathcal{L}&lt;em&gt;{\text{DDPM}} = \mathbb{E}&lt;/em&gt;{x_0,\epsilon,t}\left[ w(t) |\epsilon_\theta(x_t,t) - \epsilon|^2 \right],
+$$
+生成时需迭代求解反向 SDE/ODE，逐步从 $T$ 到 $0$ 去噪，通常少则数十步，多则上千步。&lt;strong&gt;经典扩散天然排斥一步生成&lt;/strong&gt;，一步采样会导致严重模糊。&lt;/p&gt;
+&lt;h4 id="12-流匹配flow-matching"&gt;&lt;a href="#12-%e6%b5%81%e5%8c%b9%e9%85%8dflow-matching" class="header-anchor"&gt;&lt;/a&gt;1.2 流匹配（Flow Matching）
+&lt;/h4&gt;&lt;p&gt;流匹配构造一个时间依赖向量场 $v_t(x)$，使从先验 $p_0$ 沿 ODE $\frac{dx}{dt}=v_t(x)$ 积分到 $t=1$ 时得到数据分布 $p_1$。条件流匹配对条件路径 $x_t = \alpha_t x_1 + \sigma_t \epsilon$ 定义瞬时速度：
+$$
+u_t(x|x_1) = \dot{\alpha}&lt;em&gt;t x_1 + \dot{\sigma}&lt;em&gt;t \frac{x - \alpha_t x_1}{\sigma_t},
+$$
+网络 $v&lt;/em&gt;\theta(t,x)$ 通过回归 $u_t$ 训练：
+$$
+\mathcal{L}&lt;/em&gt;{\text{FM}} = \mathbb{E}&lt;em&gt;{t,x_1,x_t}\left[|v&lt;/em&gt;\theta(t,x_t) - u_t(x_t|x_1)|^2\right].
+$$
+同样，生成需要多步 ODE 求解，一步评估不可行，除非通过蒸馏。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="二一致性模型consistency-models的数学实现"&gt;&lt;a href="#%e4%ba%8c%e4%b8%80%e8%87%b4%e6%80%a7%e6%a8%a1%e5%9e%8bconsistency-models%e7%9a%84%e6%95%b0%e5%ad%a6%e5%ae%9e%e7%8e%b0" class="header-anchor"&gt;&lt;/a&gt;二、一致性模型（Consistency Models）的数学实现
+&lt;/h3&gt;&lt;p&gt;一致性模型[2]的目标是&lt;strong&gt;直接学习一个从噪声到数据的确定性映射&lt;/strong&gt;，使得&lt;strong&gt;一步生成&lt;/strong&gt;成为可能，同时兼容多步精化。其核心数学概念是一致性函数。&lt;/p&gt;
+&lt;h4 id="21-一致性函数与自洽条件"&gt;&lt;a href="#21-%e4%b8%80%e8%87%b4%e6%80%a7%e5%87%bd%e6%95%b0%e4%b8%8e%e8%87%aa%e6%b4%bd%e6%9d%a1%e4%bb%b6" class="header-anchor"&gt;&lt;/a&gt;2.1 一致性函数与自洽条件
+&lt;/h4&gt;&lt;p&gt;考虑一条连接先验与数据的概率流 ODE 轨迹 ${x_t}&lt;em&gt;{t\in[0,T]}$。一致性函数定义为
+$$
+f: (x_t, t) \mapsto x&lt;/em&gt;\epsilon, \qquad (\epsilon \approx 0)
+$$
+即&lt;strong&gt;把轨迹上任意时刻的点直接映射回轨迹的起点&lt;/strong&gt;（干净数据）。为满足物理一致性，必须对所有 $t, t&amp;rsquo; \in [\epsilon, T]$ 有
+$$
+f(x_t, t) = f(x_{t&amp;rsquo;}, t&amp;rsquo;), \tag{1}
+$$
+即&lt;strong&gt;同一条轨迹上的点映射结果相同&lt;/strong&gt;。边界条件为 $f(x_\epsilon, \epsilon) = x_\epsilon$。&lt;/p&gt;
+&lt;h4 id="22-训练一致性蒸馏与一致性训练"&gt;&lt;a href="#22-%e8%ae%ad%e7%bb%83%e4%b8%80%e8%87%b4%e6%80%a7%e8%92%b8%e9%a6%8f%e4%b8%8e%e4%b8%80%e8%87%b4%e6%80%a7%e8%ae%ad%e7%bb%83" class="header-anchor"&gt;&lt;/a&gt;2.2 训练：一致性蒸馏与一致性训练
+&lt;/h4&gt;&lt;p&gt;一致性模型有两种训练方式：
+&lt;strong&gt;（1）一致性蒸馏（Consistency Distillation, CD）&lt;/strong&gt;
+需要预训练好的扩散模型得分网络 $s_\phi(x,t)$，用于计算数值ODE单步递进 $x_{t} \to x_{t-\Delta t}$。给定数据点 $x_0$，沿扩散轨迹采样 $x_{t_n}$ 和 $x_{t_{n-1}}$，用预训练模型估计 $\hat{x}&lt;em&gt;{t&lt;/em&gt;{n-1}} \approx x_{t_{n-1}}$。损失使相邻两点的输出一致：
+$$
+\mathcal{L}&lt;em&gt;{\text{CD}} = \mathbb{E} \left[ d\big( f&lt;/em&gt;\theta(x_{t_n}, t_n),; f_{\theta^-}(\hat{x}&lt;em&gt;{t&lt;/em&gt;{n-1}}, t_{n-1}) \big) \right].
+$$
+$f_{\theta^-}$ 为目标网络的指数移动平均（EMA），$d$ 为距离函数（如 Huber 或 LPIPS）。一步采样时取 $f_\theta(x_T, T)$。
+&lt;strong&gt;（2）一致性训练（Consistency Training, CT）&lt;/strong&gt;
+完全脱离教师模型，直接从数据训练。利用任意噪声注入 $x_{t_n} = \alpha_{t_n}x_0 + \sigma_{t_n}\epsilon$，并计算 $x_{t_{n-1}}$ 作为同一条轨迹上的另一对点（保持相同噪声种子 $\epsilon$）。则一致性映射应满足 $f_\theta(x_{t_n}, t_n) = f_{\theta^-}(x_{t_{n-1}}, t_{n-1})$。损失为
+$$
+\mathcal{L}&lt;em&gt;{\text{CT}} = \mathbb{E} \left[ d\big( f&lt;/em&gt;\theta(\alpha_{t_n}x_0 + \sigma_{t_n}\epsilon, t_n),; f_{\theta^-}(\alpha_{t_{n-1}}x_0 + \sigma_{t_{n-1}}\epsilon, t_{n-1}) \big) \right]. \tag{2}
+$$
+边界条件通过参数化 $f_\theta(x,t) = c_{\text{skip}}(t)x + c_{\text{out}}(t)F_\theta(x,t)$ 并令 $c_{\text{skip}}(\epsilon)=1, c_{\text{out}}(\epsilon)=0$ 自动强制实现。
+&lt;strong&gt;关键数学性质：&lt;/strong&gt; CT损失 (2) 本质上是强迫 $f_\theta$ 在 ODE 轨迹的离散点上满足自洽性 (1)；训练稳定后 $f_\theta$ 逼近真正的轨迹映射，一步生成即取 $t=T$ 时的输出。&lt;strong&gt;无需任何预训练、蒸馏或课程学习&lt;/strong&gt;，只需噪声-数据对。&lt;/p&gt;
+&lt;h4 id="23-与经典扩散的本质区别"&gt;&lt;a href="#23-%e4%b8%8e%e7%bb%8f%e5%85%b8%e6%89%a9%e6%95%a3%e7%9a%84%e6%9c%ac%e8%b4%a8%e5%8c%ba%e5%88%ab" class="header-anchor"&gt;&lt;/a&gt;2.3 与经典扩散的本质区别
+&lt;/h4&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;经典扩散 (DDPM/Score)&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;一致性模型&lt;/strong&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;核心学习目标&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;得分函数 $\nabla \log p_t(x)$ 或噪声&lt;/td&gt;
+ &lt;td&gt;轨迹一致性映射 $f(x_t,t)\to x_0$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;生成方式&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;迭代求解反向 SDE/ODE&lt;/td&gt;
+ &lt;td&gt;一步直接映射（也可多步精化）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;训练依赖&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;仅需数据；明确无需求教师&lt;/td&gt;
+ &lt;td&gt;CD需预训练扩散教师；CT可从零训练，无需教师&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;数学约束&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;无显式轨迹自洽要求&lt;/td&gt;
+ &lt;td&gt;强制点对点一致性，损失驱动轨迹坍缩&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;典型损失形式&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;$|\epsilon_\theta - \epsilon|^2$&lt;/td&gt;
+ &lt;td&gt;$d(f_\theta(x_t,t), f_{\theta^-}(x_{t-\Delta}, t-\Delta))$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id="三meanflow平均流的数学实现"&gt;&lt;a href="#%e4%b8%89meanflow%e5%b9%b3%e5%9d%87%e6%b5%81%e7%9a%84%e6%95%b0%e5%ad%a6%e5%ae%9e%e7%8e%b0" class="header-anchor"&gt;&lt;/a&gt;三、MeanFlow（平均流）的数学实现
+&lt;/h3&gt;&lt;p&gt;MeanFlow[1] 从&lt;strong&gt;流匹配&lt;/strong&gt;出发，通过重新参数化向量场，实现&lt;strong&gt;无需蒸馏的单步生成&lt;/strong&gt;。其核心创新是提出“平均速度”概念，并导出一组恒等式来设计自包含训练。&lt;/p&gt;
+&lt;h3 id="31-平均速度定义"&gt;&lt;a href="#31-%e5%b9%b3%e5%9d%87%e9%80%9f%e5%ba%a6%e5%ae%9a%e4%b9%89" class="header-anchor"&gt;&lt;/a&gt;3.1 平均速度定义
+&lt;/h3&gt;&lt;p&gt;对于连接 $x_0\sim p_0$ 到 $x_1\sim p_{\text{data}}$ 的任意可微路径 ${x_t}$，定义&lt;strong&gt;从时刻 $t$ 到终点的平均速度&lt;/strong&gt;：
+$$
+w_t(x_t) \triangleq \frac{x_1 - x_t}{1-t}, \quad 0\le t &amp;lt; 1. \tag{3}
+$$
+若网络 $\bar{v}&lt;em&gt;\theta(t,x_t)$ 直接预测此平均速度，则一步生成为：
+$$
+x_1 = x_0 + \bar{v}&lt;/em&gt;\theta(0,x_0) \qquad （从t=0直接到t=1）. \tag{4}
+$$&lt;/p&gt;
+&lt;h4 id="32-瞬时速度与平均速度的恒等式"&gt;&lt;a href="#32-%e7%9e%ac%e6%97%b6%e9%80%9f%e5%ba%a6%e4%b8%8e%e5%b9%b3%e5%9d%87%e9%80%9f%e5%ba%a6%e7%9a%84%e6%81%92%e7%ad%89%e5%bc%8f" class="header-anchor"&gt;&lt;/a&gt;3.2 瞬时速度与平均速度的恒等式
+&lt;/h4&gt;&lt;p&gt;流匹配通常学习&lt;strong&gt;瞬时速度&lt;/strong&gt; $v_t = dx_t/dt$。为将平均速度的学习与真实流动力学联系起来，MeanFlow 推导两者间的微分关系。由 $x_t = x_1 - (1-t) w_t$，对 $t$ 求导：
+$$
+v_t = \frac{d x_t}{d t} = w_t - (1-t)\frac{d w_t}{d t}. \tag{5}
+$$
+而全导数可展开为 $\frac{d w_t}{d t} = \partial_t w_t + (\nabla_x w_t)^\top v_t$，代入 (5) 解得：
+$$
+v_t = \frac{w_t - (1-t),\partial_t w_t}{1 + (1-t),\nabla_x w_t \cdot v_t}. \tag{6}
+$$
+这个恒等式将瞬时速度与平均速度的时空偏导数联系起来。&lt;strong&gt;若网络预测的平均速度 $\bar{v}_\theta$ 自身满足此恒等式对应的微分关系，则它定义的ODE轨迹将指向正确的终点&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id="33-自包含训练损失"&gt;&lt;a href="#33-%e8%87%aa%e5%8c%85%e5%90%ab%e8%ae%ad%e7%bb%83%e6%8d%9f%e5%a4%b1" class="header-anchor"&gt;&lt;/a&gt;3.3 自包含训练损失
+&lt;/h4&gt;&lt;p&gt;MeanFlow 的训练不需要任何教师模型，而是通过两项构建损失：
+&lt;strong&gt;主损失&lt;/strong&gt;：直接监督平均速度
+$$
+\mathcal{L}&lt;em&gt;{\text{avg}} = \mathbb{E}&lt;/em&gt;{t,x_1,x_0}\left[ \big| \bar{v}&lt;em&gt;\theta(t, x_t) - \frac{x_1 - x_t}{1-t} \big|^2 \right]. \tag{7}
+$$
+&lt;strong&gt;正则化/一致性损失&lt;/strong&gt;：基于恒等式 (5) 或变形，要求网络自身在采样路径上满足 $v_t \approx \bar{v}&lt;/em&gt;\theta$ 对应的兼容条件。例如强制
+$$
+\frac{d}{dt} \big( x_t + (1-t)\bar{v}&lt;em&gt;\theta(t,x_t) \big) \approx 0,
+$$
+或直接最小化某个来自 (5) 的残差。一种典型的实现是，沿 $t$ 采样两个相邻点，要求满足：
+$$
+x&lt;/em&gt;{t_2} + (1-t_2)\bar{v}&lt;em&gt;\theta(t_2, x&lt;/em&gt;{t_2}) \approx x_{t_1} + (1-t_1)\bar{v}&lt;em&gt;\theta(t_1, x&lt;/em&gt;{t_1}). \tag{8}
+$$
+这正是“平均流”名称的由来——它迫使 $x_t + (1-t)\bar{v}_\theta$ 保持恒定为 $x_1$，即网络预测的平均速度在整条轨迹上内在一致。整个训练&lt;strong&gt;无需预训练扩散模型，无需蒸馏，无需课程学习&lt;/strong&gt;，完全自包含。&lt;/p&gt;
+&lt;h4 id="34-生成与性能"&gt;&lt;a href="#34-%e7%94%9f%e6%88%90%e4%b8%8e%e6%80%a7%e8%83%bd" class="header-anchor"&gt;&lt;/a&gt;3.4 生成与性能
+&lt;/h4&gt;&lt;p&gt;训练完成后，仅需一次前向传播：
+$$
+\hat{x}&lt;em&gt;1 = x_0 + \bar{v}&lt;/em&gt;\theta(0, x_0), \quad x_0 \sim p_0.
+$$
+在 ImageNet 256×256 上单步 FID 达 3.43，前所未有地缩小了单步与多步生成之间的差距。&lt;/p&gt;
+&lt;h4 id="35-与经典流匹配的本质区别"&gt;&lt;a href="#35-%e4%b8%8e%e7%bb%8f%e5%85%b8%e6%b5%81%e5%8c%b9%e9%85%8d%e7%9a%84%e6%9c%ac%e8%b4%a8%e5%8c%ba%e5%88%ab" class="header-anchor"&gt;&lt;/a&gt;3.5 与经典流匹配的本质区别
+&lt;/h4&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;经典流匹配 (Flow Matching)&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;MeanFlow&lt;/strong&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;预测目标&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;瞬时速度 $v_t$&lt;/td&gt;
+ &lt;td&gt;平均速度 $w_t = \frac{x_1 - x_t}{1-t}$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;生成方式&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;多步 ODE 求解 $\int_0^1 v_t dt$&lt;/td&gt;
+ &lt;td&gt;一步加法 $x_0 + \bar{v}_\theta(0,x_0)$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;训练数据要求&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;只需数据对 $(x_0,x_1)$；学习 $v_t$&lt;/td&gt;
+ &lt;td&gt;同样只需数据对；学习 $w_t$ 并强制内部一致性&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;是否需要蒸馏&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;单步生成必须依赖蒸馏（如一致性蒸馏或渐进蒸馏）&lt;/td&gt;
+ &lt;td&gt;&lt;strong&gt;完全不需要&lt;/strong&gt;，自包含训练&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;数学核心&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;条件概率路径回归&lt;/td&gt;
+ &lt;td&gt;平均速度-瞬时速度恒等式 + 轨迹一致性正则&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id="四meanflow-与-consistency-models-的共同点与区分"&gt;&lt;a href="#%e5%9b%9bmeanflow-%e4%b8%8e-consistency-models-%e7%9a%84%e5%85%b1%e5%90%8c%e7%82%b9%e4%b8%8e%e5%8c%ba%e5%88%86" class="header-anchor"&gt;&lt;/a&gt;四、MeanFlow 与 Consistency Models 的共同点与区分
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;共同目标&lt;/strong&gt;：实现高质量单步生成，摆脱迭代采样。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;共同理念&lt;/strong&gt;：通过学习一种“全局”映射（一致性函数 $f$ 或平均速度 $w_t$）取代逐步递推，且两者都提供了&lt;strong&gt;自包含训练&lt;/strong&gt;的途径（CT 与 MeanFlow 均无需教师）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数学路径差异&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;一致性模型&lt;/strong&gt;建立在扩散 ODE 轨迹的自洽性上，学习的是&lt;strong&gt;任意中间点到起点的直接映射&lt;/strong&gt;，损失是点对点的一致性约束。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MeanFlow&lt;/strong&gt; 建立在流匹配的路径上，学习&lt;strong&gt;从中间点到终点的平均速度&lt;/strong&gt;，并通过微分恒等式约束网络内在路径，使一步积分等价于精确流。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;理论渊源&lt;/strong&gt;：一致性源于扩散/得分 SDE，MeanFlow 源于连续流/CNF。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能定位&lt;/strong&gt;：在 ImageNet 256×256 分辨率下，MeanFlow 单步取得了当时最优，而一致性模型在低分辨率（CIFAR-10, ImageNet 64）展现了零样本编辑等独特功能。
+两篇工作均以极简的数学重构实现了显著的性能飞跃，为生成模型中“一步生成”的发展提供了坚实且互补的理论基础。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Hugo 博客上手指南：主题配置 &amp; GitHub Pages 部署 &amp; Git 命令总结</title><link>https://0o7race.github.io/my_blog/post/hello_my_blog/</link><pubDate>Sat, 04 Apr 2026 23:00:00 +0800</pubDate><guid>https://0o7race.github.io/my_blog/post/hello_my_blog/</guid><description>&lt;h2 id="一认识-hugo-博客的目录结构"&gt;&lt;a href="#%e4%b8%80%e8%ae%a4%e8%af%86-hugo-%e5%8d%9a%e5%ae%a2%e7%9a%84%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" class="header-anchor"&gt;&lt;/a&gt;一、认识 Hugo 博客的目录结构
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;my_blog/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── hugo.toml # 站点主配置文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── content/ # 所有文章内容
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ └── post/ # 文章目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ └── hello_my_blog.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── static/ # 静态资源（图片、favicon 等）
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── assets/ # 样式、脚本等资源
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── layouts/ # 自定义模板（覆盖主题模板）
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── themes/ # 主题目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ └── hugo-theme-stack-master/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── public/ # hugo 构建后生成的静态网页
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── archetypes/ # 新文章模板
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── data/ # 数据文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;└── i18n/ # 多语言翻译文件
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;核心规律：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;改配置 → &lt;code&gt;hugo.toml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;写文章 → &lt;code&gt;content/post/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;放图片 → &lt;code&gt;static/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;改外观 → &lt;code&gt;hugo.toml&lt;/code&gt; + &lt;code&gt;layouts/&lt;/code&gt; + &lt;code&gt;assets/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="二主题更改的详细语法"&gt;&lt;a href="#%e4%ba%8c%e4%b8%bb%e9%a2%98%e6%9b%b4%e6%94%b9%e7%9a%84%e8%af%a6%e7%bb%86%e8%af%ad%e6%b3%95" class="header-anchor"&gt;&lt;/a&gt;二、主题更改的详细语法
+&lt;/h2&gt;&lt;h3 id="21-hugotoml-基础字段"&gt;&lt;a href="#21-hugotoml-%e5%9f%ba%e7%a1%80%e5%ad%97%e6%ae%b5" class="header-anchor"&gt;&lt;/a&gt;2.1 hugo.toml 基础字段
+&lt;/h3&gt;&lt;p&gt;当前配置文件内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;baseURL&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#39;https://example.org/&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;locale&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#39;en-us&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;title&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#39;Blog For Life&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;theme&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;hugo-theme-stack-master&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;各字段含义：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;字段&lt;/th&gt;
+ &lt;th&gt;作用&lt;/th&gt;
+ &lt;th&gt;修改建议&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;baseURL&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;网站最终发布的网址&lt;/td&gt;
+ &lt;td&gt;部署到 GitHub Pages 后改成实际地址&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;locale&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;语言地区&lt;/td&gt;
+ &lt;td&gt;中文博客改成 &lt;code&gt;'zh-cn'&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;网站标题，显示在首页和浏览器标签&lt;/td&gt;
+ &lt;td&gt;改成你的博客名&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;theme&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;使用的主题目录名&lt;/td&gt;
+ &lt;td&gt;必须和 &lt;code&gt;themes/&lt;/code&gt; 下的文件夹名一致&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="22-toml-语法基础"&gt;&lt;a href="#22-toml-%e8%af%ad%e6%b3%95%e5%9f%ba%e7%a1%80" class="header-anchor"&gt;&lt;/a&gt;2.2 TOML 语法基础
+&lt;/h3&gt;&lt;p&gt;Hugo 配置文件使用 TOML 格式，常用语法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 字符串&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;title&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;我的博客&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 布尔值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;draft&lt;/span&gt; = &lt;span style="color:#66d9ef"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 数字&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;paginate&lt;/span&gt; = &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 数组&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;tags&lt;/span&gt; = [&lt;span style="color:#e6db74"&gt;&amp;#34;Hugo&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;博客&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;教程&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 表（类似对象/字典）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;description&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;一个个人博客&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;mainSections&lt;/span&gt; = [&lt;span style="color:#e6db74"&gt;&amp;#34;post&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 嵌套表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;sidebar&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;emoji&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;🎯&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;subtitle&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;记录生活与技术&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 双括号表示数组中的表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[[&lt;span style="color:#a6e22e"&gt;menu&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;首页&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;url&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;weight&lt;/span&gt; = &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[[&lt;span style="color:#a6e22e"&gt;menu&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;归档&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;url&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;/archives&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;weight&lt;/span&gt; = &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="23-修改站点标题和描述"&gt;&lt;a href="#23-%e4%bf%ae%e6%94%b9%e7%ab%99%e7%82%b9%e6%a0%87%e9%a2%98%e5%92%8c%e6%8f%8f%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;2.3 修改站点标题和描述
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;title&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#39;Blog For Life&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;description&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;记录我的学习与生活&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;效果：&lt;code&gt;title&lt;/code&gt; 显示在浏览器标签页和网站顶部，&lt;code&gt;description&lt;/code&gt; 显示在首页副标题或 SEO 描述中。&lt;/p&gt;
+&lt;h3 id="24-修改语言"&gt;&lt;a href="#24-%e4%bf%ae%e6%94%b9%e8%af%ad%e8%a8%80" class="header-anchor"&gt;&lt;/a&gt;2.4 修改语言
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;languageCode&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#39;zh-cn&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;defaultContentLanguage&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#39;zh-cn&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="25-配置首页侧边栏stack-主题"&gt;&lt;a href="#25-%e9%85%8d%e7%bd%ae%e9%a6%96%e9%a1%b5%e4%be%a7%e8%be%b9%e6%a0%8fstack-%e4%b8%bb%e9%a2%98" class="header-anchor"&gt;&lt;/a&gt;2.5 配置首页侧边栏（Stack 主题）
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;sidebar&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;emoji&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;🏠&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;subtitle&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;欢迎来到我的博客&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;sidebar&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;avatar&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;enabled&lt;/span&gt; = &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;local&lt;/span&gt; = &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;src&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;img/avatar.png&amp;#34;&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 图片放在 static/img/avatar.png&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;把头像图片放在：&lt;code&gt;static/img/avatar.png&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="26-配置社交链接stack-主题"&gt;&lt;a href="#26-%e9%85%8d%e7%bd%ae%e7%a4%be%e4%ba%a4%e9%93%be%e6%8e%a5stack-%e4%b8%bb%e9%a2%98" class="header-anchor"&gt;&lt;/a&gt;2.6 配置社交链接（Stack 主题）
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[[&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;widgets&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;social&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;GitHub&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;icon&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;brand-github&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;url&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;https://github.com/你的用户名&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[[&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;widgets&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;social&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;Email&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;icon&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;mail&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;url&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;mailto:你的邮箱@example.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="27-配置导航菜单"&gt;&lt;a href="#27-%e9%85%8d%e7%bd%ae%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95" class="header-anchor"&gt;&lt;/a&gt;2.7 配置导航菜单
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[[&lt;span style="color:#a6e22e"&gt;menu&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;首页&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;url&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;weight&lt;/span&gt; = &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[[&lt;span style="color:#a6e22e"&gt;menu&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;归档&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;url&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;/archives&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;weight&lt;/span&gt; = &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[[&lt;span style="color:#a6e22e"&gt;menu&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;搜索&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;url&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;/search&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;weight&lt;/span&gt; = &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;weight&lt;/code&gt; 数字越小排越前面。&lt;/p&gt;
+&lt;h3 id="28-配置文章每页显示数量"&gt;&lt;a href="#28-%e9%85%8d%e7%bd%ae%e6%96%87%e7%ab%a0%e6%af%8f%e9%a1%b5%e6%98%be%e7%a4%ba%e6%95%b0%e9%87%8f" class="header-anchor"&gt;&lt;/a&gt;2.8 配置文章每页显示数量
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;paginate&lt;/span&gt; = &lt;span style="color:#ae81ff"&gt;5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="29-修改-favicon"&gt;&lt;a href="#29-%e4%bf%ae%e6%94%b9-favicon" class="header-anchor"&gt;&lt;/a&gt;2.9 修改 favicon
+&lt;/h3&gt;&lt;p&gt;把你的 favicon 文件放到：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;static/favicon.ico
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;static/favicon.png
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Hugo 会自动识别。&lt;/p&gt;
+&lt;h3 id="210-文章-front-matter-语法"&gt;&lt;a href="#210-%e6%96%87%e7%ab%a0-front-matter-%e8%af%ad%e6%b3%95" class="header-anchor"&gt;&lt;/a&gt;2.10 文章 Front Matter 语法
+&lt;/h3&gt;&lt;p&gt;每篇文章开头的 &lt;code&gt;---&lt;/code&gt; 之间的内容叫 Front Matter，控制这篇文章的元信息：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;title: &amp;#34;文章标题&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;date: 2026-04-04T23:00:00+08:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;draft: false
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;description: &amp;#34;文章描述，用于 SEO 和列表页预览&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tags: [&amp;#34;标签1&amp;#34;, &amp;#34;标签2&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;categories: [&amp;#34;分类名&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;image: &amp;#34;cover.jpg&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;正文从这里开始...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;字段&lt;/th&gt;
+ &lt;th&gt;说明&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;文章标题&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;date&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;发布日期，影响排序&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;draft&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;true&lt;/code&gt; 表示草稿，不会发布；&lt;code&gt;false&lt;/code&gt; 才会显示&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;文章描述&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;标签，数组格式&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;categories&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;分类&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;文章封面图（Stack 主题支持）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="211-在文章中插入图片"&gt;&lt;a href="#211-%e5%9c%a8%e6%96%87%e7%ab%a0%e4%b8%ad%e6%8f%92%e5%85%a5%e5%9b%be%e7%89%87" class="header-anchor"&gt;&lt;/a&gt;2.11 在文章中插入图片
+&lt;/h3&gt;&lt;p&gt;把图片放到 &lt;code&gt;static/images/&lt;/code&gt; 目录：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;static/images/my-photo.png
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;文章中引用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#f92672"&gt;图片说明&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;/images/my-photo.png&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="212-改哪里影响哪里速查表"&gt;&lt;a href="#212-%e6%94%b9%e5%93%aa%e9%87%8c%e5%bd%b1%e5%93%8d%e5%93%aa%e9%87%8c%e9%80%9f%e6%9f%a5%e8%a1%a8" class="header-anchor"&gt;&lt;/a&gt;2.12 &amp;ldquo;改哪里影响哪里&amp;quot;速查表
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;想改什么&lt;/th&gt;
+ &lt;th&gt;改哪个文件&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;博客标题&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;网站地址&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;baseURL&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;语言&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;languageCode&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;头像&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;static/img/avatar.png&lt;/code&gt; + &lt;code&gt;hugo.toml&lt;/code&gt; 配置&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;导航菜单&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;[[menu.main]]&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;社交链接&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;hugo.toml&lt;/code&gt; → &lt;code&gt;[[params.widgets.social]]&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;新文章&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;content/post/新文章.md&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;文章封面图&lt;/td&gt;
+ &lt;td&gt;Front Matter 的 &lt;code&gt;image&lt;/code&gt; 字段&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;网站图标&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;static/favicon.ico&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;页面模板&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;layouts/&lt;/code&gt; 覆盖主题模板&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;自定义 CSS&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;assets/scss/custom.scss&lt;/code&gt;（Stack 主题支持）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="三部署到-github-pages-的详细步骤"&gt;&lt;a href="#%e4%b8%89%e9%83%a8%e7%bd%b2%e5%88%b0-github-pages-%e7%9a%84%e8%af%a6%e7%bb%86%e6%ad%a5%e9%aa%a4" class="header-anchor"&gt;&lt;/a&gt;三、部署到 GitHub Pages 的详细步骤
+&lt;/h2&gt;&lt;h3 id="31-前提条件"&gt;&lt;a href="#31-%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6" class="header-anchor"&gt;&lt;/a&gt;3.1 前提条件
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;已安装 Git（命令行输入 &lt;code&gt;git --version&lt;/code&gt; 确认）&lt;/li&gt;
+&lt;li&gt;已有 GitHub 账号&lt;/li&gt;
+&lt;li&gt;已安装 Hugo Extended（命令行输入 &lt;code&gt;hugo version&lt;/code&gt; 确认）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="32-两种-github-pages-方式"&gt;&lt;a href="#32-%e4%b8%a4%e7%a7%8d-github-pages-%e6%96%b9%e5%bc%8f" class="header-anchor"&gt;&lt;/a&gt;3.2 两种 GitHub Pages 方式
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;方式&lt;/th&gt;
+ &lt;th&gt;仓库名&lt;/th&gt;
+ &lt;th&gt;最终网址&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;用户站点&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;用户名.github.io&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;https://用户名.github.io/&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;项目站点&lt;/td&gt;
+ &lt;td&gt;任意名字，如 &lt;code&gt;my_blog&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;https://用户名.github.io/my_blog/&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;推荐新手用 &lt;strong&gt;用户站点&lt;/strong&gt;，网址更简洁。&lt;/p&gt;
+&lt;h3 id="33-详细操作步骤"&gt;&lt;a href="#33-%e8%af%a6%e7%bb%86%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4" class="header-anchor"&gt;&lt;/a&gt;3.3 详细操作步骤
+&lt;/h3&gt;&lt;h4 id="第一步在-github-创建仓库"&gt;&lt;a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5%e5%9c%a8-github-%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93" class="header-anchor"&gt;&lt;/a&gt;第一步：在 GitHub 创建仓库
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;登录 &lt;a class="link" href="https://github.com" target="_blank" rel="noopener"
+ &gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;点右上角 &lt;strong&gt;+&lt;/strong&gt; → &lt;strong&gt;New repository&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;仓库名填写：
+&lt;ul&gt;
+&lt;li&gt;用户站点：&lt;code&gt;你的用户名.github.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;项目站点：&lt;code&gt;my_blog&lt;/code&gt;（或任意名字）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;选择 &lt;strong&gt;Public&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不要&lt;/strong&gt;勾选 &amp;ldquo;Add a README file&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;点 &lt;strong&gt;Create repository&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="第二步修改-hugotoml-中的-baseurl"&gt;&lt;a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e4%bf%ae%e6%94%b9-hugotoml-%e4%b8%ad%e7%9a%84-baseurl" class="header-anchor"&gt;&lt;/a&gt;第二步：修改 hugo.toml 中的 baseURL
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;用户站点：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;baseURL&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#39;https://你的用户名.github.io/&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;项目站点：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;baseURL&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#39;https://你的用户名.github.io/my_blog/&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+ &lt;blockquote&gt;
+ &lt;p&gt;⚠️ 这一步非常重要！&lt;code&gt;baseURL&lt;/code&gt; 写错会导致部署后样式丢失或页面 404。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;h4 id="第三步构建静态文件"&gt;&lt;a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5%e6%9e%84%e5%bb%ba%e9%9d%99%e6%80%81%e6%96%87%e4%bb%b6" class="header-anchor"&gt;&lt;/a&gt;第三步：构建静态文件
+&lt;/h4&gt;&lt;p&gt;在博客根目录执行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这会在 &lt;code&gt;public/&lt;/code&gt; 目录生成完整的静态网站文件。&lt;/p&gt;
+&lt;h4 id="第四步初始化-git-仓库并推送"&gt;&lt;a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5%e5%88%9d%e5%a7%8b%e5%8c%96-git-%e4%bb%93%e5%ba%93%e5%b9%b6%e6%8e%a8%e9%80%81" class="header-anchor"&gt;&lt;/a&gt;第四步：初始化 Git 仓库并推送
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;方法 A：只推送 public 目录（简单方式）&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd public
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git commit -m &lt;span style="color:#e6db74"&gt;&amp;#34;first deploy&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git branch -M main
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git remote add origin https://github.com/你的用户名/你的仓库名.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git push -u origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后在 GitHub 仓库 → Settings → Pages → Source 选择 &lt;code&gt;main&lt;/code&gt; 分支，目录选 &lt;code&gt;/ (root)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法 B：推送整个项目 + GitHub Actions 自动构建（推荐）&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd c:&lt;span style="color:#ae81ff"&gt;\U&lt;/span&gt;sers&lt;span style="color:#ae81ff"&gt;\m&lt;/span&gt;infu&lt;span style="color:#ae81ff"&gt;\m&lt;/span&gt;y_blog
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git commit -m &lt;span style="color:#e6db74"&gt;&amp;#34;initial commit&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git branch -M main
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git remote add origin https://github.com/你的用户名/你的仓库名.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git push -u origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后在仓库中创建 GitHub Actions 工作流文件，让 GitHub 自动帮你构建和部署。&lt;/p&gt;
+&lt;h4 id="第五步配置-github-actions-自动部署推荐方法-b-时使用"&gt;&lt;a href="#%e7%ac%ac%e4%ba%94%e6%ad%a5%e9%85%8d%e7%bd%ae-github-actions-%e8%87%aa%e5%8a%a8%e9%83%a8%e7%bd%b2%e6%8e%a8%e8%8d%90%e6%96%b9%e6%b3%95-b-%e6%97%b6%e4%bd%bf%e7%94%a8" class="header-anchor"&gt;&lt;/a&gt;第五步：配置 GitHub Actions 自动部署（推荐方法 B 时使用）
+&lt;/h4&gt;&lt;p&gt;在项目根目录创建文件：&lt;code&gt;.github/workflows/hugo.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Deploy Hugo site to Pages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;on&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;push&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;branches&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;main&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;workflow_dispatch&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;permissions&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;contents&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;read&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;pages&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;write&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;id-token&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;write&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;concurrency&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;group&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;pages&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;cancel-in-progress&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;defaults&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;run&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;shell&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;jobs&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;build&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;runs-on&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ubuntu-latest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;env&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;HUGO_VERSION&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0.147.6&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;steps&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Install Hugo CLI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;run&lt;/span&gt;: |&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; &amp;amp;&amp;amp; sudo dpkg -i ${{ runner.temp }}/hugo.deb&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Checkout&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;uses&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;actions/checkout@v4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;submodules&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;recursive&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Setup Pages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;id&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;pages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;uses&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;actions/configure-pages@v5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Build with Hugo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;env&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;HUGO_CACHEDIR&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;${{ runner.temp }}/hugo_cache&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;HUGO_ENVIRONMENT&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;production&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;run&lt;/span&gt;: |&lt;span style="color:#e6db74"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; hugo --minify --baseURL &amp;#34;${{ steps.pages.outputs.base_url }}/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Upload artifact&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;uses&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;actions/upload-pages-artifact@v3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;path&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;./public&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;deploy&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;environment&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;github-pages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;url&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;${{ steps.deployment.outputs.page_url }}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;runs-on&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ubuntu-latest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;needs&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;build&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;steps&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Deploy to GitHub Pages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;id&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;deployment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;uses&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;actions/deploy-pages@v4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;推送后，在 GitHub 仓库 → &lt;strong&gt;Settings&lt;/strong&gt; → &lt;strong&gt;Pages&lt;/strong&gt; → &lt;strong&gt;Source&lt;/strong&gt; 选择 &lt;strong&gt;GitHub Actions&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id="第六步访问你的博客"&gt;&lt;a href="#%e7%ac%ac%e5%85%ad%e6%ad%a5%e8%ae%bf%e9%97%ae%e4%bd%a0%e7%9a%84%e5%8d%9a%e5%ae%a2" class="header-anchor"&gt;&lt;/a&gt;第六步：访问你的博客
+&lt;/h4&gt;&lt;p&gt;等 GitHub Actions 构建完成（通常 1-2 分钟），访问：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户站点：&lt;code&gt;https://你的用户名.github.io/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;项目站点：&lt;code&gt;https://你的用户名.github.io/仓库名/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="34-常见问题排查"&gt;&lt;a href="#34-%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e6%8e%92%e6%9f%a5" class="header-anchor"&gt;&lt;/a&gt;3.4 常见问题排查
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;问题&lt;/th&gt;
+ &lt;th&gt;原因&lt;/th&gt;
+ &lt;th&gt;解决方法&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;页面 404&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;baseURL&lt;/code&gt; 写错或 Pages 源未配置&lt;/td&gt;
+ &lt;td&gt;检查 &lt;code&gt;baseURL&lt;/code&gt;，确认 Pages 设置&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;样式全部丢失&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;baseURL&lt;/code&gt; 路径不对&lt;/td&gt;
+ &lt;td&gt;项目站点必须包含仓库名路径&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;文章不显示&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;draft: true&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;改成 &lt;code&gt;draft: false&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;本地正常但线上不对&lt;/td&gt;
+ &lt;td&gt;本地用 &lt;code&gt;hugo server&lt;/code&gt; 会忽略 &lt;code&gt;baseURL&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;用 &lt;code&gt;hugo&lt;/code&gt; 构建后检查 &lt;code&gt;public/&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="35-后续更新文章的流程"&gt;&lt;a href="#35-%e5%90%8e%e7%bb%ad%e6%9b%b4%e6%96%b0%e6%96%87%e7%ab%a0%e7%9a%84%e6%b5%81%e7%a8%8b" class="header-anchor"&gt;&lt;/a&gt;3.5 后续更新文章的流程
+&lt;/h3&gt;&lt;p&gt;每次写完新文章后：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 1. 添加所有改动&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 2. 提交&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git commit -m &lt;span style="color:#e6db74"&gt;&amp;#34;新增文章：文章标题&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 3. 推送到 GitHub（如果用了 Actions，会自动重新部署）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git push
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="四常用-git-命令总结"&gt;&lt;a href="#%e5%9b%9b%e5%b8%b8%e7%94%a8-git-%e5%91%bd%e4%bb%a4%e6%80%bb%e7%bb%93" class="header-anchor"&gt;&lt;/a&gt;四、常用 Git 命令总结
+&lt;/h2&gt;&lt;h3 id="41-仓库初始化与配置"&gt;&lt;a href="#41-%e4%bb%93%e5%ba%93%e5%88%9d%e5%a7%8b%e5%8c%96%e4%b8%8e%e9%85%8d%e7%bd%ae" class="header-anchor"&gt;&lt;/a&gt;4.1 仓库初始化与配置
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 初始化一个新的 Git 仓库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 设置用户名（首次使用 Git 时需要）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --global user.name &lt;span style="color:#e6db74"&gt;&amp;#34;你的名字&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 设置邮箱&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --global user.email &lt;span style="color:#e6db74"&gt;&amp;#34;你的邮箱@example.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看当前配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git config --list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="42-基本操作"&gt;&lt;a href="#42-%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c" class="header-anchor"&gt;&lt;/a&gt;4.2 基本操作
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看仓库状态（哪些文件被修改、哪些未跟踪）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git status
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 添加单个文件到暂存区&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git add 文件名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 添加所有文件到暂存区&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 提交暂存区的文件（附带说明信息）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git commit -m &lt;span style="color:#e6db74"&gt;&amp;#34;提交说明&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看提交历史（简洁模式）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git log --oneline
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看提交历史（详细模式）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git log
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="43-远程仓库操作"&gt;&lt;a href="#43-%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93%e6%93%8d%e4%bd%9c" class="header-anchor"&gt;&lt;/a&gt;4.3 远程仓库操作
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 关联远程仓库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git remote add origin https://github.com/用户名/仓库名.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看已关联的远程仓库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git remote -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 第一次推送到远程（设置默认上游分支）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git push -u origin main
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 后续推送&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git push
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 从远程拉取最新代码&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git pull
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 克隆一个已有的远程仓库到本地&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/用户名/仓库名.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="44-分支操作"&gt;&lt;a href="#44-%e5%88%86%e6%94%af%e6%93%8d%e4%bd%9c" class="header-anchor"&gt;&lt;/a&gt;4.4 分支操作
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看所有分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git branch
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 创建新分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git branch 分支名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 切换到某个分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git checkout 分支名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 创建并切换到新分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git checkout -b 新分支名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 将当前分支重命名为 main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git branch -M main
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 合并某个分支到当前分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git merge 分支名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="45-查看差异"&gt;&lt;a href="#45-%e6%9f%a5%e7%9c%8b%e5%b7%ae%e5%bc%82" class="header-anchor"&gt;&lt;/a&gt;4.5 查看差异
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看工作区和暂存区的差异&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git diff
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看暂存区和最近一次提交的差异&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git diff --cached
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看某个文件的修改&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git diff 文件名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="46-撤销操作"&gt;&lt;a href="#46-%e6%92%a4%e9%94%80%e6%93%8d%e4%bd%9c" class="header-anchor"&gt;&lt;/a&gt;4.6 撤销操作
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 撤销工作区某个文件的修改（恢复到最近提交的状态）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git checkout -- 文件名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 将文件从暂存区移回工作区（不删除修改）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git reset HEAD 文件名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 回退到上一次提交（保留文件修改）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git reset --soft HEAD~1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 回退到上一次提交（丢弃所有修改，⚠️ 危险操作）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git reset --hard HEAD~1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="47-gitignore-文件"&gt;&lt;a href="#47-gitignore-%e6%96%87%e4%bb%b6" class="header-anchor"&gt;&lt;/a&gt;4.7 .gitignore 文件
+&lt;/h3&gt;&lt;p&gt;在项目根目录创建 &lt;code&gt;.gitignore&lt;/code&gt;，写入不需要提交的文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# Hugo 构建输出（如果用 GitHub Actions 构建则不需要提交）
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;public/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# Hugo 资源缓存
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;resources/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 系统文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;.DS_Store
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Thumbs.db
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 编辑器文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;.vscode/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;*.swp
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="48-日常工作流总结"&gt;&lt;a href="#48-%e6%97%a5%e5%b8%b8%e5%b7%a5%e4%bd%9c%e6%b5%81%e6%80%bb%e7%bb%93" class="header-anchor"&gt;&lt;/a&gt;4.8 日常工作流总结
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 典型的&amp;#34;写文章 → 发布&amp;#34;流程：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 1. 写文章&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 在 content/post/ 下新建 .md 文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 2. 本地预览&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo server
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 3. 确认没问题后，添加改动&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 4. 提交&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git commit -m &lt;span style="color:#e6db74"&gt;&amp;#34;新增文章：xxx&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 5. 推送到 GitHub（自动触发部署）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git push
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="五总结"&gt;&lt;a href="#%e4%ba%94%e6%80%bb%e7%bb%93" class="header-anchor"&gt;&lt;/a&gt;五、总结
+&lt;/h2&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;要做的事&lt;/th&gt;
+ &lt;th&gt;操作&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;改博客外观&lt;/td&gt;
+ &lt;td&gt;编辑 &lt;code&gt;hugo.toml&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;写新文章&lt;/td&gt;
+ &lt;td&gt;在 &lt;code&gt;content/post/&lt;/code&gt; 下新建 &lt;code&gt;.md&lt;/code&gt; 文件&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;本地预览&lt;/td&gt;
+ &lt;td&gt;运行 &lt;code&gt;hugo server&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;部署上线&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;git add . → git commit → git push&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;查看网站&lt;/td&gt;
+ &lt;td&gt;访问 &lt;code&gt;https://你的用户名.github.io/&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;</description></item></channel></rss>
