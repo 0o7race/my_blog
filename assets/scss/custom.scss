@@ -160,7 +160,7 @@ a {
 
 .home-hero__title {
   margin: 16px 0 14px;
-  font-size: clamp(3.6rem, 3rem + 1.3vw, 5.8rem);
+  font-size: clamp(3.6rem, calc(3rem + 1.3vw), 5.8rem);
   line-height: 1.02;
   letter-spacing: -0.05em;
   text-wrap: balance;
@@ -289,7 +289,7 @@ a {
 
 .home-hero__featured-title {
   margin: 0;
-  font-size: clamp(2.4rem, 2rem + 0.8vw, 3.6rem);
+  font-size: clamp(2.4rem, calc(2rem + 0.8vw), 3.6rem);
 }
 
 .home-hero__featured-title a,
@@ -366,7 +366,7 @@ a {
 
 .home-section-heading__title {
   margin: 10px 0 0;
-  font-size: clamp(2.6rem, 2.2rem + 0.5vw, 3.4rem);
+  font-size: clamp(2.6rem, calc(2.2rem + 0.5vw), 3.4rem);
   letter-spacing: -0.03em;
 }
 
@@ -460,7 +460,7 @@ a {
 }
 
 .article-list .article-title {
-  font-size: clamp(2.6rem, 2.1rem + 0.8vw, 3.5rem);
+  font-size: clamp(2.6rem, calc(2.1rem + 0.8vw), 3.5rem);
 }
 
 .article-subtitle {
