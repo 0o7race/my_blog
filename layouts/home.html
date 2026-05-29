@@ -5,7 +5,7 @@
 
     <section class="home-hero">
         <div class="home-hero__content">
-            <span class="home-hero__eyebrow">Blog For Life</span>
+            <span class="home-hero__eyebrow">精选内容</span>
             <h1 class="home-hero__title">{{ .Site.Title }}</h1>
             <p class="home-hero__subtitle">
                 {{ .Site.Params.sidebar.subtitle | default "记录学习、研究与生活的个人博客" }}
@@ -30,8 +30,8 @@
                     <span class="home-hero__stat-label">主题标签</span>
                 </div>
                 <div class="home-hero__stat">
-                    <span class="home-hero__stat-value">Life 已隐藏</span>
-                    <span class="home-hero__stat-label">可通过搜索访问</span>
+                    <span class="home-hero__stat-value">{{ len .Site.Taxonomies.categories }}</span>
+                    <span class="home-hero__stat-label">文章分类</span>
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@
             <h2 class="home-section-heading__title">最新文章</h2>
         </div>
         <p class="home-section-heading__description">
-            首页不展示 Life 分类内容，研究与项目文章优先在这里呈现。
+            按时间浏览近期更新的研究、项目与个人笔记。
         </p>
     </section>
 
