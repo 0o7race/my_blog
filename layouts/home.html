@@ -1,138 +1,122 @@
 {{ define "main" }}
     {{- $paginator := partial "helper/paginator.html" . -}}
     {{- $allFilteredPages := partial "helper/pages.html" . -}}
-    {{- $heroPages := first 4 $paginator.Pages -}}
-    {{- $featured := index $heroPages 0 -}}
+    {{- $bentoPages := first 3 $paginator.Pages -}}
+    {{- $featured := index $bentoPages 0 -}}
 
-    <section class="home-hero">
-        <div class="home-hero__content">
-            <span class="home-hero__eyebrow">精选内容</span>
-            <h1 class="home-hero__title">{{ .Site.Title }}</h1>
-            <p class="home-hero__subtitle">
-                {{ .Site.Params.sidebar.subtitle | default "记录学习、研究与生活的个人博客" }}
-            </p>
-
-            <div class="home-hero__actions">
-                <a class="home-hero__button home-hero__button--primary" href="{{ "page/search/" | relURL }}">
-                    搜索内容
-                </a>
-                <a class="home-hero__button home-hero__button--secondary" href="{{ "page/archives/" | relURL }}">
-                    查看归档
-                </a>
+    {{/* ─── Glass Hero Banner ─── */}}
+    <section class="home-banner">
+        <div class="home-banner__glass">
+            <div class="home-banner__identity">
+                <span class="home-banner__eyebrow">
+                    <span class="home-banner__eyebrow-dot"></span>
+                    精选内容
+                </span>
+                <h1 class="home-banner__title">{{ .Site.Title }}</h1>
+                <p class="home-banner__subtitle">
+                    {{ .Site.Params.sidebar.subtitle | default "记录学习、研究与生活的个人博客" }}
+                </p>
             </div>
-
-            <div class="home-hero__stats">
-                <div class="home-hero__stat">
-                    <span class="home-hero__stat-value">{{ len $allFilteredPages }}</span>
-                    <span class="home-hero__stat-label">技术文章</span>
+            <div class="home-banner__right">
+                <div class="home-banner__stats">
+                    <div class="home-banner__stat">
+                        <span class="home-banner__stat-value">{{ len $allFilteredPages }}</span>
+                        <span class="home-banner__stat-label">技术文章</span>
+                    </div>
+                    <div class="home-banner__stat">
+                        <span class="home-banner__stat-value">{{ len .Site.Taxonomies.tags }}</span>
+                        <span class="home-banner__stat-label">主题标签</span>
+                    </div>
+                    <div class="home-banner__stat">
+                        <span class="home-banner__stat-value">{{ len .Site.Taxonomies.categories }}</span>
+                        <span class="home-banner__stat-label">文章分类</span>
+                    </div>
                 </div>
-                <div class="home-hero__stat">
-                    <span class="home-hero__stat-value">{{ len .Site.Taxonomies.tags }}</span>
-                    <span class="home-hero__stat-label">主题标签</span>
-                </div>
-                <div class="home-hero__stat">
-                    <span class="home-hero__stat-value">{{ len .Site.Taxonomies.categories }}</span>
-                    <span class="home-hero__stat-label">文章分类</span>
+                <div class="home-banner__actions">
+                    <a class="home-banner__btn home-banner__btn--primary" href="{{ "page/search/" | relURL }}">搜索内容</a>
+                    <a class="home-banner__btn home-banner__btn--secondary" href="{{ "page/archives/" | relURL }}">查看归档</a>
                 </div>
             </div>
         </div>
-
-        {{ with $featured }}
-            {{- $featuredPage := . -}}
-            {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
-            <article class="home-hero__featured {{ if $image }}has-image{{ end }}">
-                <div class="home-hero__featured-content">
-                    {{ with (.GetTerms "categories") }}
-                        <div class="home-hero__featured-category">
-                            {{ range first 1 . }}
-                                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                            {{ end }}
-                        </div>
-                    {{ end }}
-
-                    <h2 class="home-hero__featured-title">
-                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                    </h2>
-
-                    {{ with .Params.description }}
-                        <p class="home-hero__featured-description">{{ . }}</p>
-                    {{ else }}
-                        <p class="home-hero__featured-description">
-                            {{ .Summary | plainify | truncate 140 }}
-                        </p>
-                    {{ end }}
-
-                    <div class="home-hero__featured-meta">
-                        {{ if not .Date.IsZero }}
-                            <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                                {{ .Date | time.Format .Site.Params.dateFormat.published }}
-                            </time>
-                        {{ end }}
-                        <span>·</span>
-                        <span>{{ .ReadingTime }} 分钟阅读</span>
-                    </div>
-                </div>
-
-                {{ with $image }}
-                    <a class="home-hero__featured-image" href="{{ $featuredPage.RelPermalink }}">
-                        {{ partial "helper/responsive-image" (dict
-                            "Resource" .Resource
-                            "Widths" (cond $featuredPage.Site.Params.ImageProcessing.Content.Enabled $featuredPage.Site.Params.ImageProcessing.Content.Widths nil)
-                            "Attributes" (dict
-                                "src" .Permalink
-                                "width" .Width
-                                "height" .Height
-                                "alt" (printf "Featured image of post %s" $featuredPage.Title)
-                                "loading" "lazy"
-                                "sizes" "(max-width: 1023px) 100vw, 420px"
-                            )
-                        ) }}
-                    </a>
-                {{ end }}
-            </article>
-        {{ end }}
     </section>
 
-    {{ if gt (len $heroPages) 1 }}
-        <section class="home-highlights">
-            {{ range after 1 $heroPages }}
-                <article class="home-highlight-card">
-                    {{ with (.GetTerms "categories") }}
-                        <div class="home-highlight-card__category">
-                            {{ range first 1 . }}
-                                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                            {{ end }}
-                        </div>
-                    {{ end }}
-
-                    <h3 class="home-highlight-card__title">
-                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                    </h3>
-
-                    {{ with .Params.description }}
-                        <p class="home-highlight-card__description">{{ . }}</p>
-                    {{ else }}
-                        <p class="home-highlight-card__description">
-                            {{ .Summary | plainify | truncate 88 }}
-                        </p>
-                    {{ end }}
-                </article>
+    {{/* ─── Bento Featured Grid ─── */}}
+    {{ with $featured }}
+    <section class="home-bento">
+        {{- $feat := . -}}
+        {{- $img := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
+        <article class="home-bento__main{{ if $img }} has-image{{ end }}">
+            {{ with $img }}
+            <a class="home-bento__cover" href="{{ $feat.RelPermalink }}">
+                {{ partial "helper/responsive-image" (dict
+                    "Resource" .Resource
+                    "Widths" nil
+                    "Attributes" (dict
+                        "src" .Permalink "width" .Width "height" .Height
+                        "alt" (printf "Cover: %s" $feat.Title)
+                        "loading" "eager"
+                    )
+                ) }}
+            </a>
             {{ end }}
-        </section>
+            <div class="home-bento__main-body">
+                {{ with ($feat.GetTerms "categories") }}
+                    <div class="home-bento__cat">
+                        {{ range first 1 . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+                    </div>
+                {{ end }}
+                <h2 class="home-bento__main-title">
+                    <a href="{{ $feat.RelPermalink }}">{{ $feat.Title }}</a>
+                </h2>
+                <p class="home-bento__desc">
+                    {{ with $feat.Params.description }}{{ . }}{{ else }}{{ $feat.Summary | plainify | truncate 130 }}{{ end }}
+                </p>
+                <div class="home-bento__meta">
+                    {{ if not $feat.Date.IsZero }}
+                    <time>{{ $feat.Date | time.Format $.Site.Params.dateFormat.published }}</time>
+                    {{ end }}
+                    <span>{{ $feat.ReadingTime }} 分钟阅读</span>
+                </div>
+            </div>
+        </article>
+
+        {{ range $i, $p := after 1 $bentoPages }}
+        <article class="home-bento__side home-bento__side--{{ add $i 1 }}">
+            <div class="home-bento__side-body">
+                {{ with ($p.GetTerms "categories") }}
+                    <div class="home-bento__cat">
+                        {{ range first 1 . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+                    </div>
+                {{ end }}
+                <h3 class="home-bento__side-title">
+                    <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+                </h3>
+                <p class="home-bento__desc home-bento__desc--sm">
+                    {{ with $p.Params.description }}{{ . }}{{ else }}{{ $p.Summary | plainify | truncate 72 }}{{ end }}
+                </p>
+                <div class="home-bento__meta">
+                    {{ if not $p.Date.IsZero }}
+                    <time>{{ $p.Date | time.Format $.Site.Params.dateFormat.published }}</time>
+                    {{ end }}
+                    <span>{{ $p.ReadingTime }} 分钟阅读</span>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </section>
     {{ end }}
 
+    {{/* ─── Latest Articles ─── */}}
     <section class="home-section-heading">
         <div>
             <span class="home-section-heading__eyebrow">Latest Notes</span>
             <h2 class="home-section-heading__title">最新文章</h2>
         </div>
-        <p class="home-section-heading__description">
-            按时间浏览近期更新的研究、项目与个人笔记。
-        </p>
+        <p class="home-section-heading__description">按时间浏览近期更新的研究、项目与个人笔记。</p>
     </section>
 
     <section class="article-list">
-        {{ range $index, $element := $paginator.Pages }}
+        {{ range $paginator.Pages }}
             {{ partial "article-list/default" . }}
         {{ end }}
     </section>
