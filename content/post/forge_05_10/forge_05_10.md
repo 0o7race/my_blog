@@ -1,9 +1,9 @@
 ---
-title: "论文阅读"
+title: "小波变换在视觉任务中的应用综述"
 date: 2026-05-10T23:00:00+08:00
 draft: false
-description: "小波变换"
-tags: ["Mathematics"]
+description: "小波变换在图像恢复、扩散模型与视觉任务中的应用综述"
+tags: ["AI", "Computer Vision", "Literature Review"]
 categories: ["Projects"]
 ---
 

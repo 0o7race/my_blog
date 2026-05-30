@@ -1,10 +1,10 @@
 ---
-title: "Hugo 博客上手指南：主题配置 & GitHub Pages 部署 & Git 命令总结"
+title: "Hugo 博客搭建与 GitHub Pages 部署指南"
 date: 2026-04-04T23:00:00+08:00
 draft: false
-description: "一篇涵盖 Hugo 主题更改语法、GitHub Pages 部署步骤、常用 Git 命令的完整上手文档"
-tags: ["Engineering", "Introductions", "Mathematics"]
-categories: ["Projects","Skill Acquisition","Life"]
+description: "Hugo 博客配置、部署与常用 Git 命令整理"
+tags: ["Engineering", "Hugo", "Git"]
+categories: ["Projects","Life"]
 ---
 
 ## 一、认识 Hugo 博客的目录结构

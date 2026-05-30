@@ -1,5 +1,6 @@
 {{ define "main" }}
     {{- $paginator := partial "helper/paginator.html" . -}}
+    {{- $allFilteredPages := partial "helper/pages.html" . -}}
     {{- $heroPages := first 4 $paginator.Pages -}}
     {{- $featured := index $heroPages 0 -}}
 
@@ -22,8 +23,8 @@
 
             <div class="home-hero__stats">
                 <div class="home-hero__stat">
-                    <span class="home-hero__stat-value">{{ len $paginator.Pages }}</span>
-                    <span class="home-hero__stat-label">当前可见文章</span>
+                    <span class="home-hero__stat-value">{{ len $allFilteredPages }}</span>
+                    <span class="home-hero__stat-label">技术文章</span>
                 </div>
                 <div class="home-hero__stat">
                     <span class="home-hero__stat-value">{{ len .Site.Taxonomies.tags }}</span>

@@ -1,9 +1,9 @@
 ---
-title: "项目学习"
+title: "Embedding、卷积与 ViT 学习笔记"
 date: 2026-04-06T23:00:00+08:00
 draft: false
-description: "对于一些项目的工程概念结合个人学习总结"
-tags: ["Engineering"]
+description: "围绕 Embedding、卷积核、VAE 与 ViT 的基础学习笔记"
+tags: ["AI", "Deep Learning", "Representation Learning"]
 categories: ["Skill Acquisition"]
 ---
 

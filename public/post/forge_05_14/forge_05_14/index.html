@@ -1,29 +1,863 @@
-<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="AI气象预报主流模型综述"><title>AI气象预报模型文献综述</title><link rel=canonical href=https://0o7race.github.io/my_blog/post/forge_05_14/forge_05_14/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/my_blog/scss/style.min.172877406e6721b738d388027534d12bfcfdc6164d9a98817a138bdedde4cf88.css><meta property='og:title' content="AI气象预报模型文献综述"><meta property='og:description' content="AI气象预报主流模型综述"><meta property='og:url' content='https://0o7race.github.io/my_blog/post/forge_05_14/forge_05_14/'><meta property='og:site_name' content='Blog For Life'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='AI'><meta property='article:tag' content='Meteorology'><meta property='article:tag' content='Literature Review'><meta property='article:published_time' content='2026-05-14T23:00:00+08:00'><meta property='article:modified_time' content='2026-05-14T23:00:00+08:00'><meta name=twitter:title content="AI气象预报模型文献综述"><meta name=twitter:description content="AI气象预报主流模型综述"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label>
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/my_blog/>Blog For Life</a></h1><h2 class=site-description>记录学习与生活的个人博客</h2></div></header><ol class=menu id=main-menu><li><a href=/my_blog/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>首页</span></a></li><li><a href=/my_blog/categories/><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
-<span>文章分类</span></a></li><li><a href=/my_blog/tags/><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
-<span>标签</span></a></li><li><a href=/my_blog/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>归档</span></a></li><li><a href=/my_blog/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-<span>搜索</span></a></li><li><a href=/my_blog/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>关于</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span></span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title"></h2><div class=widget--toc><nav class=toc-nav id=TableOfContents><ul><li><a href=#一研究背景与总体脉络>一、研究背景与总体脉络</a></li><li><a href=#二主流模型纵深对比>二、主流模型纵深对比</a></li><li><a href=#三代表性研究梳理>三、代表性研究梳理</a><ul><li><a href=#31-确定性全球天气预报模型>3.1 确定性全球天气预报模型</a><ul><li><a href=#311-fourcastnet>3.1.1 FourCastNet</a></li><li><a href=#312-pangu-weather>3.1.2 Pangu-Weather</a></li><li><a href=#313-graphcast>3.1.3 GraphCast</a></li><li><a href=#314-fuxi>3.1.4 FuXi</a></li><li><a href=#315-fengwu>3.1.5 FengWu</a></li><li><a href=#316-aifs>3.1.6 AIFS</a></li></ul></li><li><a href=#32-基础模型与通用时空建模>3.2 基础模型与通用时空建模</a><ul><li><a href=#321-climax>3.2.1 ClimaX</a></li><li><a href=#322-aurora>3.2.2 Aurora</a></li><li><a href=#323-earthformer>3.2.3 Earthformer</a></li></ul></li><li><a href=#33-物理数据融合模型>3.3 物理—数据融合模型</a><ul><li><a href=#331-neuralgcm>3.3.1 NeuralGCM</a></li></ul></li><li><a href=#34-概率集合天气预报模型>3.4 概率集合天气预报模型</a><ul><li><a href=#341-gencast>3.4.1 GenCast</a></li><li><a href=#342-fgn>3.4.2 FGN</a></li><li><a href=#343-fourcastnet-3>3.4.3 FourCastNet 3</a></li></ul></li></ul></li><li><a href=#四总结与展望>四、总结与展望</a></li></ul></nav></div></section><section class="widget tagCloud"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title"><a href=/my_blog/categories/></a></h2><div class=tagCloud-tags><a href=/my_blog/categories/projects/>Projects
-</a><a href=/my_blog/categories/skill-acquisition/>Skill Acquisition
-</a><a href=/my_blog/categories/life/>Life</a></div></section><section class="widget tagCloud"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg></div><h2 class="widget-title section-title"><a href=/my_blog/tags/></a></h2><div class=tagCloud-tags><a href=/my_blog/tags/ai/>AI
-</a><a href=/my_blog/tags/literature-review/>Literature Review
-</a><a href=/my_blog/tags/mathematics/>Mathematics
-</a><a href=/my_blog/tags/engineering/>Engineering
-</a><a href=/my_blog/tags/introductions/>Introductions
-</a><a href=/my_blog/tags/meteorology/>Meteorology
-</a><a href=/my_blog/tags/nowcasting/>Nowcasting
-</a><a href=/my_blog/tags/radar/>Radar</a></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/my_blog/categories/projects/ style=background-color:#d9efbe;color:#293d0f>Projects</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/my_blog/post/forge_05_14/forge_05_14/>AI气象预报模型文献综述</a></h2><h3 class=article-subtitle>AI气象预报主流模型综述</h3></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published datetime=2026-05-14T23:00:00+08:00>2026-05-14</time>
-<svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading></time></div></footer></div></header><aside class=article-toc><details><summary><div class=article-toc-title><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6-6 6"/></svg>
-<span></span></div></summary><nav class=toc-nav><ul><li><a href=#一研究背景与总体脉络>一、研究背景与总体脉络</a></li><li><a href=#二主流模型纵深对比>二、主流模型纵深对比</a></li><li><a href=#三代表性研究梳理>三、代表性研究梳理</a><ul><li><a href=#31-确定性全球天气预报模型>3.1 确定性全球天气预报模型</a><ul><li><a href=#311-fourcastnet>3.1.1 FourCastNet</a></li><li><a href=#312-pangu-weather>3.1.2 Pangu-Weather</a></li><li><a href=#313-graphcast>3.1.3 GraphCast</a></li><li><a href=#314-fuxi>3.1.4 FuXi</a></li><li><a href=#315-fengwu>3.1.5 FengWu</a></li><li><a href=#316-aifs>3.1.6 AIFS</a></li></ul></li><li><a href=#32-基础模型与通用时空建模>3.2 基础模型与通用时空建模</a><ul><li><a href=#321-climax>3.2.1 ClimaX</a></li><li><a href=#322-aurora>3.2.2 Aurora</a></li><li><a href=#323-earthformer>3.2.3 Earthformer</a></li></ul></li><li><a href=#33-物理数据融合模型>3.3 物理—数据融合模型</a><ul><li><a href=#331-neuralgcm>3.3.1 NeuralGCM</a></li></ul></li><li><a href=#34-概率集合天气预报模型>3.4 概率集合天气预报模型</a><ul><li><a href=#341-gencast>3.4.1 GenCast</a></li><li><a href=#342-fgn>3.4.2 FGN</a></li><li><a href=#343-fourcastnet-3>3.4.3 FourCastNet 3</a></li></ul></li></ul></li><li><a href=#四总结与展望>四、总结与展望</a></li></ul></nav></details></aside><section class=article-content><h1 id=ai气象预报模型文献综述><a href=#ai%e6%b0%94%e8%b1%a1%e9%a2%84%e6%8a%a5%e6%a8%a1%e5%9e%8b%e6%96%87%e7%8c%ae%e7%bb%bc%e8%bf%b0 class=header-anchor></a>AI气象预报模型文献综述</h1><h2 id=一研究背景与总体脉络><a href=#%e4%b8%80%e7%a0%94%e7%a9%b6%e8%83%8c%e6%99%af%e4%b8%8e%e6%80%bb%e4%bd%93%e8%84%89%e7%bb%9c class=header-anchor></a>一、研究背景与总体脉络</h2><p>近年来，数据驱动的人工智能模型在全球天气预报领域取得了突破性进展。相较于传统数值天气预报模型，AI 方法在保持较高预报精度的同时，显著降低了计算成本，并将推理速度提升到秒级或分钟级。整体来看，相关研究大致沿着两条主线展开：一类聚焦于高性能确定性天气预报模型，目标是在全球范围内实现快速、高分辨率、长时效的预报；另一类则进一步发展概率集合预报系统，以更好地刻画天气系统的内在不确定性。</p><p>在确定性预报方向，Pathak 等人提出的 <strong>FourCastNet (2022)</strong> 首次展示了深度学习模型在 0.25° 分辨率下快速生成一周全球预报的潜力；Bi 等人提出的 <strong>Pangu-Weather (2022)</strong> 则通过三维地球特定 Transformer 架构与分层时间聚合算法，在多个核心指标上系统超越了传统数值预报方法。此后，Lam 等人提出的 <strong>GraphCast (2023)</strong> 进一步将图神经网络应用于全球中期天气预报，在大多数验证目标上优于顶级业务系统。沿着这一思路继续推进的还有 <strong>FuXi</strong> 和 <strong>FengWu</strong>，前者通过级联式架构缓解长时预报中的误差累积，后者则借助多模态、多任务学习与重放缓冲机制，将全球中期有效预报时效进一步延长至 10 天以上。</p><p>与此同时，研究者也开始尝试将天气预报问题放入更广阔的地球系统建模框架中。<strong>ClimaX (2023)</strong> 和 <strong>Aurora (2024)</strong> 代表了地球系统基础模型的发展方向：前者通过在异构气候数据上进行预训练，再微调到不同下游任务，展现出较强的跨任务泛化能力；后者则进一步证明，单一的大规模模型可以在空气质量、海浪、热带气旋路径和高分辨率天气预报等多个任务上达到甚至超越专用业务系统。除此之外，<strong>Earthformer (2023)</strong> 也从时空建模角度探索了 Transformer 在地球系统预测中的潜力，为后续相关工作提供了方法参考。</p><p>随着确定性模型逐渐成熟，研究重点也开始转向概率预报。Price 等人提出的 <strong>GenCast (2025)</strong> 通过条件扩散模型直接学习未来天气状态的概率分布，在预报技巧和速度上均超过顶级业务集合预报系统；Alet 等人提出的 <strong>FGN (2025)</strong> 则通过约束模型扰动和优化连续分级概率评分，在保持空间联合结构方面表现突出；<strong>FourCastNet 3 (2025)</strong> 则进一步通过球面几何一致的纯卷积架构实现高效、稳定的概率集合预报，并在长达 60 天的积分中维持较好的谱保真度。</p><p>此外，还有一类工作尝试将物理过程与深度学习更加紧密地结合起来。Kochkov 等人提出的 <strong>NeuralGCM (2024)</strong> 将可微分动力学求解器与机器学习物理模块耦合起来，成为通用环流模型与机器学习融合的代表性工作；欧洲中期天气预报中心的 <strong>AIFS (2024)</strong> 则标志着 AI 天气预报正在从学术研究逐步走向业务化运行。</p><p>总体而言，当前 AI 气象预报研究呈现出几个鲜明趋势：模型架构持续多样化，预报形式从确定性向概率性扩展，基础模型范式不断深化，物理过程与数据驱动方法的融合也日益加强。这些进展正在以前所未有的速度推动天气预报与气候科学的发展。</p><h2 id=二主流模型纵深对比><a href=#%e4%ba%8c%e4%b8%bb%e6%b5%81%e6%a8%a1%e5%9e%8b%e7%ba%b5%e6%b7%b1%e5%af%b9%e6%af%94 class=header-anchor></a>二、主流模型纵深对比</h2><p>下表对主要代表性研究进行了简要对比和总结。</p><div class=table-wrapper><table><thead><tr><th>文献</th><th>研究目标</th><th>核心方法/架构</th><th>数据集</th><th>关键发现/成果</th><th>局限性/特点</th></tr></thead><tbody><tr><td><strong>Pathak 等，2022（FourCastNet）</strong></td><td>实现全球高分辨率、快速确定性天气预报</td><td>自适应傅里叶神经算子（AFNO）</td><td>ERA5</td><td>以秒级速度生成一周预报，在降水等小尺度变量上优于 IFS</td><td>以确定性预报为主，无法直接量化不确定性；长时稳定性仍需进一步验证</td></tr><tr><td><strong>Bi 等，2022（Pangu-Weather）</strong></td><td>实现快速且高精度的全球确定性天气预报</td><td>3DEST（三维地球特定 Transformer）+ 分层时间聚合</td><td>ERA5</td><td>AI 方法首次在主要变量与多个时效上系统超越业务 NWP</td><td>仍以确定性预报为核心，不直接给出概率分布</td></tr><tr><td><strong>Lam 等，2023（GraphCast）</strong></td><td>实现高技巧的全球中期确定性天气预报</td><td>图神经网络（GNN）</td><td>ERA5</td><td>1 分钟内完成 10 天预报，在约 90% 的验证目标上优于 ECMWF 高分辨率预报</td><td>不直接提供集合预报；基于 MSE 训练的长时效预报存在平滑化现象</td></tr><tr><td><strong>Nguyen 等，2023（ClimaX）</strong></td><td>构建可泛化的天气与气候基础模型</td><td>Transformer（含变量标记化与变量聚合模块）</td><td>CMIP6、ERA5 等</td><td>预训练后微调可适配多类下游任务，性能优于多种专用数据驱动基线</td><td>通用性较强，但特定任务上的极致精度未必最优</td></tr><tr><td><strong>Gao 等，2023（Earthformer）</strong></td><td>探索 Transformer 在地球系统预测中的应用</td><td>基于立方体注意力的时空 Transformer</td><td>ERA5、雷达数据等</td><td>在降水短临预报和 ENSO 预测上达到当时最优性能</td><td>主要针对特定任务，不是通用的全球中期预报模型</td></tr><tr><td><strong>Kochkov 等，2024（NeuralGCM）</strong></td><td>开发可兼顾天气预报与气候模拟的混合模型</td><td>可微动力学求解器 + 机器学习物理模块</td><td>ERA5</td><td>首个实现数十年稳定气候模拟的 ML-GCM，在天气和气候预测上均具竞争力</td><td>架构复杂，对物理模块设计和系统实现要求较高</td></tr><tr><td><strong>Lang 等，2024（AIFS）</strong></td><td>开发 ECMWF 自有的数据驱动业务预报系统</td><td>图神经网络 + 滑动窗口 Transformer</td><td>ERA5、ECMWF 分析场</td><td>与物理模式并行运行，在高空变量、地表参数和热带气旋路径上表现突出</td><td>仍在持续演进中，长时效预报存在平滑化问题</td></tr><tr><td><strong>Bodnar 等，2024（Aurora）</strong></td><td>构建统一处理多种地球系统预测任务的基础模型</td><td>大规模基础模型架构（Perceiver + 3D Swin Transformer）</td><td>多源异构地球系统数据</td><td>在空气质量、海浪、风暴路径和高分辨率天气预报等任务上以较低成本超越业务系统</td><td>模型规模大，训练流程复杂，对工程资源要求高</td></tr><tr><td><strong>Chen 等，2025（FengWu）</strong></td><td>延长全球中期有效天气预报时效</td><td>多模态多任务学习 + 融合 Transformer + 重放缓冲</td><td>ERA5</td><td>首次将有效预报时效扩展至 10.75 天（Z500 ACC>0.6），性能优于 GraphCast</td><td>主要聚焦中期预报，长期与次季节能力仍有待验证</td></tr><tr><td><strong>Bonev 等，2025（FourCastNet 3）</strong></td><td>实现高技巧、快速且稳定的概率集合天气预报</td><td>球面几何纯卷积神经网络</td><td>ERA5、再分析数据</td><td>概率校准度高，60 天积分仍保持真实谱特征；生成速度快于多种同类方法</td><td>方法工程实现复杂，卷积架构对超远距离依赖的表达方式与 Transformer 不同</td></tr><tr><td><strong>Price 等，2025（GenCast）</strong></td><td>实现技巧和速度均超越传统方法的全球概率天气预报</td><td>基于 AI 的条件扩散模型</td><td>ERA5</td><td>在概率预报技巧和效率上超越顶级业务集合预报系统</td><td>扩散模型推理成本相对较高，极端小尺度过程刻画仍有挑战</td></tr><tr><td><strong>Alet 等，2025（FGN）</strong></td><td>开发简单、可扩展且能保持空间联合结构的概率预报模型</td><td>功能生成网络（FGN）</td><td>ERA5</td><td>仅通过优化边缘分布的 CRPS，即可生成具备空间一致性的集合预报，并在热带气旋路径预报中表现突出</td><td>联合分布的学习是间接完成的，其机制仍值得进一步分析</td></tr><tr><td><strong>Chen 等，2023（FuXi）</strong></td><td>实现 15 天全球中期天气预报</td><td>级联式机器学习预报系统</td><td>ERA5</td><td>将 Z500 的有效预报时效延长至 10.5 天，T2M 延长至 14.5 天</td><td>集合系统存在短时偏离散、长时离散不足的问题</td></tr></tbody></table></div><p>从整体上看，这些研究具有以下共性：绝大多数工作都以提升全球中期（1—15 天）天气预报的精度和效率为目标，广泛使用 ERA5 再分析资料作为训练基础，并以数据驱动方法替代或增强传统数值预报模式；与此同时，它们在计算速度上相较传统物理模型普遍实现了数量级提升。</p><p>从差异化方向来看，当前研究也在不断分化：预报类型正在从确定性方法逐步走向概率集合预报；模型架构呈现出 GNN、Transformer、神经算子以及物理—数据混合模型并行发展的态势；部分工作开始强调跨任务泛化，尝试构建地球系统基础模型；也有少数模型实现了从短期天气到多年气候模拟的跨尺度扩展。</p><h2 id=三代表性研究梳理><a href=#%e4%b8%89%e4%bb%a3%e8%a1%a8%e6%80%a7%e7%a0%94%e7%a9%b6%e6%a2%b3%e7%90%86 class=header-anchor></a>三、代表性研究梳理</h2><h3 id=31-确定性全球天气预报模型><a href=#31-%e7%a1%ae%e5%ae%9a%e6%80%a7%e5%85%a8%e7%90%83%e5%a4%a9%e6%b0%94%e9%a2%84%e6%8a%a5%e6%a8%a1%e5%9e%8b class=header-anchor></a>3.1 确定性全球天气预报模型</h3><h4 id=311-fourcastnet><a href=#311-fourcastnet class=header-anchor></a>3.1.1 FourCastNet</h4><p>Pathak 等（2022）提出了 <strong>FourCastNet</strong>，这是一个基于自适应傅里叶神经算子（AFNO）和视觉 Transformer（ViT）骨干的全球数据驱动高分辨率天气预报模型。该工作首次在 0.25° 分辨率（约 30 km）上实现了可直接与欧洲中期天气预报中心（ECMWF）高分辨率综合预报系统（IFS）相比较的短期至中期预报。</p><p>在模型架构上，FourCastNet 的核心是 AFNO 模型。它通过在傅里叶域中进行连续的全局卷积来实现空间 token 混合，将自注意力的复杂度降低到 $O(N \log N)$，从而能够高效处理 720×1440 像素的高分辨率输入。模型以 ERA5 再分析资料为训练真值，训练了 20 个描述大气瞬时状态的变量，包括地表风速（U10、V10）、2 米气温（T2m）、位势高度（Z）、温度、相对湿度等，并额外训练了一个独立的降水诊断模型以输出 6 小时累计总降水（TP）。训练采用两阶段策略：先进行单步预训练，再微调为两步自回归预测；降水模型则在冻结骨干网络的基础上单独训练。推理时，模型以 6 小时为步长进行自回归，能够生成一周乃至更长时间的全球预报。</p><p>在定量评估中，FourCastNet 的预报技巧与 IFS 高度可比。短时效（约 48 小时以内）下，它在降水、地表风速和温度等变量上的 ACC 与 RMSE 甚至优于 IFS，之后几天的表现也始终接近 IFS。对于降水这类小尺度、间歇性强且分布稀疏的变量，模型能够较好捕捉局地极端降水和大气河事件。更值得注意的是其对极端天气过程的刻画能力：FourCastNet 成功追踪了 2018 年飓风 Michael 从热带低压快速增强为 5 级飓风并最终登陆的全过程，100 成员集合预报给出的最低海平面气压路径和强度变化与 ERA5 再分析结果基本一致，同时还能清晰展现飓风结构。</p><p>在效率方面，FourCastNet 的优势尤其明显：生成一个 100 成员的 24 小时集合预报仅需 7 秒（单节点 4 块 A100 GPU），计算效率可达 IFS 的 45000 倍以上，能耗降低约 12000 倍。利用高斯噪声扰动初始条件得到的 100 成员集合平均，在较长预报时效上较控制预报有明显提升。但在极端值刻画上，模型仍存在一定不足，例如对 U10 和 TP 的瞬时极值存在系统性低估，尤其是降水极端值的相对分位数误差仍高于 IFS。</p><p>总体来看，FourCastNet 是首个在业务级分辨率上直接对标 IFS 的数据驱动全球天气预报模型，其速度、能效和集合扩展能力为概率天气预报和快速灾害响应开辟了新路径。不过，该模型尚未引入显式物理约束，也未耦合数据同化，对高云、平流层过程以及气候变暖背景下的泛化能力仍有待进一步验证。</p><h4 id=312-pangu-weather><a href=#312-pangu-weather class=header-anchor></a>3.1.2 Pangu-Weather</h4><p>Bi 等（2022）提出的 <strong>Pangu-Weather</strong> 是 AI 气象预报发展中的标志性工作之一。该系统首次在所有主要气象要素和多个预报时效上，以优于业务数值天气预报系统（ECMWF IFS）的精度，实现了快速、高分辨率的确定性全球预报。</p><p>Pangu-Weather 的核心方法主要体现在两个方面。其一是 <strong>3D Earth-Specific Transformer（3DEST）</strong> 架构：模型将 13 个气压层与二维经纬网格共同构成三维数据立方体，并采用基于 Swin Transformer 的编码器—解码器结构，在注意力窗口中引入地球特异性位置偏置，使模型能够更好地捕捉随纬度和高度变化的大气状态差异。其二是 <strong>层次化时间聚合算法</strong>：作者分别训练了预报时效为 1 小时、3 小时、6 小时和 24 小时的多个模型，在推理时通过贪心策略组合这些模型，以最少的迭代步数生成目标时刻的预报，从而有效减弱长时自回归带来的误差累积。</p><p>训练数据来自 43 年（1979—2021）的 ERA5 逐小时再分析资料，保持了 0.25° 的空间分辨率。模型预测 13 个气压层的 5 个高空变量，以及 4 个地面变量，总参数量约为 2.56 亿。实验结果显示，Pangu-Weather 在 2018 年测试集上的所有高空与地面变量、所有时效上的纬度加权 RMSE 和 ACC 均显著优于业务 IFS。例如，500 hPa 位势高度（Z500）在 5 天时效上的 RMSE 由 IFS 的 333.7 降至 296.7，850 hPa 温度（T850）则由 2.06 降至 1.79。相较于更早的 FourCastNet，其误差也进一步下降了 30% 以上。</p><p>除了常规变量评分，Pangu-Weather 在极端天气预报方面也表现突出。在 2018 年全球 88 个命名热带气旋的路径追踪中，它的 3 天和 5 天平均直接定位误差分别为 120.3 km 和 195.7 km，明显优于 ECMWF HRES。通过加入 Perlin 噪声扰动构建的 100 成员集合预报，在 5 天以上时效相较确定性控制预报还能进一步提升精度。同时，模型推理速度极快，在单块 V100 GPU 上完成一次 24 小时预报仅需 1.4 秒，比传统 NWP 方法快超过 10000 倍。</p><p>当然，Pangu-Weather 也并非没有局限。其逐小时预报曲线在多次迭代后仍会出现一定的“锯齿”误差，表明自回归累积误差尚未被完全消除；在极端值分析中，模型整体仍倾向于低估极端事件幅度。尽管如此，这项工作依然证明了 3D 深度网络和层次化时间聚合是 AI 气象预报实现对传统 NWP 赶超的关键技术路径。</p><h4 id=313-graphcast><a href=#313-graphcast class=header-anchor></a>3.1.3 GraphCast</h4><p>Lam 等人（2023）提出的 <strong>GraphCast</strong> 是基于机器学习的中期全球天气预报代表作。该模型能够直接从再分析资料中训练，在单个 Google Cloud TPU v4 设备上不到 1 分钟生成 0.25° 分辨率、覆盖 10 天、包含数百个气象变量的确定性全球预报。</p><p>GraphCast 的研究背景十分明确：传统 NWP 依赖超级计算机求解物理方程，虽然能够随着计算资源增加而持续提升精度，但难以直接利用海量历史观测与再分析数据来改进模型；而机器学习天气预报则可以通过数据驱动的方式直接学习天气系统演化规律，并借助现代硬件完成高效推理。基于这一思路，GraphCast 旨在构建一个既高效又高精度的端到端全球中期预报系统。</p><p>在模型结构上，GraphCast 采用“编码器—处理器—解码器”的图神经网络架构，参数量约 3670 万。其最关键的设计在于引入了一个空间分布均匀的 <strong>多尺度网格（multi-mesh）</strong>：该网格通过对正二十面体进行六次迭代细化构造而成，同时叠加不同尺度的边，使信息能够在少量消息传递步骤内高效完成全球传播。模型输入为当前时刻和 6 小时前的两个全球天气状态，输出未来 6 小时后的状态，并通过自回归方式迭代生成任意长度的预报序列。训练数据来自 1979—2017 年共 39 年的 ERA5 再分析资料，训练目标是加权均方误差，同时逐步增加自回归 rollout 的步数以增强长时稳定性。</p><p>在验证时，为确保对比公平，GraphCast 以 ERA5 为真值，而 HRES 则以其初始零步预报 HRES-fc0 为真值，以尽量避免资料同化策略差异造成的初值偏差。结果表明，在 1380 个评估目标中，GraphCast 在 <strong>90.3%</strong> 的目标上 RMSE 低于 HRES；在 500 hPa 位势高度（Z500）这一典型变量上，GraphCast 的 RMSE 技巧评分始终更优，ACC 也更高。即便对 HRES 施加最优模糊处理，GraphCast 仍在 88.0% 的目标上保持领先。</p><p>GraphCast 在严重天气事件上的表现同样值得关注。对于热带气旋路径预报，其在 18 小时至 4.75 天时效上的路径中位误差显著优于 HRES，且在较强飓风类别中的优势更为明显；在大气河事件中，它对北美西海岸和东太平洋区域的水汽垂直积分输送量（IVT）预报 RMSE 比 HRES 低 10%—25%；在极端高温事件识别中，GraphCast 在 5 天和 10 天时效上的精度—召回表现也优于 HRES。</p><p>从机理分析来看，多尺度网格结构是其成功的关键之一。谱分析表明，GraphCast 在大多数变量的各水平尺度上误差都低于 HRES，但在高波数段依然会因为 MSE 训练而产生一定平滑化现象。总体而言，GraphCast 标志着 MLWP 在全球中期确定性预报上首次达到甚至超越顶级业务系统，被许多研究者视为该领域的一个转折点。不过，它仍属于确定性预报方法，对概率不确定性的直接表达仍需依赖后续扩展。</p><h4 id=314-fuxi><a href=#314-fuxi class=header-anchor></a>3.1.4 FuXi</h4><p>Chen 等人（2023）提出的 <strong>FuXi</strong>，主要针对机器学习中长期天气预报中误差累积过快的问题。该工作希望构建一个能够进行 15 天、6 小时间隔、0.25° 空间分辨率预报的高精度全球天气预报系统。</p><p>FuXi 的核心是一种基于 U-Transformer（底层采用 Swin Transformer V2）的自回归架构。与单一模型从头滚动到尾不同，作者设计了一个 <strong>三级级联结构</strong>：分别针对 0—5 天、5—10 天和 10—15 天三个时段微调三个模型，即 FuXi-Short、FuXi-Medium 和 FuXi-Long，并将前一阶段输出作为后一阶段输入。这样做的目的，是在保持模型整体自回归框架的同时，尽量抑制长时迭代误差的不断放大。</p><p>该研究使用 39 年 ERA5 再分析资料进行训练。在确定性预报方面，FuXi 与 GraphCast 以及 ECMWF HRES 的对比结果表明：FuXi 在所有变量和预报时效上的 ACC 与 RMSE 都显著优于 HRES，在 7 天以内与 GraphCast 表现相当，而在 7 天之后则明显领先。尤其值得注意的是，其有效预报时效有明显延长：对于 500 hPa 位势高度（Z500），技巧性预报时效（ACC>0.6）由 ECMWF HRES 的 9.25 天延长至 <strong>10.5 天</strong>；对于 2 米气温（T2M），则由 10 天延长至 <strong>14.5 天</strong>。在 15 天尺度的整体比较中，FuXi 的性能与 ECMWF 集合平均相当，并在 67.92% 的评估目标上具有更高的 ACC。</p><p>除确定性预报外，作者还通过向初始场加入柏林噪声以及对模型参数采用 Monte Carlo dropout 的方式，构建了 50 成员的 <strong>FuXi 集合预报系统</strong>。实验表明，FuXi 集合在 9 天预报时效内的连续分级概率评分（CRPS）已与 ECMWF 业务集合系统接近，但在短时效存在过度离散、长时效又出现离散不足的问题，说明其概率校准仍需进一步改进。</p><p>总体而言，FuXi 证明了级联式架构在控制中长期 AI 天气预报误差累积方面具有明显效果，并首次使数据驱动方法在 15 天尺度上具备了与顶尖业务集合系统相抗衡的能力。该工作也为后续向次季节预报和端到端数据同化系统拓展提供了重要思路。</p><h4 id=315-fengwu><a href=#315-fengwu class=header-anchor></a>3.1.5 FengWu</h4><p>Chen 等（2025）在《FengWu: Pushing the Skillful Global Medium-Range Weather Forecast beyond 10 Days Lead》中提出了 <strong>FengWu</strong>。该工作的目标非常明确，即进一步突破 AI 方法在全球中期天气预报中的技巧上限，将“有技巧”的预报时效稳定推到 10 天以上。</p><p>FengWu 的技术设计集中在三个方面。首先，它从 <strong>多模态、多任务</strong> 的角度重新组织天气预报问题。不同于将所有大气变量简单堆叠成单一输入的做法，FengWu 将位势高度、温度、湿度、风场等变量视为独立模态，为每个模态设计专用编码器和解码器，再通过跨模态融合 Transformer 进行信息交互。其次，模型将不同变量及其对应空间位置的预测视为独立任务，引入 <strong>同方差不确定性损失</strong> 来自动学习各任务的权重，从而减少手工调参负担，并更有效地平衡不同预报目标。最后，为缓解长时自回归误差累积，作者借鉴强化学习中的经验回放思想，引入了 <strong>重放缓冲区机制</strong>，在训练阶段显式模拟推理时误差不断传播的情形。</p><p>FengWu 在 0.25° 网格上处理 5 个高空变量（37 个气压层）和 4 个地表变量，共 189 个预报量，并通过自回归方式完成 10 天、40 步的预报。在 2018 年回算试验中，FengWu 与 GraphCast 的比较结果显示，在 <strong>880 个预报目标中，有 80% 的目标上 FengWu 的 RMSE 更低、ACC 更高</strong>，且这种优势会随预报时效的增加而更加明显。例如，在 10 天时效下，全球 500 hPa 位势高度（Z500）的 RMSE 从 GraphCast 的 733 降至 FengWu 的 651 m²/s²。以 ACC>0.6 作为技巧预报标准时，FengWu 将 Z500 的技巧预报时效推进到 <strong>10.75 天</strong>，将 2 米气温（T2M）推进到 <strong>11.5 天</strong>。</p><p>消融实验进一步表明，若去除重放缓冲区机制，长时效预报技巧会明显下降，说明该机制对控制误差累积至关重要。在计算效率上，FengWu 在 32 块 NVIDIA A100 GPU 上训练约 17 天，10 天预报的推理时间不到 30 秒，单次迭代约 600 毫秒，能耗约为传统 IFS 系统的两千分之一。</p><p>需要注意的是，FengWu 与 GraphCast 一样使用 ERA5 再分析数据作为初始场，因此在与业务物理模型比较时带有一定初值优势。不过，在不同数据驱动模型之间的对比中，这种初值条件是一致的，因此相互比较仍然具有较高公平性。总体来看，FengWu 通过多模态多任务学习、不确定性加权和重放缓冲机制，在中期天气预报上取得了新的技巧突破，是 AI 天气预报长时效能力提升的重要代表工作。</p><h4 id=316-aifs><a href=#316-aifs class=header-anchor></a>3.1.6 AIFS</h4><p>Lang 等（2024）详细介绍了欧洲中期天气预报中心（ECMWF）开发的数据驱动全球天气预报系统 <strong>AIFS</strong>。这项工作的重要性不仅在于模型本身的性能，更在于它标志着 AI 天气预报正在逐步从学术验证走向业务化运行。</p><p>AIFS 的目标是构建一个可与 IFS 物理模式互补、甚至在部分场景下更具竞争力的中期确定性预报系统，并建立从训练、推理到产品发布的端到端流程。模型采用编码器—处理器—解码器结构，并融合了图神经网络与 Transformer 两种范式：编码器与解码器负责在 ERA5 的原生 N320 精简高斯网格和更粗的处理器网格之间完成信息映射；处理器部分则基于预范数 Transformer，并通过滑动窗口注意力在 O96 八面体精简高斯网格上进行计算。通过节点和边上的可学习嵌入，以及激活检查点、张量并行和数据并行等策略，AIFS 支持高分辨率训练和大规模扩展。</p><p>在训练上，AIFS 采用分阶段策略：首先在 1979—2020 年 ERA5 上进行单步预训练，随后逐步进行多步滚动训练，最后再利用 2019—2020 年 IFS 业务分析场进行微调，以提升对真实初始化条件的适配能力。损失函数采用面积加权均方误差，并对不同变量和气压层赋予不同权重。整体训练成本大约为 64 块 A100 GPU 持续一周，生成 10 天预报仅需单块 A100 GPU 约 2 分 30 秒。</p><p>在结果方面，AIFS 对传统 IFS 展现出明显优势。以北半球 500 hPa 位势高度异常相关系数（ACC）衡量，其预报领先优势超过 12 小时，在多年时间序列中呈现出明显的“阶跃式”改善。对于地表变量，在更高分辨率版本下，AIFS 在 2 米气温和 10 米风速上的表现持续优于 IFS；总降水在热带区域普遍改善，中纬度短时效略弱于 IFS，但长时效更强。热带气旋路径预报中，AIFS 的路径误差显著小于 IFS，但在气旋强度（中心气压、最大风速）的刻画上相对偏弱，这可能与 ERA5 分析场中的气旋强度偏弱以及模型平滑化倾向有关。</p><p>AIFS 的局限也较为典型。由于采用加权 MSE 训练，长时效预报会出现一定模糊化，预报活动度低于 IFS；平流层技巧受损失权重设置影响较大；热带气旋等强系统的强度表达仍不够理想。尽管如此，AIFS 依旧展示了业务中心在数据驱动天气预报方向上的最新进展，并表明 AI 预报系统已经具备与传统业务模式并行运行的现实可能。</p><h3 id=32-基础模型与通用时空建模><a href=#32-%e5%9f%ba%e7%a1%80%e6%a8%a1%e5%9e%8b%e4%b8%8e%e9%80%9a%e7%94%a8%e6%97%b6%e7%a9%ba%e5%bb%ba%e6%a8%a1 class=header-anchor></a>3.2 基础模型与通用时空建模</h3><h4 id=321-climax><a href=#321-climax class=header-anchor></a>3.2.1 ClimaX</h4><p>Nguyen 等人（2023）提出的 <strong>ClimaX</strong>，被普遍视为首个面向天气与气候科学的基础模型。与只为特定任务和固定时空范围训练的专用神经网络不同，ClimaX 通过在异构气候数据集上进行自监督预训练，学习通用的地球系统表征，再通过微调适应多样化的下游任务。</p><p>ClimaX 基于视觉 Transformer，但针对气象数据的多变量、异构和多分辨率特点做了两项关键改进。第一是 <strong>变量标记化（variable tokenization）</strong>：将每个物理变量分别划分为图像块并线性嵌入，使模型能够灵活处理不同类型和数量的输入变量。第二是 <strong>变量聚合（variable aggregation）</strong>：通过交叉注意力将同一空间位置上的不同变量 token 压缩为统一语义的 token，从而在实现跨变量信息融合的同时，降低 Transformer 的计算复杂度。</p><p>在预训练阶段，ClimaX 使用了 CMIP6 中五个气候模式从 1850 年到 2015 年的 6 小时输出数据，覆盖多种变量和垂直层次。预训练目标是随机化的未来状态预测，即给定当前气象场，预测未来 6 小时到 1 周内的状态。下游任务则包括全球天气预报、区域预报、次季节—季节预测、气候预估以及气候降尺度等多个方向。</p><p>实验结果表明，ClimaX 在不同分辨率下都表现出较强竞争力。低分辨率条件下，其长时效（≥7 天）全球预报已能够持平甚至超过 IFS；高分辨率条件下，其各时效预报技巧接近或超过 IFS，并明显优于 ResNet、UNet 等基线模型。即使仅在低分辨率 CMIP6 上预训练，通过位置编码插值后再微调，ClimaX 在区域预报中依然取得了最优或次优结果，体现出对空间范围和分辨率变化的良好泛化能力。在 S2S 预测和气候降尺度任务中，ClimaX 也在多个变量上取得最低 RMSE；在气候预估任务中，即便输入变量体系发生变化，冻结注意力层后仅微调嵌入层与预测头的版本依然取得了优异结果，说明其预训练特征具备较强的迁移能力。</p><p>总体来看，ClimaX 首次较系统地证明了基础模型范式在天气与气候科学中的可行性。它的意义并不只是提升单一任务的分数，而是在于展示了“预训练—微调”这一通用范式如何被扩展到多尺度天气预报、气候预估和降尺度等不同问题中，从而推动地球系统建模从“单任务专用”向“通用智能”演进。</p><h4 id=322-aurora><a href=#322-aurora class=header-anchor></a>3.2.2 Aurora</h4><p>Bodnar 等（2024）提出并评估了 <strong>Aurora</strong>，这是一个拥有 13 亿参数的地球系统基础模型。该模型在逾百万小时的多源异构地球数据上进行预训练，并通过微调在空气质量、大气化学、海浪、热带气旋路径以及 0.1° 高分辨率全球天气预报等任务上取得了超越现有业务系统的表现。</p><p>Aurora 的整体架构采用编码器—处理器—解码器范式。编码器部分为 <strong>3D Perceiver</strong>，负责将不同分辨率、不同变量和不同气压层数的异构输入映射到统一的三维潜空间表示中；处理器部分为 <strong>多尺度 3D Swin Transformer U-Net</strong>，在潜空间中执行多尺度时空建模；解码器部分则将潜表示还原为所需变量和指定气压层上的网格预报。这样的设计，使模型能够更灵活地兼容地球系统中来源复杂、尺度差异巨大的输入数据。</p><p>在训练流程上，Aurora 分为三个阶段。首先，利用 ERA5、HRES、IFS-ENS、GFS、GEFS、CMIP6 和 MERRA-2 等 10 个异构数据集进行大规模预训练，总样本规模约 1000 万个，数据总量达到 1.2 PB。其次，对各个具体下游任务进行短时效微调。最后，再利用 LoRA 与重放缓冲机制进行长时效展开微调，以在控制内存开销的同时增强长序列建模能力。作者的缩放实验显示，数据多样性与模型规模的增加都会带来稳定的性能提升。</p><p>Aurora 在多个任务上的表现都十分亮眼：在全球空气污染预报中，它在 74% 的目标变量和气压层上达到或优于业务模式，计算速度提升约 50000 倍；在全球海浪预报中，它在 86% 的波浪变量上优于 ECMWF 的 HRES-WAM，并能准确预测如台风 Nanmadol 这样的高影响个例；在热带气旋路径预报中，它在所有流域和所有时效上都优于官方预报以及全部对比模型；在 0.1° 高分辨率全球天气预报中，它在 92% 的目标上与 IFS HRES 持平或更优，尤其在中长期时效优势明显。</p><p>Aurora 的意义在于，它进一步证明了地球系统预测可以走向更统一的基础模型范式。模型经过一次大规模预训练后，只需较短时间的微调便能够迁移到多个高价值任务，并在每个任务上都达到很强的竞争力。这一结果说明，未来的天气与地球系统 AI 模型，可能不再是多个彼此独立的专用系统，而是建立在统一表征之上的多任务预测框架。</p><h4 id=323-earthformer><a href=#323-earthformer class=header-anchor></a>3.2.3 Earthformer</h4><p>Gao 等（2023）提出的 <strong>Earthformer</strong> 是一个专门面向地球系统预测设计的时空 Transformer 模型。该工作的出发点在于：传统数值模拟不仅计算成本高，对领域知识要求也很强；而现有深度学习模型如 CNN、RNN 等，又难以充分捕捉地球系统中高维、混沌且具有长程依赖的时空结构。</p><p>Earthformer 的核心创新是 <strong>Cuboid Attention（立方体注意力）</strong>。为了降低传统全时空自注意力 $O(N^2)$ 的计算复杂度，它将输入的高维时空张量划分为多个不重叠的局部立方体，在每个立方体内部并行执行注意力计算。通过堆叠不同划分策略和尺寸的立方体注意力层，模型能够高效地捕捉不同尺度和方向上的相关性。为了解决局部块之间信息传播受限的问题，作者还引入了 <strong>全局向量</strong> 机制，让这些向量能够同时关注所有局部立方体，用于收集并传播全局动态信息。在整体结构上，Earthformer 采用了层次化编码器—解码器设计，通过 CNN 下采样和上采样实现从粗到细的未来预测生成。</p><p>在实验中，Earthformer 首先在合成数据集 MovingMNIST 和更具挑战性的 N-body MNIST 上进行了系统消融，发现轴向注意力模式、全局向量以及层次化架构都能稳定提升性能。在真实任务上，Earthformer 在 SEVIR 降水临近预报和 ICAR-ENSO 海表温度异常预测两个方向上都取得了当时最优结果：前者在多个降水阈值下的关键成功指数（CSI）和均方误差（MSE）上都显著优于 UNet、ConvLSTM、PredRNN 和 Rainformer 等基线；后者则在长期 ENSO 预测中的相关性技巧和 MSE 上全面优于对比模型。</p><p>Earthformer 并不是一个典型的全球中期天气预报系统，但它在时空建模方面提出的方法具有较强通用性，也为天气与气候模型的后续架构创新提供了重要思路。其不足之处在于，作为确定性纯数据驱动模型，它并不直接建模不确定性，也未显式融入物理约束，因此未来若向概率预报或物理一致性方向扩展，将更具应用价值。</p><h3 id=33-物理数据融合模型><a href=#33-%e7%89%a9%e7%90%86%e6%95%b0%e6%8d%ae%e8%9e%8d%e5%90%88%e6%a8%a1%e5%9e%8b class=header-anchor></a>3.3 物理—数据融合模型</h3><h4 id=331-neuralgcm><a href=#331-neuralgcm class=header-anchor></a>3.3.1 NeuralGCM</h4><p>Kochkov 等（2024）在论文《Neural general circulation models for weather and climate》中提出了 <strong>NeuralGCM</strong>，这是一个完全可微的混合大气环流模型。与纯数据驱动模型不同，NeuralGCM 同时保留了传统动力核心和机器学习物理模块，试图在天气预报精度、概率集合质量与长期气候模拟稳定性之间取得更好的平衡。</p><p>NeuralGCM 的核心结构由三部分组成。第一部分是 <strong>可微动力核心</strong>，在 JAX 框架下实现，采用水平伪谱离散与垂直 sigma 坐标，用于求解包含水汽的静力原始方程，从而负责模拟大尺度流体运动和热力学过程。第二部分是 <strong>学习型物理模块</strong>，通过带残差连接的全连接网络来参数化云、降水和辐射等未解析小尺度物理过程，并将太阳辐射、海表温度及变量水平梯度等作为输入。第三部分则是 <strong>编码器与解码器</strong>，用于在 ERA5 的气压坐标和动力核心的 sigma 坐标之间完成稳定转换，同时通过学习修正减小初始化冲击和数值伪影。</p><p>训练上，NeuralGCM 使用 1979—2019 年的 ERA5 再分析资料，并采用逐步延长 rollout 的课程学习方式，从短时预报逐步扩展到 5 天自回归预测。在损失函数设计上，作者区分了确定性和随机模型：确定性模型采用多种损失的组合，其中包括一种滤波均方误差，以减轻对位置略有偏差但形态尖锐特征的过度惩罚；随机集合模型则通过引入时空相关随机场，并使用 CRPS 作为优化目标，从而显式学习概率分布。</p><p>实验结果表明，NeuralGCM 在多个层面都表现突出。在中期天气预报上，NeuralGCM-0.7° 的确定性预报在 1—10 天时效上与 GraphCast 和 Pangu 等纯机器学习模型相当甚至更优；NeuralGCM-ENS 的 CRPS 则优于 ECMWF-ENS，且其集合弥散度与技巧之比接近 1，说明概率预报可靠性较高。更重要的是，与 GraphCast、Pangu 等方法相比，NeuralGCM 的预报场更少出现模糊化，功率谱更接近真实数据，并更好地维持了地转风平衡等动力一致性。</p><p>在长期气候模拟方面，NeuralGCM 同样展示出极强潜力。即使在较粗的 1.4° 分辨率下，仅用 3 天天气预报任务训练得到的确定性 NeuralGCM 也能稳定运行多年，并能够合理再现热带气旋的生成、路径与频率；在 40 年的海温驱动 AMIP 试验中，NeuralGCM-2.8° 成功复现了全球变暖趋势，其全球平均温度的时空偏差小于多种传统大气环流模式。</p><p>总体而言，NeuralGCM 证明了将机器学习视为复杂物理参数化替代方案的可行性。它不仅是首个在集合天气预报上超越传统物理模式的 ML 方法之一，也是首个在长期气候模拟中表现出较强稳定性和物理合理性的混合模型。不过，该模型架构较为复杂，在显著更热气候条件下的外推、极端降水刻画以及与海洋等系统的双向耦合方面仍存在进一步发展空间。</p><h3 id=34-概率集合天气预报模型><a href=#34-%e6%a6%82%e7%8e%87%e9%9b%86%e5%90%88%e5%a4%a9%e6%b0%94%e9%a2%84%e6%8a%a5%e6%a8%a1%e5%9e%8b class=header-anchor></a>3.4 概率集合天气预报模型</h3><h4 id=341-gencast><a href=#341-gencast class=header-anchor></a>3.4.1 GenCast</h4><p>Price 等（2025）在《Nature》发表的《Probabilistic weather forecasting with machine learning》中提出了 <strong>GenCast</strong>。该模型是机器学习概率天气预报领域的一个重要里程碑，因为它首次在预报技巧和推理速度上全面超越了全球顶尖业务集合预报系统——ECMWF 的 ENS。</p><p>GenCast 的目标是生成全球 15 天、0.25° 分辨率、12 小时间隔的随机集合预报，覆盖 80 多个地表与高空变量，并在 8 分钟内完成一次完整预测。它的核心是一个 <strong>条件扩散模型</strong>，通过对噪声样本的逐步精化来学习未来天气状态的条件概率分布，即 $P(X_{t+1}\mid X_t, X_{t-1})$，并通过自回归方式生成整条预报轨迹。模型架构采用图 Transformer，在六重精化的二十面体网格上进行邻域自注意力计算，训练数据为 1979—2018 年的 ERA5 再分析资料。作者还额外训练了一个确定性版本 GenCast-Perturbed 用于消融分析。</p><p>在 2019 年全年数据上的评估显示，GenCast 在 <strong>97.2%</strong> 的 1320 个变量—气压层—预报时效组合中，其连续分级概率评分（CRPS）都显著优于 ENS；在近地面变量和 1—5 天短时效范围内，优势甚至可达到 10%—30%。与此同时，集合平均 RMSE 在 96% 的目标上也不弱于 ENS，说明模型不仅概率分布学得更好，其集合均值本身也具有很强竞争力。</p><p>GenCast 在概率标定和样本真实性方面同样表现出色。其集合成员清晰、频谱真实，空间功率谱与 ERA5 分析场高度一致；集合离散度与技巧之比接近 1，秩直方图较为平坦，表明概率标定良好。相比之下，单纯对确定性模型输出加扰动得到的集合往往会显得模糊且过于自信。</p><p>在极端天气预报与空间联合分布刻画方面，GenCast 也有明显优势。对于 2 米温度和 10 米风速的极端阈值事件，其 Brier 技巧评分和相对经济价值均优于 ENS；通过空间池化 CRPS、区域风电功率预报和热带气旋路径预报等任务，可以看到 GenCast 能更好地捕捉天气状态的空间—时间依赖关系。在区域风电功率预报中，前 4 天的 CRPS 较 ENS 领先 10%—20%；在热带气旋路径概率预报中，其相对经济价值在所有成本—损失比下都优于 ENS。</p><p>总体来看，GenCast 表明基于机器学习的概率天气预报不仅在计算效率上大幅领先，而且在预报技巧、不确定性量化与风险刻画方面也可以超越传统数值集合预报。它为天气预报业务化中的生成式 AI 应用打开了新的空间。</p><h4 id=342-fgn><a href=#342-fgn class=header-anchor></a>3.4.2 FGN</h4><p>Alet 等（2025）提出了 <strong>FGN（Functional Generative Network）</strong>，希望在预报技巧、推理效率和架构灵活性方面进一步超越此前的概率预报模型。与扩散模型相比，FGN 更强调用简单而可扩展的机制学习高质量的集合分布。</p><p>FGN 的核心创新在于对不确定性的分层建模。对于 <strong>认知不确定性</strong>，作者采用深度集成策略，独立训练 4 个模型并对它们的输出进行混合，以近似贝叶斯后验预测分布；对于 <strong>偶然不确定性</strong>，则通过学习的函数扰动来建模，即让每个集合成员都由一个函数网络生成，而函数网络的参数扰动由低维全局噪声向量决定。与在输入或输出空间直接加噪相比，这种在参数空间中注入随机性的方式更有利于生成空间结构连贯的集合成员。</p><p>在训练范式上，FGN 直接以 <strong>连续分级概率评分（CRPS）</strong> 为目标进行优化。值得注意的是，它主要将每个网格点上的预报分布作为独立边缘分布来训练，并没有在损失函数中显式约束变量之间或空间上的相关性。尽管如此，实验结果表明，这一方法依然能够学习到物理上合理的联合结构。每个 FGN 子模型采用与 GenCast 相似的编码—处理—解码结构，但容量更大，并且通过单步前向传播生成集合成员，使得 15 天预报的速度相较 GenCast 提升约 8 倍。</p><p>在 2023 年业务化 HRES-fc0 数据上的评测中，FGN 与 GenCast 和 ECMWF ENS 进行了全面比较。结果显示，在 99.9% 的变量—气压层—预报时效目标上，FGN 的 CRPS 优于 GenCast，平均提升约 <strong>6.5%</strong>；集合平均 RMSE 在 100% 的目标上领先，平均提升约 5.8%。在空间池化和衍生变量（如 10 米风速）的评测中，FGN 同样明显优于 GenCast，说明它确实学到了较好的多变量、多尺度联合结构。更进一步，在热带气旋路径预报中，FGN 的集合平均路径误差相较 GenCast 平均相当于多获得了约 24 小时的有效预报时效；在功率谱保真度与极端天气相对经济价值方面，也表现出稳定优势。</p><p>当然，FGN 目前仍存在一些值得继续研究的地方，例如在特定变量上会出现轻微网格伪影，联合分布之所以能够在主要靠边缘损失约束的情况下被有效学习，其理论机制也仍需更系统的解释。尽管如此，FGN 已经展示出非常强的扩展潜力，是概率天气预报方向上一个极具代表性的工作。</p><h4 id=343-fourcastnet-3><a href=#343-fourcastnet-3 class=header-anchor></a>3.4.3 FourCastNet 3</h4><p>Bonev 等（2025）提出的 <strong>FourCastNet 3（FCN3）</strong> 是一个基于球面几何的可扩展概率机器学习全球天气预报系统。它的研究动机在于解决几个长期存在的问题：传统数值天气预报成本高；确定性机器学习模型在长时效上容易出现模糊化；而概率扩散模型虽然能生成锐利样本，却往往推理成本较高，并可能在长期积分中出现高频噪声堆积。</p><p>FCN3 的技术设计主要集中在四个方面。第一，它采用一种 <strong>隐马尔可夫概率预报框架</strong>：给定当前大气状态和时间，模型以球面扩散过程产生的随机变量为附加输入，直接生成下一个时刻的集合成员，无需迭代去噪，因此推理效率更高。第二，它使用完全遵循球面几何的 <strong>纯卷积神经算子架构</strong>，结合全局谱卷积和局部离散—连续（DISCO）卷积，以更好刻画锋面、非带状流等局地结构。第三，它设计了 <strong>空—谱联合概率损失函数</strong>，将空间 CRPS 与谱 CRPS 结合起来，从而同时约束逐点边缘分布和多尺度空间结构。第四，它借助 Makani 框架实现了空间模型并行、集合并行和批次并行的混合训练范式，能够扩展到超过 1024 个 GPU。</p><p>在 2020 年全年回算试验中，FCN3 的表现十分突出。在 50 成员集合设置下，它的 CRPS 和集合平均 RMSE 均显著优于 ECMWF IFS-ENS，并且与当前最先进的扩散模型 GenCast 相当，在某些短时效变量上甚至略优。更为重要的是其计算效率：在单块 NVIDIA H100 GPU 上，生成一个 15 天全球预报仅需 <strong>60 秒</strong>，相较 GenCast 提速约 <strong>8 倍</strong>，相较 IFS-ENS 提速约 <strong>60 倍</strong>。</p><p>FCN3 最引人注目的贡献之一是长期谱保真度与积分稳定性。无论是确定性模型常见的高频能量衰减，还是概率模型易出现的小尺度噪声堆积，FCN3 都表现得相对克制。即使在前置时间长达 60 天（1440 小时）的超长积分中，其角功率谱仍与 ERA5 真值高度一致，几乎不出现模糊或噪声爆炸。这一性质在纯数据驱动模型中非常少见，也使其在次季节尺度的探索上更具潜力。</p><p>总体来看，FourCastNet 3 通过几何深度学习与隐马尔可夫建模，构建了一个兼具高技巧、高效率、良好概率校准和长期稳定性的概率天气预报系统。它表明，纯卷积架构在天气生成问题中同样能够达到极高水平，也为未来的大规模集合预报提供了更具工程可行性的选择。</p><h2 id=四总结与展望><a href=#%e5%9b%9b%e6%80%bb%e7%bb%93%e4%b8%8e%e5%b1%95%e6%9c%9b class=header-anchor></a>四、总结与展望</h2><p>回顾上述研究可以看到，AI 气象预报已经从“是否能够逼近传统数值天气预报”这一问题，逐步转向“如何在精度、效率、不确定性表达和物理一致性上全面超越传统方法”。从 FourCastNet、Pangu-Weather、GraphCast 到 FuXi、FengWu 和 AIFS，确定性全球中期天气预报模型不断提升技巧上限，也不断改善工程可用性；从 GenCast、FGN 到 FourCastNet 3，概率集合预报已经不再只是附加功能，而正在成为高影响天气风险决策中的核心方向；从 ClimaX、Aurora 到 NeuralGCM，研究者也在推动天气与气候模型从单任务专用系统走向基础模型与物理—数据融合模型。</p><p>与此同时，当前研究仍面临若干共性挑战。首先，很多 AI 模型高度依赖 ERA5 这类高质量再分析资料，模型在更复杂初值条件或真实观测驱动场景中的表现仍需进一步检验。其次，确定性模型普遍会受到 MSE 类损失带来的平滑化影响，在长时效预报中容易削弱高频结构和极端事件幅度。再次，概率模型虽然已经取得长足进展，但如何在边缘分布校准、空间联合结构、物理合理性和推理效率之间取得更优平衡，依然是开放问题。最后，真正意义上的端到端智能预报系统——包括观测处理、同化、初始化、预报生成与产品发布——仍在形成过程中。</p><p>从未来发展趋势看，至少有几个方向值得持续关注。其一，概率预报将成为 AI 气象预报的重要主流，尤其是在极端天气风险评估和决策支持中，其价值会越来越突出。其二，基础模型范式有望继续扩展，多源异构预训练与跨任务迁移将推动天气、气候和环境预测逐步走向统一建模。其三，物理约束和可微模拟器的重要性会进一步上升，特别是在长期稳定积分、气候外推和极端过程模拟方面。其四，AI 模型将不断向更高分辨率、更长时效以及更丰富的地球系统变量扩展，从而服务于更复杂的科学问题和实际应用场景。</p><p>总体而言，AI 不仅正在改变天气预报的计算范式，也在重塑地球系统科学的研究路径。如何在高精度、高效率、概率可用性和物理一致性之间取得更好的平衡，将是下一阶段 AI 气象预报研究最关键的议题之一。</p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/my_blog/tags/ai/>AI</a>
-<a href=/my_blog/tags/meteorology/>Meteorology</a>
-<a href=/my_blog/tags/literature-review/>Literature Review</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{const e=[".main-article",".widget--toc"];e.forEach(e=>{const t=document.querySelector(e);t&&renderMathInElement(t,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})})</script></article><footer class=site-footer><section class=copyright>&copy;
-2026 Blog For Life</section><section class=powerby><br></section></footer><script type=module>
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="AI气象预报主流模型综述">
+<title>AI气象预报模型文献综述</title>
+
+
+<link rel="canonical" href="https://0o7race.github.io/my_blog/post/forge_05_14/forge_05_14/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap">
+
+
+<link rel="stylesheet" href="/my_blog/scss/style.min.172877406e6721b738d388027534d12bfcfdc6164d9a98817a138bdedde4cf88.css"><meta property='og:title' content="AI气象预报模型文献综述">
+<meta property='og:description' content="AI气象预报主流模型综述">
+<meta property='og:url' content='https://0o7race.github.io/my_blog/post/forge_05_14/forge_05_14/'>
+<meta property='og:site_name' content='Blog For Life'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='Meteorology' /><meta property='article:tag' content='Literature Review' /><meta property='article:published_time' content='2026-05-14T23:00:00&#43;08:00'/><meta property='article:modified_time' content='2026-05-14T23:00:00&#43;08:00'/>
+<meta name="twitter:title" content="AI气象预报模型文献综述">
+<meta name="twitter:description" content="AI气象预报主流模型综述">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/my_blog/">Blog For Life</a></h1>
+            <h2 class="site-description">记录学习与生活的个人博客</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/my_blog/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/categories/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>文章分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/tags/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/archives/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/my_blog/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span></span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title"></h2>
+        
+        <div class="widget--toc">
+            <nav class="toc-nav" id="TableOfContents">
+                
+  <ul>
+    <li><a href="#一研究背景与总体脉络">一、研究背景与总体脉络</a></li>
+    <li><a href="#二主流模型纵深对比">二、主流模型纵深对比</a></li>
+    <li><a href="#三代表性研究梳理">三、代表性研究梳理</a>
+      <ul>
+        <li><a href="#31-确定性全球天气预报模型">3.1 确定性全球天气预报模型</a>
+          <ul>
+            <li><a href="#311-fourcastnet">3.1.1 FourCastNet</a></li>
+            <li><a href="#312-pangu-weather">3.1.2 Pangu-Weather</a></li>
+            <li><a href="#313-graphcast">3.1.3 GraphCast</a></li>
+            <li><a href="#314-fuxi">3.1.4 FuXi</a></li>
+            <li><a href="#315-fengwu">3.1.5 FengWu</a></li>
+            <li><a href="#316-aifs">3.1.6 AIFS</a></li>
+          </ul>
+        </li>
+        <li><a href="#32-基础模型与通用时空建模">3.2 基础模型与通用时空建模</a>
+          <ul>
+            <li><a href="#321-climax">3.2.1 ClimaX</a></li>
+            <li><a href="#322-aurora">3.2.2 Aurora</a></li>
+            <li><a href="#323-earthformer">3.2.3 Earthformer</a></li>
+          </ul>
+        </li>
+        <li><a href="#33-物理数据融合模型">3.3 物理—数据融合模型</a>
+          <ul>
+            <li><a href="#331-neuralgcm">3.3.1 NeuralGCM</a></li>
+          </ul>
+        </li>
+        <li><a href="#34-概率集合天气预报模型">3.4 概率集合天气预报模型</a>
+          <ul>
+            <li><a href="#341-gencast">3.4.1 GenCast</a></li>
+            <li><a href="#342-fgn">3.4.2 FGN</a></li>
+            <li><a href="#343-fourcastnet-3">3.4.3 FourCastNet 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#四总结与展望">四、总结与展望</a></li>
+  </ul>
+
+            </nav>
+        </div>
+    </section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            <a href="/my_blog/categories/">
+                
+            </a>
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/my_blog/categories/projects/">
+                Projects
+            </a>
+        
+            <a href="/my_blog/categories/life/">
+                Life
+            </a>
+        
+            <a href="/my_blog/categories/skill-acquisition/">
+                Skill Acquisition
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            <a href="/my_blog/tags/">
+                
+            </a>
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/my_blog/tags/ai/">
+                AI
+            </a>
+        
+            <a href="/my_blog/tags/literature-review/">
+                Literature Review
+            </a>
+        
+            <a href="/my_blog/tags/meteorology/">
+                Meteorology
+            </a>
+        
+            <a href="/my_blog/tags/computer-vision/">
+                Computer Vision
+            </a>
+        
+            <a href="/my_blog/tags/deep-learning/">
+                Deep Learning
+            </a>
+        
+            <a href="/my_blog/tags/engineering/">
+                Engineering
+            </a>
+        
+            <a href="/my_blog/tags/generative-models/">
+                Generative Models
+            </a>
+        
+            <a href="/my_blog/tags/git/">
+                Git
+            </a>
+        
+            <a href="/my_blog/tags/hugo/">
+                Hugo
+            </a>
+        
+            <a href="/my_blog/tags/nowcasting/">
+                Nowcasting
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/my_blog/categories/projects/" style="background-color: hsl(87, 60%, 84%); color: hsl(87, 60%, 15%);">
+                Projects
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/my_blog/post/forge_05_14/forge_05_14/">AI气象预报模型文献综述</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            AI气象预报主流模型综述
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <footer class="article-meta">
+        
+            <div class="inline-meta">
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published" datetime='2026-05-14T23:00:00&#43;08:00'>2026-05-14</time>
+                
+
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        
+                    </time>
+                
+            </div>
+        
+
+        
+
+        
+    </footer>
+    
+</div>
+
+</header>
+
+    
+    <aside class="article-toc">
+        <details>
+            <summary>
+                <div class="article-toc-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <span></span>
+                </div>
+            </summary>
+            <nav class="toc-nav">
+                
+  <ul>
+    <li><a href="#一研究背景与总体脉络">一、研究背景与总体脉络</a></li>
+    <li><a href="#二主流模型纵深对比">二、主流模型纵深对比</a></li>
+    <li><a href="#三代表性研究梳理">三、代表性研究梳理</a>
+      <ul>
+        <li><a href="#31-确定性全球天气预报模型">3.1 确定性全球天气预报模型</a>
+          <ul>
+            <li><a href="#311-fourcastnet">3.1.1 FourCastNet</a></li>
+            <li><a href="#312-pangu-weather">3.1.2 Pangu-Weather</a></li>
+            <li><a href="#313-graphcast">3.1.3 GraphCast</a></li>
+            <li><a href="#314-fuxi">3.1.4 FuXi</a></li>
+            <li><a href="#315-fengwu">3.1.5 FengWu</a></li>
+            <li><a href="#316-aifs">3.1.6 AIFS</a></li>
+          </ul>
+        </li>
+        <li><a href="#32-基础模型与通用时空建模">3.2 基础模型与通用时空建模</a>
+          <ul>
+            <li><a href="#321-climax">3.2.1 ClimaX</a></li>
+            <li><a href="#322-aurora">3.2.2 Aurora</a></li>
+            <li><a href="#323-earthformer">3.2.3 Earthformer</a></li>
+          </ul>
+        </li>
+        <li><a href="#33-物理数据融合模型">3.3 物理—数据融合模型</a>
+          <ul>
+            <li><a href="#331-neuralgcm">3.3.1 NeuralGCM</a></li>
+          </ul>
+        </li>
+        <li><a href="#34-概率集合天气预报模型">3.4 概率集合天气预报模型</a>
+          <ul>
+            <li><a href="#341-gencast">3.4.1 GenCast</a></li>
+            <li><a href="#342-fgn">3.4.2 FGN</a></li>
+            <li><a href="#343-fourcastnet-3">3.4.3 FourCastNet 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#四总结与展望">四、总结与展望</a></li>
+  </ul>
+
+            </nav>
+        </details>
+    </aside>
+    
+
+    <section class="article-content">
+    
+    
+    <h1 id="ai气象预报模型文献综述"><a href="#ai%e6%b0%94%e8%b1%a1%e9%a2%84%e6%8a%a5%e6%a8%a1%e5%9e%8b%e6%96%87%e7%8c%ae%e7%bb%bc%e8%bf%b0" class="header-anchor"></a>AI气象预报模型文献综述
+</h1><h2 id="一研究背景与总体脉络"><a href="#%e4%b8%80%e7%a0%94%e7%a9%b6%e8%83%8c%e6%99%af%e4%b8%8e%e6%80%bb%e4%bd%93%e8%84%89%e7%bb%9c" class="header-anchor"></a>一、研究背景与总体脉络
+</h2><p>近年来，数据驱动的人工智能模型在全球天气预报领域取得了突破性进展。相较于传统数值天气预报模型，AI 方法在保持较高预报精度的同时，显著降低了计算成本，并将推理速度提升到秒级或分钟级。整体来看，相关研究大致沿着两条主线展开：一类聚焦于高性能确定性天气预报模型，目标是在全球范围内实现快速、高分辨率、长时效的预报；另一类则进一步发展概率集合预报系统，以更好地刻画天气系统的内在不确定性。</p>
+<p>在确定性预报方向，Pathak 等人提出的 <strong>FourCastNet (2022)</strong> 首次展示了深度学习模型在 0.25° 分辨率下快速生成一周全球预报的潜力；Bi 等人提出的 <strong>Pangu-Weather (2022)</strong> 则通过三维地球特定 Transformer 架构与分层时间聚合算法，在多个核心指标上系统超越了传统数值预报方法。此后，Lam 等人提出的 <strong>GraphCast (2023)</strong> 进一步将图神经网络应用于全球中期天气预报，在大多数验证目标上优于顶级业务系统。沿着这一思路继续推进的还有 <strong>FuXi</strong> 和 <strong>FengWu</strong>，前者通过级联式架构缓解长时预报中的误差累积，后者则借助多模态、多任务学习与重放缓冲机制，将全球中期有效预报时效进一步延长至 10 天以上。</p>
+<p>与此同时，研究者也开始尝试将天气预报问题放入更广阔的地球系统建模框架中。<strong>ClimaX (2023)</strong> 和 <strong>Aurora (2024)</strong> 代表了地球系统基础模型的发展方向：前者通过在异构气候数据上进行预训练，再微调到不同下游任务，展现出较强的跨任务泛化能力；后者则进一步证明，单一的大规模模型可以在空气质量、海浪、热带气旋路径和高分辨率天气预报等多个任务上达到甚至超越专用业务系统。除此之外，<strong>Earthformer (2023)</strong> 也从时空建模角度探索了 Transformer 在地球系统预测中的潜力，为后续相关工作提供了方法参考。</p>
+<p>随着确定性模型逐渐成熟，研究重点也开始转向概率预报。Price 等人提出的 <strong>GenCast (2025)</strong> 通过条件扩散模型直接学习未来天气状态的概率分布，在预报技巧和速度上均超过顶级业务集合预报系统；Alet 等人提出的 <strong>FGN (2025)</strong> 则通过约束模型扰动和优化连续分级概率评分，在保持空间联合结构方面表现突出；<strong>FourCastNet 3 (2025)</strong> 则进一步通过球面几何一致的纯卷积架构实现高效、稳定的概率集合预报，并在长达 60 天的积分中维持较好的谱保真度。</p>
+<p>此外，还有一类工作尝试将物理过程与深度学习更加紧密地结合起来。Kochkov 等人提出的 <strong>NeuralGCM (2024)</strong> 将可微分动力学求解器与机器学习物理模块耦合起来，成为通用环流模型与机器学习融合的代表性工作；欧洲中期天气预报中心的 <strong>AIFS (2024)</strong> 则标志着 AI 天气预报正在从学术研究逐步走向业务化运行。</p>
+<p>总体而言，当前 AI 气象预报研究呈现出几个鲜明趋势：模型架构持续多样化，预报形式从确定性向概率性扩展，基础模型范式不断深化，物理过程与数据驱动方法的融合也日益加强。这些进展正在以前所未有的速度推动天气预报与气候科学的发展。</p>
+<h2 id="二主流模型纵深对比"><a href="#%e4%ba%8c%e4%b8%bb%e6%b5%81%e6%a8%a1%e5%9e%8b%e7%ba%b5%e6%b7%b1%e5%af%b9%e6%af%94" class="header-anchor"></a>二、主流模型纵深对比
+</h2><p>下表对主要代表性研究进行了简要对比和总结。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>文献</th>
+          <th>研究目标</th>
+          <th>核心方法/架构</th>
+          <th>数据集</th>
+          <th>关键发现/成果</th>
+          <th>局限性/特点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Pathak 等，2022（FourCastNet）</strong></td>
+          <td>实现全球高分辨率、快速确定性天气预报</td>
+          <td>自适应傅里叶神经算子（AFNO）</td>
+          <td>ERA5</td>
+          <td>以秒级速度生成一周预报，在降水等小尺度变量上优于 IFS</td>
+          <td>以确定性预报为主，无法直接量化不确定性；长时稳定性仍需进一步验证</td>
+      </tr>
+      <tr>
+          <td><strong>Bi 等，2022（Pangu-Weather）</strong></td>
+          <td>实现快速且高精度的全球确定性天气预报</td>
+          <td>3DEST（三维地球特定 Transformer）+ 分层时间聚合</td>
+          <td>ERA5</td>
+          <td>AI 方法首次在主要变量与多个时效上系统超越业务 NWP</td>
+          <td>仍以确定性预报为核心，不直接给出概率分布</td>
+      </tr>
+      <tr>
+          <td><strong>Lam 等，2023（GraphCast）</strong></td>
+          <td>实现高技巧的全球中期确定性天气预报</td>
+          <td>图神经网络（GNN）</td>
+          <td>ERA5</td>
+          <td>1 分钟内完成 10 天预报，在约 90% 的验证目标上优于 ECMWF 高分辨率预报</td>
+          <td>不直接提供集合预报；基于 MSE 训练的长时效预报存在平滑化现象</td>
+      </tr>
+      <tr>
+          <td><strong>Nguyen 等，2023（ClimaX）</strong></td>
+          <td>构建可泛化的天气与气候基础模型</td>
+          <td>Transformer（含变量标记化与变量聚合模块）</td>
+          <td>CMIP6、ERA5 等</td>
+          <td>预训练后微调可适配多类下游任务，性能优于多种专用数据驱动基线</td>
+          <td>通用性较强，但特定任务上的极致精度未必最优</td>
+      </tr>
+      <tr>
+          <td><strong>Gao 等，2023（Earthformer）</strong></td>
+          <td>探索 Transformer 在地球系统预测中的应用</td>
+          <td>基于立方体注意力的时空 Transformer</td>
+          <td>ERA5、雷达数据等</td>
+          <td>在降水短临预报和 ENSO 预测上达到当时最优性能</td>
+          <td>主要针对特定任务，不是通用的全球中期预报模型</td>
+      </tr>
+      <tr>
+          <td><strong>Kochkov 等，2024（NeuralGCM）</strong></td>
+          <td>开发可兼顾天气预报与气候模拟的混合模型</td>
+          <td>可微动力学求解器 + 机器学习物理模块</td>
+          <td>ERA5</td>
+          <td>首个实现数十年稳定气候模拟的 ML-GCM，在天气和气候预测上均具竞争力</td>
+          <td>架构复杂，对物理模块设计和系统实现要求较高</td>
+      </tr>
+      <tr>
+          <td><strong>Lang 等，2024（AIFS）</strong></td>
+          <td>开发 ECMWF 自有的数据驱动业务预报系统</td>
+          <td>图神经网络 + 滑动窗口 Transformer</td>
+          <td>ERA5、ECMWF 分析场</td>
+          <td>与物理模式并行运行，在高空变量、地表参数和热带气旋路径上表现突出</td>
+          <td>仍在持续演进中，长时效预报存在平滑化问题</td>
+      </tr>
+      <tr>
+          <td><strong>Bodnar 等，2024（Aurora）</strong></td>
+          <td>构建统一处理多种地球系统预测任务的基础模型</td>
+          <td>大规模基础模型架构（Perceiver + 3D Swin Transformer）</td>
+          <td>多源异构地球系统数据</td>
+          <td>在空气质量、海浪、风暴路径和高分辨率天气预报等任务上以较低成本超越业务系统</td>
+          <td>模型规模大，训练流程复杂，对工程资源要求高</td>
+      </tr>
+      <tr>
+          <td><strong>Chen 等，2025（FengWu）</strong></td>
+          <td>延长全球中期有效天气预报时效</td>
+          <td>多模态多任务学习 + 融合 Transformer + 重放缓冲</td>
+          <td>ERA5</td>
+          <td>首次将有效预报时效扩展至 10.75 天（Z500 ACC&gt;0.6），性能优于 GraphCast</td>
+          <td>主要聚焦中期预报，长期与次季节能力仍有待验证</td>
+      </tr>
+      <tr>
+          <td><strong>Bonev 等，2025（FourCastNet 3）</strong></td>
+          <td>实现高技巧、快速且稳定的概率集合天气预报</td>
+          <td>球面几何纯卷积神经网络</td>
+          <td>ERA5、再分析数据</td>
+          <td>概率校准度高，60 天积分仍保持真实谱特征；生成速度快于多种同类方法</td>
+          <td>方法工程实现复杂，卷积架构对超远距离依赖的表达方式与 Transformer 不同</td>
+      </tr>
+      <tr>
+          <td><strong>Price 等，2025（GenCast）</strong></td>
+          <td>实现技巧和速度均超越传统方法的全球概率天气预报</td>
+          <td>基于 AI 的条件扩散模型</td>
+          <td>ERA5</td>
+          <td>在概率预报技巧和效率上超越顶级业务集合预报系统</td>
+          <td>扩散模型推理成本相对较高，极端小尺度过程刻画仍有挑战</td>
+      </tr>
+      <tr>
+          <td><strong>Alet 等，2025（FGN）</strong></td>
+          <td>开发简单、可扩展且能保持空间联合结构的概率预报模型</td>
+          <td>功能生成网络（FGN）</td>
+          <td>ERA5</td>
+          <td>仅通过优化边缘分布的 CRPS，即可生成具备空间一致性的集合预报，并在热带气旋路径预报中表现突出</td>
+          <td>联合分布的学习是间接完成的，其机制仍值得进一步分析</td>
+      </tr>
+      <tr>
+          <td><strong>Chen 等，2023（FuXi）</strong></td>
+          <td>实现 15 天全球中期天气预报</td>
+          <td>级联式机器学习预报系统</td>
+          <td>ERA5</td>
+          <td>将 Z500 的有效预报时效延长至 10.5 天，T2M 延长至 14.5 天</td>
+          <td>集合系统存在短时偏离散、长时离散不足的问题</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>从整体上看，这些研究具有以下共性：绝大多数工作都以提升全球中期（1—15 天）天气预报的精度和效率为目标，广泛使用 ERA5 再分析资料作为训练基础，并以数据驱动方法替代或增强传统数值预报模式；与此同时，它们在计算速度上相较传统物理模型普遍实现了数量级提升。</p>
+<p>从差异化方向来看，当前研究也在不断分化：预报类型正在从确定性方法逐步走向概率集合预报；模型架构呈现出 GNN、Transformer、神经算子以及物理—数据混合模型并行发展的态势；部分工作开始强调跨任务泛化，尝试构建地球系统基础模型；也有少数模型实现了从短期天气到多年气候模拟的跨尺度扩展。</p>
+<h2 id="三代表性研究梳理"><a href="#%e4%b8%89%e4%bb%a3%e8%a1%a8%e6%80%a7%e7%a0%94%e7%a9%b6%e6%a2%b3%e7%90%86" class="header-anchor"></a>三、代表性研究梳理
+</h2><h3 id="31-确定性全球天气预报模型"><a href="#31-%e7%a1%ae%e5%ae%9a%e6%80%a7%e5%85%a8%e7%90%83%e5%a4%a9%e6%b0%94%e9%a2%84%e6%8a%a5%e6%a8%a1%e5%9e%8b" class="header-anchor"></a>3.1 确定性全球天气预报模型
+</h3><h4 id="311-fourcastnet"><a href="#311-fourcastnet" class="header-anchor"></a>3.1.1 FourCastNet
+</h4><p>Pathak 等（2022）提出了 <strong>FourCastNet</strong>，这是一个基于自适应傅里叶神经算子（AFNO）和视觉 Transformer（ViT）骨干的全球数据驱动高分辨率天气预报模型。该工作首次在 0.25° 分辨率（约 30 km）上实现了可直接与欧洲中期天气预报中心（ECMWF）高分辨率综合预报系统（IFS）相比较的短期至中期预报。</p>
+<p>在模型架构上，FourCastNet 的核心是 AFNO 模型。它通过在傅里叶域中进行连续的全局卷积来实现空间 token 混合，将自注意力的复杂度降低到 $O(N \log N)$，从而能够高效处理 720×1440 像素的高分辨率输入。模型以 ERA5 再分析资料为训练真值，训练了 20 个描述大气瞬时状态的变量，包括地表风速（U10、V10）、2 米气温（T2m）、位势高度（Z）、温度、相对湿度等，并额外训练了一个独立的降水诊断模型以输出 6 小时累计总降水（TP）。训练采用两阶段策略：先进行单步预训练，再微调为两步自回归预测；降水模型则在冻结骨干网络的基础上单独训练。推理时，模型以 6 小时为步长进行自回归，能够生成一周乃至更长时间的全球预报。</p>
+<p>在定量评估中，FourCastNet 的预报技巧与 IFS 高度可比。短时效（约 48 小时以内）下，它在降水、地表风速和温度等变量上的 ACC 与 RMSE 甚至优于 IFS，之后几天的表现也始终接近 IFS。对于降水这类小尺度、间歇性强且分布稀疏的变量，模型能够较好捕捉局地极端降水和大气河事件。更值得注意的是其对极端天气过程的刻画能力：FourCastNet 成功追踪了 2018 年飓风 Michael 从热带低压快速增强为 5 级飓风并最终登陆的全过程，100 成员集合预报给出的最低海平面气压路径和强度变化与 ERA5 再分析结果基本一致，同时还能清晰展现飓风结构。</p>
+<p>在效率方面，FourCastNet 的优势尤其明显：生成一个 100 成员的 24 小时集合预报仅需 7 秒（单节点 4 块 A100 GPU），计算效率可达 IFS 的 45000 倍以上，能耗降低约 12000 倍。利用高斯噪声扰动初始条件得到的 100 成员集合平均，在较长预报时效上较控制预报有明显提升。但在极端值刻画上，模型仍存在一定不足，例如对 U10 和 TP 的瞬时极值存在系统性低估，尤其是降水极端值的相对分位数误差仍高于 IFS。</p>
+<p>总体来看，FourCastNet 是首个在业务级分辨率上直接对标 IFS 的数据驱动全球天气预报模型，其速度、能效和集合扩展能力为概率天气预报和快速灾害响应开辟了新路径。不过，该模型尚未引入显式物理约束，也未耦合数据同化，对高云、平流层过程以及气候变暖背景下的泛化能力仍有待进一步验证。</p>
+<h4 id="312-pangu-weather"><a href="#312-pangu-weather" class="header-anchor"></a>3.1.2 Pangu-Weather
+</h4><p>Bi 等（2022）提出的 <strong>Pangu-Weather</strong> 是 AI 气象预报发展中的标志性工作之一。该系统首次在所有主要气象要素和多个预报时效上，以优于业务数值天气预报系统（ECMWF IFS）的精度，实现了快速、高分辨率的确定性全球预报。</p>
+<p>Pangu-Weather 的核心方法主要体现在两个方面。其一是 <strong>3D Earth-Specific Transformer（3DEST）</strong> 架构：模型将 13 个气压层与二维经纬网格共同构成三维数据立方体，并采用基于 Swin Transformer 的编码器—解码器结构，在注意力窗口中引入地球特异性位置偏置，使模型能够更好地捕捉随纬度和高度变化的大气状态差异。其二是 <strong>层次化时间聚合算法</strong>：作者分别训练了预报时效为 1 小时、3 小时、6 小时和 24 小时的多个模型，在推理时通过贪心策略组合这些模型，以最少的迭代步数生成目标时刻的预报，从而有效减弱长时自回归带来的误差累积。</p>
+<p>训练数据来自 43 年（1979—2021）的 ERA5 逐小时再分析资料，保持了 0.25° 的空间分辨率。模型预测 13 个气压层的 5 个高空变量，以及 4 个地面变量，总参数量约为 2.56 亿。实验结果显示，Pangu-Weather 在 2018 年测试集上的所有高空与地面变量、所有时效上的纬度加权 RMSE 和 ACC 均显著优于业务 IFS。例如，500 hPa 位势高度（Z500）在 5 天时效上的 RMSE 由 IFS 的 333.7 降至 296.7，850 hPa 温度（T850）则由 2.06 降至 1.79。相较于更早的 FourCastNet，其误差也进一步下降了 30% 以上。</p>
+<p>除了常规变量评分，Pangu-Weather 在极端天气预报方面也表现突出。在 2018 年全球 88 个命名热带气旋的路径追踪中，它的 3 天和 5 天平均直接定位误差分别为 120.3 km 和 195.7 km，明显优于 ECMWF HRES。通过加入 Perlin 噪声扰动构建的 100 成员集合预报，在 5 天以上时效相较确定性控制预报还能进一步提升精度。同时，模型推理速度极快，在单块 V100 GPU 上完成一次 24 小时预报仅需 1.4 秒，比传统 NWP 方法快超过 10000 倍。</p>
+<p>当然，Pangu-Weather 也并非没有局限。其逐小时预报曲线在多次迭代后仍会出现一定的“锯齿”误差，表明自回归累积误差尚未被完全消除；在极端值分析中，模型整体仍倾向于低估极端事件幅度。尽管如此，这项工作依然证明了 3D 深度网络和层次化时间聚合是 AI 气象预报实现对传统 NWP 赶超的关键技术路径。</p>
+<h4 id="313-graphcast"><a href="#313-graphcast" class="header-anchor"></a>3.1.3 GraphCast
+</h4><p>Lam 等人（2023）提出的 <strong>GraphCast</strong> 是基于机器学习的中期全球天气预报代表作。该模型能够直接从再分析资料中训练，在单个 Google Cloud TPU v4 设备上不到 1 分钟生成 0.25° 分辨率、覆盖 10 天、包含数百个气象变量的确定性全球预报。</p>
+<p>GraphCast 的研究背景十分明确：传统 NWP 依赖超级计算机求解物理方程，虽然能够随着计算资源增加而持续提升精度，但难以直接利用海量历史观测与再分析数据来改进模型；而机器学习天气预报则可以通过数据驱动的方式直接学习天气系统演化规律，并借助现代硬件完成高效推理。基于这一思路，GraphCast 旨在构建一个既高效又高精度的端到端全球中期预报系统。</p>
+<p>在模型结构上，GraphCast 采用“编码器—处理器—解码器”的图神经网络架构，参数量约 3670 万。其最关键的设计在于引入了一个空间分布均匀的 <strong>多尺度网格（multi-mesh）</strong>：该网格通过对正二十面体进行六次迭代细化构造而成，同时叠加不同尺度的边，使信息能够在少量消息传递步骤内高效完成全球传播。模型输入为当前时刻和 6 小时前的两个全球天气状态，输出未来 6 小时后的状态，并通过自回归方式迭代生成任意长度的预报序列。训练数据来自 1979—2017 年共 39 年的 ERA5 再分析资料，训练目标是加权均方误差，同时逐步增加自回归 rollout 的步数以增强长时稳定性。</p>
+<p>在验证时，为确保对比公平，GraphCast 以 ERA5 为真值，而 HRES 则以其初始零步预报 HRES-fc0 为真值，以尽量避免资料同化策略差异造成的初值偏差。结果表明，在 1380 个评估目标中，GraphCast 在 <strong>90.3%</strong> 的目标上 RMSE 低于 HRES；在 500 hPa 位势高度（Z500）这一典型变量上，GraphCast 的 RMSE 技巧评分始终更优，ACC 也更高。即便对 HRES 施加最优模糊处理，GraphCast 仍在 88.0% 的目标上保持领先。</p>
+<p>GraphCast 在严重天气事件上的表现同样值得关注。对于热带气旋路径预报，其在 18 小时至 4.75 天时效上的路径中位误差显著优于 HRES，且在较强飓风类别中的优势更为明显；在大气河事件中，它对北美西海岸和东太平洋区域的水汽垂直积分输送量（IVT）预报 RMSE 比 HRES 低 10%—25%；在极端高温事件识别中，GraphCast 在 5 天和 10 天时效上的精度—召回表现也优于 HRES。</p>
+<p>从机理分析来看，多尺度网格结构是其成功的关键之一。谱分析表明，GraphCast 在大多数变量的各水平尺度上误差都低于 HRES，但在高波数段依然会因为 MSE 训练而产生一定平滑化现象。总体而言，GraphCast 标志着 MLWP 在全球中期确定性预报上首次达到甚至超越顶级业务系统，被许多研究者视为该领域的一个转折点。不过，它仍属于确定性预报方法，对概率不确定性的直接表达仍需依赖后续扩展。</p>
+<h4 id="314-fuxi"><a href="#314-fuxi" class="header-anchor"></a>3.1.4 FuXi
+</h4><p>Chen 等人（2023）提出的 <strong>FuXi</strong>，主要针对机器学习中长期天气预报中误差累积过快的问题。该工作希望构建一个能够进行 15 天、6 小时间隔、0.25° 空间分辨率预报的高精度全球天气预报系统。</p>
+<p>FuXi 的核心是一种基于 U-Transformer（底层采用 Swin Transformer V2）的自回归架构。与单一模型从头滚动到尾不同，作者设计了一个 <strong>三级级联结构</strong>：分别针对 0—5 天、5—10 天和 10—15 天三个时段微调三个模型，即 FuXi-Short、FuXi-Medium 和 FuXi-Long，并将前一阶段输出作为后一阶段输入。这样做的目的，是在保持模型整体自回归框架的同时，尽量抑制长时迭代误差的不断放大。</p>
+<p>该研究使用 39 年 ERA5 再分析资料进行训练。在确定性预报方面，FuXi 与 GraphCast 以及 ECMWF HRES 的对比结果表明：FuXi 在所有变量和预报时效上的 ACC 与 RMSE 都显著优于 HRES，在 7 天以内与 GraphCast 表现相当，而在 7 天之后则明显领先。尤其值得注意的是，其有效预报时效有明显延长：对于 500 hPa 位势高度（Z500），技巧性预报时效（ACC&gt;0.6）由 ECMWF HRES 的 9.25 天延长至 <strong>10.5 天</strong>；对于 2 米气温（T2M），则由 10 天延长至 <strong>14.5 天</strong>。在 15 天尺度的整体比较中，FuXi 的性能与 ECMWF 集合平均相当，并在 67.92% 的评估目标上具有更高的 ACC。</p>
+<p>除确定性预报外，作者还通过向初始场加入柏林噪声以及对模型参数采用 Monte Carlo dropout 的方式，构建了 50 成员的 <strong>FuXi 集合预报系统</strong>。实验表明，FuXi 集合在 9 天预报时效内的连续分级概率评分（CRPS）已与 ECMWF 业务集合系统接近，但在短时效存在过度离散、长时效又出现离散不足的问题，说明其概率校准仍需进一步改进。</p>
+<p>总体而言，FuXi 证明了级联式架构在控制中长期 AI 天气预报误差累积方面具有明显效果，并首次使数据驱动方法在 15 天尺度上具备了与顶尖业务集合系统相抗衡的能力。该工作也为后续向次季节预报和端到端数据同化系统拓展提供了重要思路。</p>
+<h4 id="315-fengwu"><a href="#315-fengwu" class="header-anchor"></a>3.1.5 FengWu
+</h4><p>Chen 等（2025）在《FengWu: Pushing the Skillful Global Medium-Range Weather Forecast beyond 10 Days Lead》中提出了 <strong>FengWu</strong>。该工作的目标非常明确，即进一步突破 AI 方法在全球中期天气预报中的技巧上限，将“有技巧”的预报时效稳定推到 10 天以上。</p>
+<p>FengWu 的技术设计集中在三个方面。首先，它从 <strong>多模态、多任务</strong> 的角度重新组织天气预报问题。不同于将所有大气变量简单堆叠成单一输入的做法，FengWu 将位势高度、温度、湿度、风场等变量视为独立模态，为每个模态设计专用编码器和解码器，再通过跨模态融合 Transformer 进行信息交互。其次，模型将不同变量及其对应空间位置的预测视为独立任务，引入 <strong>同方差不确定性损失</strong> 来自动学习各任务的权重，从而减少手工调参负担，并更有效地平衡不同预报目标。最后，为缓解长时自回归误差累积，作者借鉴强化学习中的经验回放思想，引入了 <strong>重放缓冲区机制</strong>，在训练阶段显式模拟推理时误差不断传播的情形。</p>
+<p>FengWu 在 0.25° 网格上处理 5 个高空变量（37 个气压层）和 4 个地表变量，共 189 个预报量，并通过自回归方式完成 10 天、40 步的预报。在 2018 年回算试验中，FengWu 与 GraphCast 的比较结果显示，在 <strong>880 个预报目标中，有 80% 的目标上 FengWu 的 RMSE 更低、ACC 更高</strong>，且这种优势会随预报时效的增加而更加明显。例如，在 10 天时效下，全球 500 hPa 位势高度（Z500）的 RMSE 从 GraphCast 的 733 降至 FengWu 的 651 m²/s²。以 ACC&gt;0.6 作为技巧预报标准时，FengWu 将 Z500 的技巧预报时效推进到 <strong>10.75 天</strong>，将 2 米气温（T2M）推进到 <strong>11.5 天</strong>。</p>
+<p>消融实验进一步表明，若去除重放缓冲区机制，长时效预报技巧会明显下降，说明该机制对控制误差累积至关重要。在计算效率上，FengWu 在 32 块 NVIDIA A100 GPU 上训练约 17 天，10 天预报的推理时间不到 30 秒，单次迭代约 600 毫秒，能耗约为传统 IFS 系统的两千分之一。</p>
+<p>需要注意的是，FengWu 与 GraphCast 一样使用 ERA5 再分析数据作为初始场，因此在与业务物理模型比较时带有一定初值优势。不过，在不同数据驱动模型之间的对比中，这种初值条件是一致的，因此相互比较仍然具有较高公平性。总体来看，FengWu 通过多模态多任务学习、不确定性加权和重放缓冲机制，在中期天气预报上取得了新的技巧突破，是 AI 天气预报长时效能力提升的重要代表工作。</p>
+<h4 id="316-aifs"><a href="#316-aifs" class="header-anchor"></a>3.1.6 AIFS
+</h4><p>Lang 等（2024）详细介绍了欧洲中期天气预报中心（ECMWF）开发的数据驱动全球天气预报系统 <strong>AIFS</strong>。这项工作的重要性不仅在于模型本身的性能，更在于它标志着 AI 天气预报正在逐步从学术验证走向业务化运行。</p>
+<p>AIFS 的目标是构建一个可与 IFS 物理模式互补、甚至在部分场景下更具竞争力的中期确定性预报系统，并建立从训练、推理到产品发布的端到端流程。模型采用编码器—处理器—解码器结构，并融合了图神经网络与 Transformer 两种范式：编码器与解码器负责在 ERA5 的原生 N320 精简高斯网格和更粗的处理器网格之间完成信息映射；处理器部分则基于预范数 Transformer，并通过滑动窗口注意力在 O96 八面体精简高斯网格上进行计算。通过节点和边上的可学习嵌入，以及激活检查点、张量并行和数据并行等策略，AIFS 支持高分辨率训练和大规模扩展。</p>
+<p>在训练上，AIFS 采用分阶段策略：首先在 1979—2020 年 ERA5 上进行单步预训练，随后逐步进行多步滚动训练，最后再利用 2019—2020 年 IFS 业务分析场进行微调，以提升对真实初始化条件的适配能力。损失函数采用面积加权均方误差，并对不同变量和气压层赋予不同权重。整体训练成本大约为 64 块 A100 GPU 持续一周，生成 10 天预报仅需单块 A100 GPU 约 2 分 30 秒。</p>
+<p>在结果方面，AIFS 对传统 IFS 展现出明显优势。以北半球 500 hPa 位势高度异常相关系数（ACC）衡量，其预报领先优势超过 12 小时，在多年时间序列中呈现出明显的“阶跃式”改善。对于地表变量，在更高分辨率版本下，AIFS 在 2 米气温和 10 米风速上的表现持续优于 IFS；总降水在热带区域普遍改善，中纬度短时效略弱于 IFS，但长时效更强。热带气旋路径预报中，AIFS 的路径误差显著小于 IFS，但在气旋强度（中心气压、最大风速）的刻画上相对偏弱，这可能与 ERA5 分析场中的气旋强度偏弱以及模型平滑化倾向有关。</p>
+<p>AIFS 的局限也较为典型。由于采用加权 MSE 训练，长时效预报会出现一定模糊化，预报活动度低于 IFS；平流层技巧受损失权重设置影响较大；热带气旋等强系统的强度表达仍不够理想。尽管如此，AIFS 依旧展示了业务中心在数据驱动天气预报方向上的最新进展，并表明 AI 预报系统已经具备与传统业务模式并行运行的现实可能。</p>
+<h3 id="32-基础模型与通用时空建模"><a href="#32-%e5%9f%ba%e7%a1%80%e6%a8%a1%e5%9e%8b%e4%b8%8e%e9%80%9a%e7%94%a8%e6%97%b6%e7%a9%ba%e5%bb%ba%e6%a8%a1" class="header-anchor"></a>3.2 基础模型与通用时空建模
+</h3><h4 id="321-climax"><a href="#321-climax" class="header-anchor"></a>3.2.1 ClimaX
+</h4><p>Nguyen 等人（2023）提出的 <strong>ClimaX</strong>，被普遍视为首个面向天气与气候科学的基础模型。与只为特定任务和固定时空范围训练的专用神经网络不同，ClimaX 通过在异构气候数据集上进行自监督预训练，学习通用的地球系统表征，再通过微调适应多样化的下游任务。</p>
+<p>ClimaX 基于视觉 Transformer，但针对气象数据的多变量、异构和多分辨率特点做了两项关键改进。第一是 <strong>变量标记化（variable tokenization）</strong>：将每个物理变量分别划分为图像块并线性嵌入，使模型能够灵活处理不同类型和数量的输入变量。第二是 <strong>变量聚合（variable aggregation）</strong>：通过交叉注意力将同一空间位置上的不同变量 token 压缩为统一语义的 token，从而在实现跨变量信息融合的同时，降低 Transformer 的计算复杂度。</p>
+<p>在预训练阶段，ClimaX 使用了 CMIP6 中五个气候模式从 1850 年到 2015 年的 6 小时输出数据，覆盖多种变量和垂直层次。预训练目标是随机化的未来状态预测，即给定当前气象场，预测未来 6 小时到 1 周内的状态。下游任务则包括全球天气预报、区域预报、次季节—季节预测、气候预估以及气候降尺度等多个方向。</p>
+<p>实验结果表明，ClimaX 在不同分辨率下都表现出较强竞争力。低分辨率条件下，其长时效（≥7 天）全球预报已能够持平甚至超过 IFS；高分辨率条件下，其各时效预报技巧接近或超过 IFS，并明显优于 ResNet、UNet 等基线模型。即使仅在低分辨率 CMIP6 上预训练，通过位置编码插值后再微调，ClimaX 在区域预报中依然取得了最优或次优结果，体现出对空间范围和分辨率变化的良好泛化能力。在 S2S 预测和气候降尺度任务中，ClimaX 也在多个变量上取得最低 RMSE；在气候预估任务中，即便输入变量体系发生变化，冻结注意力层后仅微调嵌入层与预测头的版本依然取得了优异结果，说明其预训练特征具备较强的迁移能力。</p>
+<p>总体来看，ClimaX 首次较系统地证明了基础模型范式在天气与气候科学中的可行性。它的意义并不只是提升单一任务的分数，而是在于展示了“预训练—微调”这一通用范式如何被扩展到多尺度天气预报、气候预估和降尺度等不同问题中，从而推动地球系统建模从“单任务专用”向“通用智能”演进。</p>
+<h4 id="322-aurora"><a href="#322-aurora" class="header-anchor"></a>3.2.2 Aurora
+</h4><p>Bodnar 等（2024）提出并评估了 <strong>Aurora</strong>，这是一个拥有 13 亿参数的地球系统基础模型。该模型在逾百万小时的多源异构地球数据上进行预训练，并通过微调在空气质量、大气化学、海浪、热带气旋路径以及 0.1° 高分辨率全球天气预报等任务上取得了超越现有业务系统的表现。</p>
+<p>Aurora 的整体架构采用编码器—处理器—解码器范式。编码器部分为 <strong>3D Perceiver</strong>，负责将不同分辨率、不同变量和不同气压层数的异构输入映射到统一的三维潜空间表示中；处理器部分为 <strong>多尺度 3D Swin Transformer U-Net</strong>，在潜空间中执行多尺度时空建模；解码器部分则将潜表示还原为所需变量和指定气压层上的网格预报。这样的设计，使模型能够更灵活地兼容地球系统中来源复杂、尺度差异巨大的输入数据。</p>
+<p>在训练流程上，Aurora 分为三个阶段。首先，利用 ERA5、HRES、IFS-ENS、GFS、GEFS、CMIP6 和 MERRA-2 等 10 个异构数据集进行大规模预训练，总样本规模约 1000 万个，数据总量达到 1.2 PB。其次，对各个具体下游任务进行短时效微调。最后，再利用 LoRA 与重放缓冲机制进行长时效展开微调，以在控制内存开销的同时增强长序列建模能力。作者的缩放实验显示，数据多样性与模型规模的增加都会带来稳定的性能提升。</p>
+<p>Aurora 在多个任务上的表现都十分亮眼：在全球空气污染预报中，它在 74% 的目标变量和气压层上达到或优于业务模式，计算速度提升约 50000 倍；在全球海浪预报中，它在 86% 的波浪变量上优于 ECMWF 的 HRES-WAM，并能准确预测如台风 Nanmadol 这样的高影响个例；在热带气旋路径预报中，它在所有流域和所有时效上都优于官方预报以及全部对比模型；在 0.1° 高分辨率全球天气预报中，它在 92% 的目标上与 IFS HRES 持平或更优，尤其在中长期时效优势明显。</p>
+<p>Aurora 的意义在于，它进一步证明了地球系统预测可以走向更统一的基础模型范式。模型经过一次大规模预训练后，只需较短时间的微调便能够迁移到多个高价值任务，并在每个任务上都达到很强的竞争力。这一结果说明，未来的天气与地球系统 AI 模型，可能不再是多个彼此独立的专用系统，而是建立在统一表征之上的多任务预测框架。</p>
+<h4 id="323-earthformer"><a href="#323-earthformer" class="header-anchor"></a>3.2.3 Earthformer
+</h4><p>Gao 等（2023）提出的 <strong>Earthformer</strong> 是一个专门面向地球系统预测设计的时空 Transformer 模型。该工作的出发点在于：传统数值模拟不仅计算成本高，对领域知识要求也很强；而现有深度学习模型如 CNN、RNN 等，又难以充分捕捉地球系统中高维、混沌且具有长程依赖的时空结构。</p>
+<p>Earthformer 的核心创新是 <strong>Cuboid Attention（立方体注意力）</strong>。为了降低传统全时空自注意力 $O(N^2)$ 的计算复杂度，它将输入的高维时空张量划分为多个不重叠的局部立方体，在每个立方体内部并行执行注意力计算。通过堆叠不同划分策略和尺寸的立方体注意力层，模型能够高效地捕捉不同尺度和方向上的相关性。为了解决局部块之间信息传播受限的问题，作者还引入了 <strong>全局向量</strong> 机制，让这些向量能够同时关注所有局部立方体，用于收集并传播全局动态信息。在整体结构上，Earthformer 采用了层次化编码器—解码器设计，通过 CNN 下采样和上采样实现从粗到细的未来预测生成。</p>
+<p>在实验中，Earthformer 首先在合成数据集 MovingMNIST 和更具挑战性的 N-body MNIST 上进行了系统消融，发现轴向注意力模式、全局向量以及层次化架构都能稳定提升性能。在真实任务上，Earthformer 在 SEVIR 降水临近预报和 ICAR-ENSO 海表温度异常预测两个方向上都取得了当时最优结果：前者在多个降水阈值下的关键成功指数（CSI）和均方误差（MSE）上都显著优于 UNet、ConvLSTM、PredRNN 和 Rainformer 等基线；后者则在长期 ENSO 预测中的相关性技巧和 MSE 上全面优于对比模型。</p>
+<p>Earthformer 并不是一个典型的全球中期天气预报系统，但它在时空建模方面提出的方法具有较强通用性，也为天气与气候模型的后续架构创新提供了重要思路。其不足之处在于，作为确定性纯数据驱动模型，它并不直接建模不确定性，也未显式融入物理约束，因此未来若向概率预报或物理一致性方向扩展，将更具应用价值。</p>
+<h3 id="33-物理数据融合模型"><a href="#33-%e7%89%a9%e7%90%86%e6%95%b0%e6%8d%ae%e8%9e%8d%e5%90%88%e6%a8%a1%e5%9e%8b" class="header-anchor"></a>3.3 物理—数据融合模型
+</h3><h4 id="331-neuralgcm"><a href="#331-neuralgcm" class="header-anchor"></a>3.3.1 NeuralGCM
+</h4><p>Kochkov 等（2024）在论文《Neural general circulation models for weather and climate》中提出了 <strong>NeuralGCM</strong>，这是一个完全可微的混合大气环流模型。与纯数据驱动模型不同，NeuralGCM 同时保留了传统动力核心和机器学习物理模块，试图在天气预报精度、概率集合质量与长期气候模拟稳定性之间取得更好的平衡。</p>
+<p>NeuralGCM 的核心结构由三部分组成。第一部分是 <strong>可微动力核心</strong>，在 JAX 框架下实现，采用水平伪谱离散与垂直 sigma 坐标，用于求解包含水汽的静力原始方程，从而负责模拟大尺度流体运动和热力学过程。第二部分是 <strong>学习型物理模块</strong>，通过带残差连接的全连接网络来参数化云、降水和辐射等未解析小尺度物理过程，并将太阳辐射、海表温度及变量水平梯度等作为输入。第三部分则是 <strong>编码器与解码器</strong>，用于在 ERA5 的气压坐标和动力核心的 sigma 坐标之间完成稳定转换，同时通过学习修正减小初始化冲击和数值伪影。</p>
+<p>训练上，NeuralGCM 使用 1979—2019 年的 ERA5 再分析资料，并采用逐步延长 rollout 的课程学习方式，从短时预报逐步扩展到 5 天自回归预测。在损失函数设计上，作者区分了确定性和随机模型：确定性模型采用多种损失的组合，其中包括一种滤波均方误差，以减轻对位置略有偏差但形态尖锐特征的过度惩罚；随机集合模型则通过引入时空相关随机场，并使用 CRPS 作为优化目标，从而显式学习概率分布。</p>
+<p>实验结果表明，NeuralGCM 在多个层面都表现突出。在中期天气预报上，NeuralGCM-0.7° 的确定性预报在 1—10 天时效上与 GraphCast 和 Pangu 等纯机器学习模型相当甚至更优；NeuralGCM-ENS 的 CRPS 则优于 ECMWF-ENS，且其集合弥散度与技巧之比接近 1，说明概率预报可靠性较高。更重要的是，与 GraphCast、Pangu 等方法相比，NeuralGCM 的预报场更少出现模糊化，功率谱更接近真实数据，并更好地维持了地转风平衡等动力一致性。</p>
+<p>在长期气候模拟方面，NeuralGCM 同样展示出极强潜力。即使在较粗的 1.4° 分辨率下，仅用 3 天天气预报任务训练得到的确定性 NeuralGCM 也能稳定运行多年，并能够合理再现热带气旋的生成、路径与频率；在 40 年的海温驱动 AMIP 试验中，NeuralGCM-2.8° 成功复现了全球变暖趋势，其全球平均温度的时空偏差小于多种传统大气环流模式。</p>
+<p>总体而言，NeuralGCM 证明了将机器学习视为复杂物理参数化替代方案的可行性。它不仅是首个在集合天气预报上超越传统物理模式的 ML 方法之一，也是首个在长期气候模拟中表现出较强稳定性和物理合理性的混合模型。不过，该模型架构较为复杂，在显著更热气候条件下的外推、极端降水刻画以及与海洋等系统的双向耦合方面仍存在进一步发展空间。</p>
+<h3 id="34-概率集合天气预报模型"><a href="#34-%e6%a6%82%e7%8e%87%e9%9b%86%e5%90%88%e5%a4%a9%e6%b0%94%e9%a2%84%e6%8a%a5%e6%a8%a1%e5%9e%8b" class="header-anchor"></a>3.4 概率集合天气预报模型
+</h3><h4 id="341-gencast"><a href="#341-gencast" class="header-anchor"></a>3.4.1 GenCast
+</h4><p>Price 等（2025）在《Nature》发表的《Probabilistic weather forecasting with machine learning》中提出了 <strong>GenCast</strong>。该模型是机器学习概率天气预报领域的一个重要里程碑，因为它首次在预报技巧和推理速度上全面超越了全球顶尖业务集合预报系统——ECMWF 的 ENS。</p>
+<p>GenCast 的目标是生成全球 15 天、0.25° 分辨率、12 小时间隔的随机集合预报，覆盖 80 多个地表与高空变量，并在 8 分钟内完成一次完整预测。它的核心是一个 <strong>条件扩散模型</strong>，通过对噪声样本的逐步精化来学习未来天气状态的条件概率分布，即 $P(X_{t+1}\mid X_t, X_{t-1})$，并通过自回归方式生成整条预报轨迹。模型架构采用图 Transformer，在六重精化的二十面体网格上进行邻域自注意力计算，训练数据为 1979—2018 年的 ERA5 再分析资料。作者还额外训练了一个确定性版本 GenCast-Perturbed 用于消融分析。</p>
+<p>在 2019 年全年数据上的评估显示，GenCast 在 <strong>97.2%</strong> 的 1320 个变量—气压层—预报时效组合中，其连续分级概率评分（CRPS）都显著优于 ENS；在近地面变量和 1—5 天短时效范围内，优势甚至可达到 10%—30%。与此同时，集合平均 RMSE 在 96% 的目标上也不弱于 ENS，说明模型不仅概率分布学得更好，其集合均值本身也具有很强竞争力。</p>
+<p>GenCast 在概率标定和样本真实性方面同样表现出色。其集合成员清晰、频谱真实，空间功率谱与 ERA5 分析场高度一致；集合离散度与技巧之比接近 1，秩直方图较为平坦，表明概率标定良好。相比之下，单纯对确定性模型输出加扰动得到的集合往往会显得模糊且过于自信。</p>
+<p>在极端天气预报与空间联合分布刻画方面，GenCast 也有明显优势。对于 2 米温度和 10 米风速的极端阈值事件，其 Brier 技巧评分和相对经济价值均优于 ENS；通过空间池化 CRPS、区域风电功率预报和热带气旋路径预报等任务，可以看到 GenCast 能更好地捕捉天气状态的空间—时间依赖关系。在区域风电功率预报中，前 4 天的 CRPS 较 ENS 领先 10%—20%；在热带气旋路径概率预报中，其相对经济价值在所有成本—损失比下都优于 ENS。</p>
+<p>总体来看，GenCast 表明基于机器学习的概率天气预报不仅在计算效率上大幅领先，而且在预报技巧、不确定性量化与风险刻画方面也可以超越传统数值集合预报。它为天气预报业务化中的生成式 AI 应用打开了新的空间。</p>
+<h4 id="342-fgn"><a href="#342-fgn" class="header-anchor"></a>3.4.2 FGN
+</h4><p>Alet 等（2025）提出了 <strong>FGN（Functional Generative Network）</strong>，希望在预报技巧、推理效率和架构灵活性方面进一步超越此前的概率预报模型。与扩散模型相比，FGN 更强调用简单而可扩展的机制学习高质量的集合分布。</p>
+<p>FGN 的核心创新在于对不确定性的分层建模。对于 <strong>认知不确定性</strong>，作者采用深度集成策略，独立训练 4 个模型并对它们的输出进行混合，以近似贝叶斯后验预测分布；对于 <strong>偶然不确定性</strong>，则通过学习的函数扰动来建模，即让每个集合成员都由一个函数网络生成，而函数网络的参数扰动由低维全局噪声向量决定。与在输入或输出空间直接加噪相比，这种在参数空间中注入随机性的方式更有利于生成空间结构连贯的集合成员。</p>
+<p>在训练范式上，FGN 直接以 <strong>连续分级概率评分（CRPS）</strong> 为目标进行优化。值得注意的是，它主要将每个网格点上的预报分布作为独立边缘分布来训练，并没有在损失函数中显式约束变量之间或空间上的相关性。尽管如此，实验结果表明，这一方法依然能够学习到物理上合理的联合结构。每个 FGN 子模型采用与 GenCast 相似的编码—处理—解码结构，但容量更大，并且通过单步前向传播生成集合成员，使得 15 天预报的速度相较 GenCast 提升约 8 倍。</p>
+<p>在 2023 年业务化 HRES-fc0 数据上的评测中，FGN 与 GenCast 和 ECMWF ENS 进行了全面比较。结果显示，在 99.9% 的变量—气压层—预报时效目标上，FGN 的 CRPS 优于 GenCast，平均提升约 <strong>6.5%</strong>；集合平均 RMSE 在 100% 的目标上领先，平均提升约 5.8%。在空间池化和衍生变量（如 10 米风速）的评测中，FGN 同样明显优于 GenCast，说明它确实学到了较好的多变量、多尺度联合结构。更进一步，在热带气旋路径预报中，FGN 的集合平均路径误差相较 GenCast 平均相当于多获得了约 24 小时的有效预报时效；在功率谱保真度与极端天气相对经济价值方面，也表现出稳定优势。</p>
+<p>当然，FGN 目前仍存在一些值得继续研究的地方，例如在特定变量上会出现轻微网格伪影，联合分布之所以能够在主要靠边缘损失约束的情况下被有效学习，其理论机制也仍需更系统的解释。尽管如此，FGN 已经展示出非常强的扩展潜力，是概率天气预报方向上一个极具代表性的工作。</p>
+<h4 id="343-fourcastnet-3"><a href="#343-fourcastnet-3" class="header-anchor"></a>3.4.3 FourCastNet 3
+</h4><p>Bonev 等（2025）提出的 <strong>FourCastNet 3（FCN3）</strong> 是一个基于球面几何的可扩展概率机器学习全球天气预报系统。它的研究动机在于解决几个长期存在的问题：传统数值天气预报成本高；确定性机器学习模型在长时效上容易出现模糊化；而概率扩散模型虽然能生成锐利样本，却往往推理成本较高，并可能在长期积分中出现高频噪声堆积。</p>
+<p>FCN3 的技术设计主要集中在四个方面。第一，它采用一种 <strong>隐马尔可夫概率预报框架</strong>：给定当前大气状态和时间，模型以球面扩散过程产生的随机变量为附加输入，直接生成下一个时刻的集合成员，无需迭代去噪，因此推理效率更高。第二，它使用完全遵循球面几何的 <strong>纯卷积神经算子架构</strong>，结合全局谱卷积和局部离散—连续（DISCO）卷积，以更好刻画锋面、非带状流等局地结构。第三，它设计了 <strong>空—谱联合概率损失函数</strong>，将空间 CRPS 与谱 CRPS 结合起来，从而同时约束逐点边缘分布和多尺度空间结构。第四，它借助 Makani 框架实现了空间模型并行、集合并行和批次并行的混合训练范式，能够扩展到超过 1024 个 GPU。</p>
+<p>在 2020 年全年回算试验中，FCN3 的表现十分突出。在 50 成员集合设置下，它的 CRPS 和集合平均 RMSE 均显著优于 ECMWF IFS-ENS，并且与当前最先进的扩散模型 GenCast 相当，在某些短时效变量上甚至略优。更为重要的是其计算效率：在单块 NVIDIA H100 GPU 上，生成一个 15 天全球预报仅需 <strong>60 秒</strong>，相较 GenCast 提速约 <strong>8 倍</strong>，相较 IFS-ENS 提速约 <strong>60 倍</strong>。</p>
+<p>FCN3 最引人注目的贡献之一是长期谱保真度与积分稳定性。无论是确定性模型常见的高频能量衰减，还是概率模型易出现的小尺度噪声堆积，FCN3 都表现得相对克制。即使在前置时间长达 60 天（1440 小时）的超长积分中，其角功率谱仍与 ERA5 真值高度一致，几乎不出现模糊或噪声爆炸。这一性质在纯数据驱动模型中非常少见，也使其在次季节尺度的探索上更具潜力。</p>
+<p>总体来看，FourCastNet 3 通过几何深度学习与隐马尔可夫建模，构建了一个兼具高技巧、高效率、良好概率校准和长期稳定性的概率天气预报系统。它表明，纯卷积架构在天气生成问题中同样能够达到极高水平，也为未来的大规模集合预报提供了更具工程可行性的选择。</p>
+<h2 id="四总结与展望"><a href="#%e5%9b%9b%e6%80%bb%e7%bb%93%e4%b8%8e%e5%b1%95%e6%9c%9b" class="header-anchor"></a>四、总结与展望
+</h2><p>回顾上述研究可以看到，AI 气象预报已经从“是否能够逼近传统数值天气预报”这一问题，逐步转向“如何在精度、效率、不确定性表达和物理一致性上全面超越传统方法”。从 FourCastNet、Pangu-Weather、GraphCast 到 FuXi、FengWu 和 AIFS，确定性全球中期天气预报模型不断提升技巧上限，也不断改善工程可用性；从 GenCast、FGN 到 FourCastNet 3，概率集合预报已经不再只是附加功能，而正在成为高影响天气风险决策中的核心方向；从 ClimaX、Aurora 到 NeuralGCM，研究者也在推动天气与气候模型从单任务专用系统走向基础模型与物理—数据融合模型。</p>
+<p>与此同时，当前研究仍面临若干共性挑战。首先，很多 AI 模型高度依赖 ERA5 这类高质量再分析资料，模型在更复杂初值条件或真实观测驱动场景中的表现仍需进一步检验。其次，确定性模型普遍会受到 MSE 类损失带来的平滑化影响，在长时效预报中容易削弱高频结构和极端事件幅度。再次，概率模型虽然已经取得长足进展，但如何在边缘分布校准、空间联合结构、物理合理性和推理效率之间取得更优平衡，依然是开放问题。最后，真正意义上的端到端智能预报系统——包括观测处理、同化、初始化、预报生成与产品发布——仍在形成过程中。</p>
+<p>从未来发展趋势看，至少有几个方向值得持续关注。其一，概率预报将成为 AI 气象预报的重要主流，尤其是在极端天气风险评估和决策支持中，其价值会越来越突出。其二，基础模型范式有望继续扩展，多源异构预训练与跨任务迁移将推动天气、气候和环境预测逐步走向统一建模。其三，物理约束和可微模拟器的重要性会进一步上升，特别是在长期稳定积分、气候外推和极端过程模拟方面。其四，AI 模型将不断向更高分辨率、更长时效以及更丰富的地球系统变量扩展，从而服务于更复杂的科学问题和实际应用场景。</p>
+<p>总体而言，AI 不仅正在改变天气预报的计算范式，也在重塑地球系统科学的研究路径。如何在高精度、高效率、概率可用性和物理一致性之间取得更好的平衡，将是下一阶段 AI 气象预报研究最关键的议题之一。</p>
+
+</section>
+
+
+    <footer class="article-meta article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/my_blog/tags/ai/">AI</a>
+        
+            <a href="/my_blog/tags/meteorology/">Meteorology</a>
+        
+            <a href="/my_blog/tags/literature-review/">Literature Review</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const elementsToRender = [".main-article", ".widget--toc"];
+
+        elementsToRender.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) {
+                renderMathInElement(element, {
+                    delimiters: [
+                        { left: "$$", right: "$$", display: true },
+                        { left: "$", right: "$", display: false },
+                        { left: "\\(", right: "\\)", display: false },
+                        { left: "\\[", right: "\\]", display: true }
+                    ],
+                    ignoredClasses: ["gist"]
+                });
+            }
+        });
+    });
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside>
+    <h2 class="section-title"></h2>
+    <div class="subsection-list">
+        <div class="article-list--tile">
+            
+                
+<article class="">
+    <a href="/my_blog/post/forge_05_10/forge_05_10/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">小波变换在视觉任务中的应用综述</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/my_blog/post/forge_05_06/forge_05_06/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MeanFlow 与 Consistency Model 文献综述</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/my_blog/post/trace_04_01/trace_04_01/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Embedding、卷积与 ViT 学习笔记</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 Blog For Life
+    </section>
+    
+    <section class="powerby">
+         <br />
+        
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
     import gallery from '\/my_blog\/ts\/gallery.js';
 
     const articleContent = document.querySelector('.article-content');
@@ -47,4 +881,14 @@
         });
         lightbox.init();
     }
-</script></main></div><script type=text/javascript src=/my_blog/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js defer></script></body></html>
+</script>
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/my_blog/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js" defer></script>
+
+
+    </body>
+</html>

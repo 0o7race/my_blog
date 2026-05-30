@@ -675,3 +675,191 @@ a {
     line-height: 1.9;
   }
 }
+
+/* ================================================================
+   UI 精品化 v2 — 排版升级 · 细节雕琢 · 动效润色
+   ================================================================ */
+
+/* ── 字体族覆盖：全站切换到中文衬线 ── */
+:root {
+  --base-font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", Georgia, "Times New Roman", serif;
+  --article-font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
+}
+
+/* ── 主标题：使用 Playfair Display 斜体展示字体 ── */
+.home-hero__title {
+  font-family: "Playfair Display", "Noto Serif SC", Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+/* ── 数字统计：Playfair Display 赋予优雅气质 ── */
+.home-hero__stat-value {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-size: 2.6rem;
+  letter-spacing: -0.02em;
+}
+
+/* ── 统计块顶部分隔线 ── */
+.home-hero__stats {
+  border-top: 1px solid color-mix(in srgb, var(--accent-color) 16%, var(--surface-border));
+  padding-top: 22px;
+  margin-top: 22px;
+}
+
+/* ── 眉标精化：横线 + 文字排列 ── */
+.home-section-heading__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-section-heading__eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── 侧边栏站点名称使用展示字体 ── */
+.sidebar .site-name {
+  font-family: "Playfair Display", "Noto Serif SC", Georgia, serif;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+/* ── 归档 widget 年份标签 ── */
+.widget.archives .widget-archive--year {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--accent-color);
+  letter-spacing: -0.01em;
+}
+
+/* ── 细粒纹理叠加层（body 上方，提供胶片感深度） ── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.038;
+}
+
+/* ── 文章列表入场动画 ── */
+@keyframes artFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article-list article {
+  animation: artFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.article-list article:nth-child(1) { animation-delay: 0.04s; }
+.article-list article:nth-child(2) { animation-delay: 0.12s; }
+.article-list article:nth-child(3) { animation-delay: 0.20s; }
+.article-list article:nth-child(4) { animation-delay: 0.28s; }
+.article-list article:nth-child(5) { animation-delay: 0.36s; }
+.article-list article:nth-child(6) { animation-delay: 0.44s; }
+.article-list article:nth-child(7) { animation-delay: 0.52s; }
+.article-list article:nth-child(8) { animation-delay: 0.60s; }
+
+/* ── Hero 区块入场动画 ── */
+.home-hero__content {
+  animation: artFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.02s both;
+}
+
+.home-hero__featured {
+  animation: artFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+.home-highlights article:nth-child(1) { animation: artFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both; }
+.home-highlights article:nth-child(2) { animation: artFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.21s both; }
+.home-highlights article:nth-child(3) { animation: artFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both; }
+
+/* ── 文章正文：精化阅读排版 ── */
+.main-article .article-content {
+  font-feature-settings: "kern" 1, "liga" 1;
+  letter-spacing: 0.01em;
+}
+
+/* ── 文章内水平分隔线优化 ── */
+.main-article .article-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--card-separator-color) 18%,
+    var(--card-separator-color) 82%,
+    transparent
+  );
+  margin: 3rem 0;
+}
+
+/* ── 代码块圆角与边框 ── */
+.main-article .article-content pre {
+  border-radius: 18px;
+  border: 1px solid var(--surface-border);
+}
+
+/* ── 文章内引用块字体 ── */
+.main-article .article-content blockquote p {
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+/* ── 标签云间距微调 ── */
+.tagCloud-tags {
+  gap: 8px;
+}
+
+/* ── 分类徽章字号 ── */
+.article-category a {
+  letter-spacing: 0.04em;
+  font-size: 1.22rem;
+}
+
+/* ── 高亮卡片最小高度 ── */
+.home-highlight-card {
+  min-height: 190px;
+}
+
+/* ── 页脚顶部分隔线 ── */
+.site-footer {
+  border-top: 1px solid var(--surface-border);
+}
+
+/* ── 分页导航精化 ── */
+.pagination {
+  margin: 12px 0 6px;
+}
+
+/* ── 侧边栏描述行距 ── */
+.sidebar .site-description {
+  letter-spacing: 0.01em;
+  opacity: 0.82;
+}
+
+/* ── 文章标签悬停：颜色过渡更丝滑 ── */
+.article-tags a,
+.tagCloud-tags a {
+  transition:
+    color 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease;
+}

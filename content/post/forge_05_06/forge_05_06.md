@@ -1,9 +1,9 @@
 ---
-title: "论文阅读"
+title: "MeanFlow 与 Consistency Model 文献综述"
 date: 2026-05-06T23:00:00+08:00
 draft: false
-description: "一步扩散论文"
-tags: ["Mathematics"]
+description: "围绕 MeanFlow 与 Consistency Model 的一步生成方法综述"
+tags: ["AI", "Generative Models", "Literature Review"]
 categories: ["Projects"]
 ---
 
